@@ -8,71 +8,113 @@
 # python3 prettify_output.py
 
 import os
+from argparse import ArgumentParser
+from pathlib import Path
 
 strip_index = len("org.apache.lucene.codecs.")
 
-def get_clusters(path) -> frozenset[frozenset[str]]:
-    clusters = []
-    with open(path, "r") as file:
-        for line in file:
-            # Assumptions:
-            # - enumerated from 0 to N in order of lines
-            # - always 3 parts per line
-            parts = line.strip().split()
-            
-            # Cut off common text present in all outputs
-            element = parts[2]
-            element = element[strip_index:]
 
-            cluster_id = int(parts[1])
-            if cluster_id >= len(clusters):
-                clusters.append(set([element]))
-            else:
-                clusters[cluster_id].add(element)
-    return frozenset([frozenset(i) for i in clusters])
+class ClusteringInfo:
+    def __init__(self, path):
+        clusters = []
+        with open(path, "r") as file:
+            for line in file:
+                # Assumptions:
+                # - enumerated from 0 to N in order of lines
+                # - always 3 parts per line
+                parts = line.strip().split()
 
-def write_file(name, clusters: frozenset[frozenset[str]]):
-    with open(name, "w") as outfile:
+                # Cut off common text present in all outputs
+                element = parts[2]
+                element = element[strip_index:]
+
+                cluster_id = int(parts[1])
+                if cluster_id >= len(clusters):
+                    clusters.append(set([element]))
+                else:
+                    clusters[cluster_id].add(element)
+
         list_lines = []
         for cluster in clusters:
             elements = sorted([element + "\n" for element in cluster])
             list_lines.append(elements)
-        
+
         list_lines = sorted(list_lines, key=lambda l: (len(l), l))
+        self.list_lines = list_lines
 
-        # Metadata
-        outfile.write("### Metadata ###\n")
+    @property
+    def total_clusters(self) -> int:
+        return len(self.list_lines)
 
-        total_clusters = len(list_lines)
-        outfile.write(f"Total number of clusters: {total_clusters}\n")
-        outfile.write(f"Average size per cluster: {sum([len(x) for x in list_lines]) / total_clusters}\n")
+    @property
+    def clusters_equal_1(self) -> list[list[int]]:
+        return list(filter(lambda x: len(x) == 1, self.list_lines))
 
-        clusters_equal_1 = list(filter(lambda x: len(x) == 1, list_lines))
-        outfile.write(f"Number of clusters of size == 1: {len(clusters_equal_1)}\n")
+    @property
+    def clusters_over_1(self) -> list[list[int]]:
+        return list(filter(lambda x: len(x) > 1, self.list_lines))
 
-        clusters_over_1 = list(filter(lambda x: len(x) > 1, list_lines))
-        outfile.write(f"Number of clusters of size > 1 : {len(clusters_over_1)}\n")
-        total_clusters = len(clusters_over_1)
-        outfile.write(f"Average size per cluster of size > 1: {sum([len(x) for x in clusters_over_1]) / total_clusters}\n")
-        outfile.write(f"Median size per cluster of size > 1 : {len(clusters_over_1[len(clusters_over_1) // 2])}\n")
-        outfile.write(f"Largest cluster size: {len(clusters_over_1[-1])}\n")
-        outfile.write("################\n")
-        outfile.write("Clusters:\n\n")
+    @property
+    def average_size_per_cluster(self) -> float:
+        return sum([len(x) for x in self.list_lines]) / self.total_clusters
 
-        for line in list_lines:
+    def __lt__(self, other):
+        return self.total_clusters < other.total_clusters
+
+    def to_csv_line(self) -> str:
+        return f"{self.total_clusters},{self.average_size_per_cluster},{len(self.clusters_equal_1)},{len(self.clusters_over_1)},{sum([len(x) for x in self.clusters_over_1]) / len(self.clusters_over_1)},{len(self.clusters_over_1[len(self.clusters_over_1) // 2])},{len(self.clusters_over_1[-1])}\n"
+
+    def __str__(self) -> str:
+        result = ""
+        result += "### Metadata ###\n"
+        result += f"Total number of clusters: {self.total_clusters}\n"
+        result += f"Average size per cluster: {self.average_size_per_cluster}\n"
+        result += f"Number of clusters of size == 1: {len(self.clusters_equal_1)}\n"
+        result += f"Number of clusters of size > 1 : {len(self.clusters_over_1)}\n"
+        result += f"Average size per cluster of size > 1: {sum([len(x) for x in self.clusters_over_1]) / len(self.clusters_over_1)}\n"
+        result += f"Median size per cluster of size > 1 : {len(self.clusters_over_1[len(self.clusters_over_1) // 2])}\n"
+        result += f"Largest cluster size: {len(self.clusters_over_1[-1])}\n"
+        result += "################\n"
+        result += "Clusters:\n\n"
+
+        for line in self.list_lines:
             cluster_size = len(line)
-            if cluster_size > 1: 
-                outfile.write(f"Elements per cluster: {len(line)}\n")
-            outfile.writelines(line)
-            outfile.write("\n")
+            if cluster_size > 1:
+                result += f"Elements per cluster: {len(line)}\n"
+            for item in line:
+                result += f"{item}"
+            result += "\n"
 
-directory = os.getcwd()
-suffix = ".rsf"
-len_suffix = len(suffix)
-
-for file in os.listdir(directory):
-    if file.endswith(suffix):
-        clusters = get_clusters(file)
-        write_file(f"{file[:-len_suffix]}.txt", clusters)
+        return result
 
 
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument("--csv", type=Path, default=None)
+    parser.add_argument("directory", nargs="?", default=os.getcwd())
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    directory = args.directory
+    csv = args.csv
+    suffix = ".rsf"
+    len_suffix = len(suffix)
+
+    combined_data = []
+
+    for file in os.listdir(directory):
+        if file.endswith(suffix):
+            clustering_info = ClusteringInfo(file)
+            with open(f"{file[:-len_suffix]}.txt", "w") as outfile:
+                outfile.write(str(clustering_info))
+            combined_data.append(clustering_info)
+
+    if csv is not None:
+        with open(csv, "w") as csvfile:
+            csvfile.write(
+                "total_clusters,average_size_per_cluster,num_clusters_equal_1,num_clusters_over_1,average_size_per_cluster_over_1,median_size_per_cluster_over_1,largest_cluster_size\n"
+            )
+            for clustering_info in sorted(combined_data):
+                csvfile.write(clustering_info.to_csv_line())
