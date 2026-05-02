@@ -1,9 +1,12 @@
+We decided to create 1 Github repo for this project free for you to look around: https://github.com/lhusemann/ds_for_se_a1/
+We also created an overleaf latex project u can read about at : https://overleaf.uni-paderborn.de/read/ydgxbyywjgnn#f7d315
+
 We ran into couple issues regarding version handling with tools and jar files.
 However we accomplished our tasks with an older applicable version and are able to adjust to the problem.
 We generated an overleaf project to work on our written progress, currently we dont really have a structure and are working on building a clean and readable version. 
 Since right now it feels more like our place to gather some info for later.
 
-You can find our Progress in https://github.com/lhusemann/ds_for_se_a1/tree/limbo-files
+You can find our Progress in https://github.com/lhusemann/ds_for_se_a1/
 So in total, we compiled the Lucene-codecs-9.0.0 because Lucene-codecs-11.0.0 couldnt be supported with Arcade.
 Extracted the master .rsf and .fv. In our Github Repo they are called output.rsf and output.fv.
 On this output.rsf we applied a filter to get filtered.rsf. It was filtered to extract the given target packages.
@@ -15,6 +18,10 @@ TARGET_PACKAGES = [
     "org.apache.lucene.codecs.blocktreeords",
 ]
 And finally we applied the WCA Limbo and ACDC Algorithms on them. 
+
 To find the exact commands used please check out our repos main ReadMe at https://github.com/lhusemann/ds_for_se_a1/.
 
 regarding the time spent on this project i would ask you to check out our Assignment1_Group9_02_05_26.pdf.
+_________________________________________________________
+
+you will find the master.rsf master.fg and the master_filtered.rsf(filtered for packages) as asked in out solution.

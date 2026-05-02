@@ -1,0 +1,295 @@
+### Metadata ###
+Total number of clusters: 70
+Average size per cluster: 2.7
+Number of clusters of size == 1: 45
+Number of clusters of size > 1 : 25
+Average size per cluster of size > 1: 5.76
+Median size per cluster of size > 1 : 6
+Largest cluster size: 10
+################
+Clusters:
+
+BlockTermState
+
+Codec
+
+CodecUtil
+
+CompetitiveImpactAccumulator
+
+CompoundDirectory
+
+CompoundFormat
+
+DocValuesConsumer
+
+DocValuesFormat
+
+DocValuesProducer
+
+FieldInfosFormat
+
+FieldsConsumer
+
+FieldsProducer
+
+KnnVectorsFormat
+
+KnnVectorsReader
+
+KnnVectorsWriter
+
+LiveDocsFormat
+
+MultiLevelSkipListReader
+
+MultiLevelSkipListWriter
+
+MutablePointValues
+
+NormsConsumer
+
+NormsFormat
+
+NormsProducer
+
+PointsFormat
+
+PointsReader
+
+PointsWriter
+
+PostingsFormat
+
+PostingsReaderBase
+
+PostingsWriterBase
+
+SegmentInfoFormat
+
+StoredFieldsFormat
+
+StoredFieldsReader
+
+StoredFieldsWriter
+
+TermStats
+
+TermVectorsFormat
+
+TermVectorsReader
+
+TermVectorsWriter
+
+blocktreeords.FSTOrdsOutputs
+
+bloom.HashFunction
+
+lucene90.Lucene90PostingsReader
+
+lucene90.Lucene90PostingsWriter
+
+lucene90.blocktree.Lucene90BlockTreeTermsWriter
+
+simpletext.SimpleTextLiveDocsFormat$SimpleTextBits
+
+simpletext.SimpleTextSegmentInfoFormat$BytesRefOutput
+
+simpletext.SimpleTextSkipReader$1
+
+simpletext.SimpleTextUtil
+
+Elements per cluster: 2
+bloom.FuzzySet
+bloom.MurmurHash2
+
+Elements per cluster: 2
+simpletext.SimpleTextCompoundFormat
+simpletext.SimpleTextCompoundFormat$1
+
+Elements per cluster: 3
+blocktreeords.BlockTreeOrdsPostingsFormat
+memory.FSTPostingsFormat
+simpletext.SimpleTextPostingsFormat
+
+Elements per cluster: 3
+simpletext.SimpleTextCodec
+simpletext.SimpleTextLiveDocsFormat
+simpletext.SimpleTextSegmentInfoFormat
+
+Elements per cluster: 4
+blockterms.BlockTermsReader
+blockterms.BlockTermsReader$FieldAndTerm
+blockterms.BlockTermsReader$FieldReader
+blockterms.BlockTermsReader$FieldReader$SegmentTermsEnum
+
+Elements per cluster: 4
+blockterms.BlockTermsWriter$FieldMetaData
+blockterms.BlockTermsWriter$TermEntry
+blocktreeords.OrdsBlockTreeTermsWriter$PendingEntry
+blocktreeords.OrdsBlockTreeTermsWriter$PendingTerm
+
+Elements per cluster: 4
+memory.FSTTermOutputs
+memory.FSTTermOutputs$TermData
+memory.FSTTermsWriter$FieldMetaData
+memory.FSTTermsWriter$TermsWriter
+
+Elements per cluster: 4
+simpletext.SimpleTextDocValuesFormat
+simpletext.SimpleTextDocValuesWriter
+simpletext.SimpleTextDocValuesWriter$1
+simpletext.SimpleTextDocValuesWriter$1$1
+
+Elements per cluster: 4
+simpletext.SimpleTextNormsFormat
+simpletext.SimpleTextNormsFormat$SimpleTextNormsConsumer
+simpletext.SimpleTextNormsFormat$SimpleTextNormsConsumer$1
+simpletext.SimpleTextNormsFormat$SimpleTextNormsProducer
+
+Elements per cluster: 5
+simpletext.SimpleTextDocValuesReader$1
+simpletext.SimpleTextDocValuesReader$5
+simpletext.SimpleTextDocValuesReader$8
+simpletext.SimpleTextDocValuesReader$DocValuesIterator
+simpletext.SimpleTextDocValuesReader$OneField
+
+Elements per cluster: 5
+simpletext.SimpleTextKnnVectorsFormat
+simpletext.SimpleTextKnnVectorsReader
+simpletext.SimpleTextKnnVectorsReader$FieldEntry
+simpletext.SimpleTextKnnVectorsReader$SimpleTextVectorValues
+simpletext.SimpleTextKnnVectorsWriter
+
+Elements per cluster: 6
+memory.DirectPostingsFormat
+memory.DirectPostingsFormat$DirectField
+memory.DirectPostingsFormat$DirectField$DirectIntersectTermsEnum
+memory.DirectPostingsFormat$DirectField$DirectTermsEnum
+memory.DirectPostingsFormat$DirectField$HighFreqTerm
+memory.DirectPostingsFormat$DirectField$LowFreqTerm
+
+Elements per cluster: 6
+memory.FSTTermsReader
+memory.FSTTermsReader$TermsReader
+memory.FSTTermsReader$TermsReader$BaseTermsEnum
+memory.FSTTermsReader$TermsReader$IntersectTermsEnum
+memory.FSTTermsReader$TermsReader$IntersectTermsEnum$Frame
+memory.FSTTermsReader$TermsReader$SegmentTermsEnum
+
+Elements per cluster: 6
+simpletext.SimpleTextBKDReader
+simpletext.SimpleTextBKDReader$IntersectState
+simpletext.SimpleTextPointsFormat
+simpletext.SimpleTextPointsReader
+simpletext.SimpleTextPointsWriter
+simpletext.SimpleTextPointsWriter$1
+
+Elements per cluster: 6
+simpletext.SimpleTextBKDWriter
+simpletext.SimpleTextBKDWriter$1
+simpletext.SimpleTextBKDWriter$2
+simpletext.SimpleTextBKDWriter$3
+simpletext.SimpleTextBKDWriter$OneDimensionBKDWriter
+simpletext.SimpleTextBKDWriter$OneDimensionBKDWriter$1
+
+Elements per cluster: 6
+simpletext.SimpleTextFieldInfosFormat
+simpletext.SimpleTextStoredFieldsFormat
+simpletext.SimpleTextStoredFieldsReader
+simpletext.SimpleTextStoredFieldsReader$1
+simpletext.SimpleTextStoredFieldsWriter
+simpletext.SimpleTextTermVectorsWriter
+
+Elements per cluster: 7
+blocktreeords.FSTOrdsOutputs$Output
+blocktreeords.OrdsFieldReader
+blocktreeords.OrdsIntersectTermsEnum
+blocktreeords.OrdsIntersectTermsEnumFrame
+blocktreeords.OrdsSegmentTermsEnum
+blocktreeords.OrdsSegmentTermsEnum$InputOutput
+blocktreeords.OrdsSegmentTermsEnumFrame
+
+Elements per cluster: 7
+simpletext.SimpleTextDocValuesReader
+simpletext.SimpleTextDocValuesReader$2
+simpletext.SimpleTextDocValuesReader$3
+simpletext.SimpleTextDocValuesReader$4
+simpletext.SimpleTextDocValuesReader$6
+simpletext.SimpleTextDocValuesReader$7
+simpletext.SimpleTextDocValuesReader$9
+
+Elements per cluster: 8
+blockterms.FixedGapTermsIndexReader
+blockterms.FixedGapTermsIndexReader$FieldIndexData
+blockterms.FixedGapTermsIndexReader$IndexEnum
+blockterms.TermsIndexReaderBase
+blockterms.TermsIndexReaderBase$FieldIndexEnum
+blockterms.VariableGapTermsIndexReader
+blockterms.VariableGapTermsIndexReader$FieldIndexData
+blockterms.VariableGapTermsIndexReader$IndexEnum
+
+Elements per cluster: 8
+bloom.BloomFilterFactory
+bloom.BloomFilteringPostingsFormat
+bloom.BloomFilteringPostingsFormat$BloomFilteredFieldsConsumer
+bloom.BloomFilteringPostingsFormat$BloomFilteredFieldsProducer
+bloom.BloomFilteringPostingsFormat$BloomFilteredFieldsProducer$BloomFilteredTerms
+bloom.BloomFilteringPostingsFormat$BloomFilteredFieldsProducer$BloomFilteredTermsEnum
+bloom.DefaultBloomFilterFactory
+bloom.FuzzySet$ContainsResult
+
+Elements per cluster: 8
+simpletext.SimpleTextFieldsReader
+simpletext.SimpleTextFieldsReader$SimpleTextDocsEnum
+simpletext.SimpleTextFieldsReader$SimpleTextPostingsEnum
+simpletext.SimpleTextFieldsReader$SimpleTextTerms
+simpletext.SimpleTextFieldsReader$SimpleTextTermsEnum
+simpletext.SimpleTextFieldsWriter
+simpletext.SimpleTextSkipReader
+simpletext.SimpleTextSkipWriter
+
+Elements per cluster: 8
+simpletext.SimpleTextTermVectorsFormat
+simpletext.SimpleTextTermVectorsReader
+simpletext.SimpleTextTermVectorsReader$SimpleTVDocsEnum
+simpletext.SimpleTextTermVectorsReader$SimpleTVFields
+simpletext.SimpleTextTermVectorsReader$SimpleTVPostings
+simpletext.SimpleTextTermVectorsReader$SimpleTVPostingsEnum
+simpletext.SimpleTextTermVectorsReader$SimpleTVTerms
+simpletext.SimpleTextTermVectorsReader$SimpleTVTermsEnum
+
+Elements per cluster: 9
+blockterms.BlockTermsWriter
+blockterms.BlockTermsWriter$TermsWriter
+blocktreeords.OrdsBlockTreeTermsReader
+blocktreeords.OrdsBlockTreeTermsWriter
+blocktreeords.OrdsBlockTreeTermsWriter$FieldMetaData
+blocktreeords.OrdsBlockTreeTermsWriter$PendingBlock
+blocktreeords.OrdsBlockTreeTermsWriter$SubIndex
+blocktreeords.OrdsBlockTreeTermsWriter$TermsWriter
+memory.FSTTermsWriter
+
+Elements per cluster: 9
+blockterms.FixedGapTermsIndexWriter
+blockterms.FixedGapTermsIndexWriter$SimpleFieldWriter
+blockterms.TermsIndexWriterBase
+blockterms.TermsIndexWriterBase$FieldWriter
+blockterms.VariableGapTermsIndexWriter
+blockterms.VariableGapTermsIndexWriter$EveryNOrDocFreqTermSelector
+blockterms.VariableGapTermsIndexWriter$EveryNTermSelector
+blockterms.VariableGapTermsIndexWriter$FSTFieldWriter
+blockterms.VariableGapTermsIndexWriter$IndexTermSelector
+
+Elements per cluster: 10
+memory.DirectPostingsFormat$DirectField$DirectIntersectTermsEnum$State
+memory.DirectPostingsFormat$DirectField$IntArrayWriter
+memory.DirectPostingsFormat$DirectField$TermAndSkip
+memory.DirectPostingsFormat$DirectFields
+memory.DirectPostingsFormat$HighFreqDocsEnum
+memory.DirectPostingsFormat$HighFreqPostingsEnum
+memory.DirectPostingsFormat$LowFreqDocsEnum
+memory.DirectPostingsFormat$LowFreqDocsEnumNoPos
+memory.DirectPostingsFormat$LowFreqDocsEnumNoTF
+memory.DirectPostingsFormat$LowFreqPostingsEnum
+
