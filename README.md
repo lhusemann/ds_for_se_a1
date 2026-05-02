@@ -1,14 +1,21 @@
-# What I have done:
+# Explanation of folders
 
-## For Step 1
-I normally compiled the current version with jdk25 but the compiled file is incompatible with the JavaParser used in step 2. Therefore I used an older file that still works `lucene-codecs-9.0.0.jar`.
+## dependency_extraction
+`lucene-codecs-9.0.0.jar` is the compiled jar of the apache/lucene/codecs project found [here](https://mvnrepository.com/artifact/org.apache.lucene/lucene-codecs/versions). Version 9.0.0 is used as the current version uses jdk25 and is therefore incompatible with the JavaParser.
 
-## For Step 2
-I used the JavaParser on `lucene-codecs-9.0.0.jar` with `java -jar arcade_core_JavaParser.jar lucene-codecs-9.0.0.jar ./output.rsf ./output.fv "org.apache.lucene.codecs"`.
+`output.rsf` and `output.fv` are the output of the JavaParser used on `lucene-codecs-9.0.0.jar`
 
-## For Step 3
-I didn't want to filter `output.rsf` manually so I wrote `filter_rsf.py` to filter the dependencies.
+`filter_rsf.py` is a script to filter `output.rsf` for dependencies strictly relevant to our group's assigned components.
 
-## For Step 4
-Your task now. The .rsf file that contains the dependencies is `filtered.rsf`. Here is an example command I used to check if I did something wrong: 
-`java -Xmx4096m -jar arcade_core_clusterer.jar algo=WCA language=java deps=filtered.rsf measure=UEM projname=luccodecs projversion=9.0.0 projpath=output-cluster stopthreshold=50 packageprefix="org.apache.lucene.codecs"`
+## WCA
+Results of WCA clustering algorithm on `filtered.rsf`
+
+The command used to generate clusters with WCA is:
+
+`java -Xmx4096m -jar arcade_core_clusterer.jar language=java deps=filtered.rsf projname=luccodecs projversion=9.0.0 projpath=output-cluster packageprefix="org.apache.lucene.codecs" algo=WCA measure=<UEMNM or UEM> serial=STEPCOUNT serialthreshold=1`
+
+## Top-level files
+
+`filtered.rsf` contains the dependencies strictly relevant to our assigned components (Result from dependency_extraction).
+
+`prettify_output.py` is a script to make results of clustering algorithms more human readable.
