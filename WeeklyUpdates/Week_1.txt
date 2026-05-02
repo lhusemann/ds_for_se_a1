@@ -15,6 +15,6 @@ TARGET_PACKAGES = [
     "org.apache.lucene.codecs.blocktreeords",
 ]
 And finally we applied the WCA Limbo and ACDC Algorithms on them. 
-To find the exact commands used please check out our repos main ReadMe.
+To find the exact commands used please check out our repos main ReadMe at https://github.com/lhusemann/ds_for_se_a1/.
 
 regarding the time spent on this project i would ask you to check out our Assignment1_Group9_02_05_26.pdf.
