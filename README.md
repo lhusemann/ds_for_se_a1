@@ -25,3 +25,7 @@ The command used to generate clusters with ACDC is:
 `filtered.rsf` contains the dependencies strictly relevant to our assigned components (Result from dependency_extraction).
 
 `prettify_output.py` is a script to make results of clustering algorithms more human readable.
+
+## WeeklyUpdates
+
+A place to gather all our weekly solutions and updates.
