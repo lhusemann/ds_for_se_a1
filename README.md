@@ -14,6 +14,12 @@ The command used to generate clusters with WCA is:
 
 `java -Xmx4096m -jar arcade_core_clusterer.jar language=java deps=filtered.rsf projname=luccodecs projversion=9.0.0 projpath=output-cluster packageprefix="org.apache.lucene.codecs" algo=WCA measure=<UEMNM or UEM> serial=STEPCOUNT serialthreshold=1`
 
+## ACDC
+Results of ACDC clustering algorithm on `filtered.rsf`
+
+The command used to generate clusters with ACDC is:
+`java -jar .\arcade_core-ACDC.jar .\filtered.rsf .\acdc.rsf`
+
 ## Top-level files
 
 `filtered.rsf` contains the dependencies strictly relevant to our assigned components (Result from dependency_extraction).

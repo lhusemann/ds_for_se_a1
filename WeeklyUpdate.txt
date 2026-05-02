@@ -1,0 +1,20 @@
+We ran into couple issues regarding version handling with tools and jar files.
+However we accomplished our tasks with an older applicable version and are able to adjust to the problem.
+We generated an overleaf project to work on our written progress, currently we dont really have a structure and are working on building a clean and readable version. 
+Since right now it feels more like our place to gather some info for later.
+
+You can find our Progress in https://github.com/lhusemann/ds_for_se_a1/tree/limbo-files
+So in total, we compiled the Lucene-codecs-9.0.0 because Lucene-codecs-11.0.0 couldnt be supported with Arcade.
+Extracted the master .rsf and .fv. In our Github Repo they are called output.rsf and output.fv.
+On this output.rsf we applied a filter to get filtered.rsf. It was filtered to extract the given target packages.
+TARGET_PACKAGES = [
+    "org.apache.lucene.codecs.simpletext",
+    "org.apache.lucene.codecs.blockterms",
+    "org.apache.lucene.codecs.bloom",
+    "org.apache.lucene.codecs.memory",
+    "org.apache.lucene.codecs.blocktreeords",
+]
+And finally we applied the WCA Limbo and ACDC Algorithms on them. 
+To find the exact commands used please check out our repos main ReadMe.
+
+regarding the time spent on this project i would ask you to check out our Assignment1_Group9_02_05_26.pdf.
