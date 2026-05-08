@@ -1,0 +1,283 @@
+\documentclass[11pt, a4paper]{article}
+
+
+% --- Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs} % For scientific tables
+\usepackage{cite}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{soulutf8} % Bessere Unterstützung für Umlaute/UTF-8 als das normale soul
+\usepackage[most]{tcolorbox}
+\usepackage{caption}
+
+\newtcolorbox{changedblock}{
+    enhanced,
+    breakable,
+    colback=yellow,
+    colframe=yellow,
+    sharp corners,
+    boxrule=0pt,
+    boxsep=2pt,  % Ersetzt inner sep
+    top=0pt, 
+    bottom=0pt, 
+    left=0pt, 
+    right=0pt
+}
+
+% Highlighter-Farbe definieren
+\sethlcolor{yellow}
+
+% Befehl für die Bearbeitung
+\newcommand{\changed}[1]{\hl{#1}}
+
+% --- Document Metadata ---
+\title{\vspace{-2cm}\textbf{Evaluating Clustering Algorithms and LLM Prompting Strategies for Architecture Recovery in Apache Lucene Codecs}}
+\author{
+    Christopher Seibel \and
+    Alexander Makejkin \and
+    Louis Husemann \and
+    Mikhail Kiselev \and
+    Mohammed Danish Shaikh        
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% ==========================================
+\section{Introduction}
+% ==========================================
+\textit{[Define motivation and objectives. Substantiate the problem context with established literature (e.g., \cite{Ref1}). Formulate the central hypothesis or research goal.]}
+\begin{changedblock}
+As software systems evolve, their architectural documentation frequently deviates from the actual implementation. To maintain system integrity and facilitate comprehension, automated architecture recovery techniques are essential. This study evaluates the efficacy of structural clustering algorithms and Large Language Models (LLMs) in extracting and describing the architectural components of an existing software system.
+
+Specifically, this research focuses on the \textbf{Codecs} component of the \textbf{Apache Lucene} project. By utilizing the \textbf{ARCADE} tool suite, we extract system-wide dependencies and isolate component-relevant relationships to generate architectural clusters. The objective is to assess the performance of three established clustering algorithms---\textbf{WCA, Limbo, and ACDC}---measuring their structural accuracy through \textbf{a2a} (Architecture-to-Architecture) and \textbf{Cvg} (Cluster Coverage) metrics.
+
+Furthermore, this study investigates the intersection of structural recovery and generative AI. We evaluate how different prompting techniques influence an LLM's ability to synthesize high-level architectural descriptions from source code. This evaluation utilizes a dual-tier approach: local prototyping with the lightweight \texttt{Mistral-7B-Instruct-v0.3} and production-scale execution with the heavyweight \texttt{Mistral-Large-3-675B-Instruct-2512}.
+
+Ultimately, this work aims to address the variance in accuracy across different clustering algorithms and determine the impact of prompting strategies on the quality of AI-generated architectural summaries.
+\end{changedblock}
+
+% ==========================================
+\section{Study Design}
+% ==========================================
+
+\subsection{Research Questions}
+\textit{[Motivation for the individual research questions. Why are these metrics/aspects relevant?]}
+\begin{itemize}
+    \item \textbf{RQ1:} How do different clustering algorithms vary in their ability to accurately determine the architectural components of a system?
+    \item \textbf{RQ2:} How do different prompting techniques impact LLM's ability to accurately describe architectural components based on source code?
+\end{itemize}
+
+\subsection{Methodology}
+\textit{[Architecture of the experimental setup. Specify the data collection process (e.g., scraping, APIs, existing corpora).]}
+
+\begin{changedblock}
+\noindent The experimental setup follows a phased workflow designed to recover the architecture of the Apache Lucene Codecs component through a combination of structural clustering and Large Language Model (LLM) analysis.
+
+\subsubsection{Dependency Extraction and Preprocessing}
+The initial phase involves compiling the Java source code to generate compiled *.jar files. System-wide dependencies are extracted using the ARCADE JavaParser tool, which produces a master .rsf file representing all project relationships. To isolate the scope to the \textit{Codecs} component, the dependencies are filtered such that only relationships where the source or target packages reside within the component’s namespace are retained.
+
+\subsubsection{Architectural Clustering Algorithms}
+To address RQ1, three distinct structural clustering algorithms are applied to the filtered dependency graph:
+\begin{itemize}
+    \item \textbf{Weighted Combined Algorithm (WCA):} A hierarchical clustering approach utilizing edge weights to determine cluster merges.
+    \item \textbf{LIMBO:} An information-theoretic algorithm designed to minimize the loss of mutual information during clustering.
+    \item \textbf{ACDC:} A heuristic-based algorithm that identifies architectural patterns based on structural connectivity.
+\end{itemize}
+Technical implementation details and CLI commands are provided in Appendix \ref{app:commands}.
+
+\subsubsection{LLM-Based Architectural Recovery}
+\noindent To address RQ2, the study implements a dual-stage pipeline designed to verify prompt stability before scaling to the full dataset.  \paragraph{Prototyping Tier: Lightweight Evaluation}
+The initial prototyping phase is conducted using the assigned lightweight model, \texttt{Mistral-7B-Instruct-v0.3}. This model is an instruction-fine-tuned version of the Mistral-7B-v0.3 base model, optimized for conversational tasks and complex direction-following. Key technical features utilized during this phase include:
+\begin{itemize}
+\item \textbf{Environment:} Prototyping is executed within Google Colab to verify prompt logic stability on smaller samples before full deployment.
+\item \textbf{Technical Capabilities:} The model's native support for function calling and the specialized Mistral tokenizer are leveraged to handle structural architectural data efficiently.
+\end{itemize}  
+\paragraph{Production Tier: Heavyweight Scaling}
+Upon validation of the prompting logic, the recovery process is scaled to the university's High Performance Computing (HPC) cluster.
+\begin{itemize}
+\item \textbf{Model Scaling:} The study utilizes the heavyweight \texttt{Mistral-Large-3-675B-Instruct-2512} to process the complete Codecs component of the Lucene project.
+\item \textbf{Execution Framework:} Scaling is managed via Slurm job scheduling.
+\item \textbf{Output Generation:} The primary goal of this tier is to generate concise architectural titles and a high-level descriptive summary for each cluster identified in the structural recovery phase.
+\end{itemize}  
+\end{changedblock}
+
+% ---------------------------------------
+\subsection{Data Analysis Process}
+\textit{[Detailed explanation of the analysis pipeline. Describe applied algorithms, statistical methods, heuristics, or machine learning models. Ensure reproducibility.]}\\
+
+\begin{changedblock}
+The data analysis pipeline is structured into three primary phases: structural normalization, quantitative statistical profiling, and comparative similarity evaluation. 
+ 
+\subsubsection{Structural Normalization and Metadata Extraction}
+Raw architectural outputs from the ARCADE toolset are generated in the \textit{.rsf} format, which represents dependencies line-by-line as \texttt{depends Source\_Package Target\_Package}. To facilitate objective comparison, a post-processing utility is utilized to transform these raw files into structured plain-text artifacts. This utility performs the following operations:
+\begin{itemize}
+\item \textbf{Sorting:} Clusters are ordered by cardinality (size), and internal elements are sorted alphabetically to ensure deterministic comparison.
+\item \textbf{Metadata Generation:} For each algorithmic run, the utility extracts a statistical profile used to determine the optimality of the clustering parameters.
+\end{itemize}  \subsubsection{Quantitative Profiling Metrics}Algorithm selection and parameter tuning are based on a set of distribution metrics that characterize the resulting architecture. These metrics include:\begin{itemize}\item \textbf{Cluster Cardinality:} Total number of identified clusters and the count of singletons (size = 1) versus multi-element clusters (size > 1).\item \textbf{Central Tendency:} Average size per cluster across the entire system and specifically for clusters with size $> 1$.\item \textbf{Distribution Variance:} Median size for multi-element clusters and the absolute size of the largest identified cluster.\end{itemize}\subsubsection{Comparative Similarity Evaluation (RQ1)}
+To quantify the variance between clustering algorithms, the processed \textit{.rsf} files are analyzed using the \textbf{Architecture-to-Architecture (a2a)} and \textbf{Cluster Coverage (cvg)} metrics.
+\begin{itemize}
+\item \textbf{a2a Similarity:} Measures the global structural distance between two architectures, providing a percentage-based similarity score.
+\item \textbf{Cluster Coverage (cvg):} An asymmetric metric measuring the extent to which clusters in one architecture overlap with clusters in another.
+\end{itemize}
+A high percentage in these metrics indicates a high degree of structural convergence between different algorithmic approaches.  \subsubsection{Qualitative LLM Assessment (RQ2)}
+For the evaluation of LLM-generated architectural descriptions, a qualitative assessment is conducted. This involves mapping the generated titles and high-level summaries back to the source code elements within each cluster to evaluate semantic accuracy and the impact of different prompting techniques. \\
+TODO in further weeks.
+\end{changedblock}
+
+% ==========================================
+\section{Results}
+% ==========================================
+\textit{[Present empirical findings neutrally, ideally structured by RQ1, RQ2, etc. Aggregate raw data and support with graphs/tables. No interpretation in this section.]}
+\begin{changedblock}
+    This section presents the quantitative findings derived from the structural clustering of the Apache Lucene Codecs component.
+    
+    \subsection{Algorithmic Profiling and Cluster Distribution (RQ1)}
+    The statistical profiles of the generated architectures for WCA and LIMBO are summarized in Table \ref{tab:cluster_stats}. All algorithms were configured to target a cluster count of 70 to ensure comparability.
+    
+    \begin{center}
+        \captionof{table}{Quantitative Profiling of Clustering Algorithms (Target: 70 Clusters)}
+        \label{tab:cluster_stats}
+        \begin{tabular}{@{}lccc@{}}
+            \toprule
+            Metric & WCA (UEMNM) & WCA (UEM) & LIMBO \\
+            \midrule
+            \textbf{Cluster Cardinality} & & & \\
+            Total number of clusters & 70 & 70 & 70 \\
+            Number of clusters (size = 1) & 48 & 45 & 26 \\
+            Number of clusters (size > 1) & 22 & 25 & 44 \\
+            \midrule
+            \textbf{Central Tendency} & & & \\
+            Avg. size per cluster & 2.70 & 2.70 & 2.70 \\
+            Avg. size (clusters > 1) & 6.41 & 5.76 & 3.70 \\
+            \midrule
+            \textbf{Distribution Variance} & & & \\
+            Median size (clusters > 1) & 6 & 6 & 2 \\
+            Largest cluster size & 11 & 10 & 41 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    
+    \subsection{Structural Similarity Evaluation}
+    Table \ref{tab:similarity_metrics} illustrates the structural similarity and overlap across the algorithm pairs. For these metrics, WCA with the UEM method was utilized as the baseline.
+    
+    \begin{center}
+        \captionof{table}{Architecture-to-Architecture (a2a) and Cluster Overlap (cvg) Results}
+        \label{tab:similarity_metrics}
+        \begin{tabular}{@{}lccc@{}}
+            \toprule
+            Algorithms (A vs B) & a2a Similarity & cvg (A $\rightarrow$ B) & cvg (B $\rightarrow$ A) \\
+            \midrule
+            LIMBO vs WCA & 83.30\% & 2.0\% & 2.0\% \\
+            WCA vs ACDC & 80.00\% & 2.0\% & 20.0\% \\
+            LIMBO vs ACDC & 77.19\% & 0.0\% & 0.0\% \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{changedblock}
+
+% ==========================================
+\section{Discussion}
+% ==========================================
+\textit{[Interpretation of the results from Section 3. Comparison with the initial hypothesis.]}
+
+\begin{changedblock}
+This section interprets the quantitative findings from the structural recovery phase and evaluates the efficacy of the applied clustering algorithms in accurately determining the architectural components of the Apache Lucene Codecs module.
+
+\subsection{Interpretation of Clustering Profiles (RQ1)}
+An analysis of the clustering profiles indicates that the WCA algorithm, particularly when utilizing the UEMNM measure, yields a more balanced and structurally cohesive architecture for the given target of 70 clusters. WCA (UEMNM) produces a higher median cluster size (6) and a reasonable maximum cluster size (11), suggesting it successfully identifies moderately sized, functional subsystems within the code.
+
+Conversely, as evidenced by the distribution metrics in Table \ref{tab:cluster_stats}, LIMBO demonstrates an aggressive 'bottom-up' tendency, resulting in a significantly skewed architecture. While targeting the same total cluster count, LIMBO aggregates a massive number of elements into a single monolithic cluster (size 41) while simultaneously generating a high volume of extremely small clusters (median size 2). Qualitative inspection of the elements within this monolith reveals that LIMBO frequently groups structurally unrelated components into this single large cluster, rendering its output highly suboptimal for practical architecture recovery in this specific context.
+
+\subsection{Analysis of Structural Similarity and Overlap}
+As detailed in Table \ref{tab:similarity_metrics}, the Architecture-to-Architecture evaluation reveals the highest structural similarity (83.30\%) between LIMBO and WCA. In contrast, ACDC has a lower overall similarity score.
+
+However, the global similarity masks severe local discrepancies, which are exposed by the Cluster Coverage metric. The inherent asymmetry of cvg is evident in the comparison between WCA and ACDC (20.0\% vs. 2.0\% in Table \ref{tab:similarity_metrics}), a variance heavily influenced by the differing total cluster counts. Most notably, the coverage between LIMBO and ACDC registers at exactly 0.0\%. This complete lack of structural overlap is a direct byproduct of LIMBO’s highly skewed distribution; the 41-element monolith (refer back to Table \ref{tab:cluster_stats}) fundamentally misaligns with ACDC's heuristic patterns, failing to meet the minimum percentage thresholds required by the ARCADE cvg tool to register a match.
+\end{changedblock}
+
+\subsection{Implications for Researchers}
+\textit{[What theoretical insights were gained? How does this advance the state of the art?]}
+
+\subsection{Implications for Practitioners}
+\textit{[Concrete recommendations for action for software engineers, architects, or management based on the quantitative metrics.]}
+
+% ==========================================
+\section{Threats to Validity}
+% ==========================================
+\textit{[Critical reflection on the study design.]}\\
+\begin{itemize}
+    \item \textbf{Internal Validity:} An identified bug in the ARCADE Clusterer prevents the correct functionality of the \verb|stopthreshold| argument. Consequently, the algorithms default to generating at least 50 clusters, limiting comparability for smaller target cluster counts.
+    \item \textbf{Construct Validity:} \textit{[Do the chosen metrics actually measure what they are intended to?]}
+    \item \textbf{External Validity:} \textit{[Are the results generalizable to other datasets?]}
+\end{itemize}
+
+% ==========================================
+\section{Conclusion and Future Work}
+% ==========================================
+\textit{[Compact synthesis of the work. Identification of technical or conceptual limitations. Outline concrete next steps for future work.]}
+
+\section{Hours spent per student}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Name & W1 & W2 & W3 & W4 & W5 \\ 
+\midrule
+Christopher Seibel & 1 & 4 & 0 & 0 & 0 \\
+Alexander Makejkin & 4 & 2 & 0 & 0 & 0 \\
+Louis Husemann & 3 & 0 & 0 & 0 & 0 \\
+Mikhail Kiselev & 3 & 0 & 0 & 0 & 0 \\
+Mohammed Danish Shaikh & 3 & 0 & 0 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+\appendix
+\section{Commands and Technical Reference}
+\label{app:commands}
+
+\subsection{Cluster Generation}
+\textbf{WCA:}
+\begin{lstlisting}[language=bash, basicstyle=\small\ttfamily]
+java -Xmx4096m -jar arcade_core_clusterer.jar language=java \
+deps=filtered.rsf projname=luccodecs projversion=9.0.0 \
+projpath=output-cluster packageprefix="org.apache.lucene.codecs" \
+algo=WCA measure=<UEMNM or UEM> \
+serial=STEPCOUNT serialthreshold=1
+\end{lstlisting}
+
+\textbf{LIMBO:}
+\begin{lstlisting}[language=bash, basicstyle=\small\ttfamily]
+java -Xmx4096m -jar arcade_core_clusterer.jar language=java \
+deps=filtered.rsf projname=luccodecs projversion=9.0.0 \
+projpath=output-cluster packageprefix="org.apache.lucene.codecs" \
+algo=LIMBO measure=IL \
+serial=STEPCOUNT serialthreshold=1
+\end{lstlisting}
+
+\textbf{ACDC:}
+\begin{lstlisting}[language=bash, basicstyle=\small\ttfamily]
+java -jar arcade_core-ACDC.jar filtered.rsf acdc.rsf
+\end{lstlisting}
+
+\subsection{Metrics Evaluation}
+\textbf{a2a \& cvg :}
+\begin{lstlisting}[language=bash, basicstyle=\small\ttfamily]
+java -jar arcade_core_A2a.jar ./file1.rsf ./file2.rsf
+java -jar arcade_core_Cvg.jar ./file1.rsf ./file2.rsf
+\end{lstlisting}
+
+\end{document}
