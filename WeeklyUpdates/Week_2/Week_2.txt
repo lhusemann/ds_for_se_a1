@@ -1,6 +1,6 @@
 So we did our task for week 2 by using the arcade tool. and found out:
 
-Globally, LIMBO and WCA appear the most similar with an 83.3% a2a score. 
+Globally, LIMBO and WCA appear the most similar with an 83.3% a2a score on 50 clusters. 
 However, this is deceptive. When looking at actual cluster overlap (cvg), 
 WCA and ACDC share the most meaningful similarity, with a 20% coverage rate, 
 because LIMBO's monolithic cluster prevents any local overlap.
@@ -9,4 +9,5 @@ And each groupmember had the task to get used with google colab to be prepared f
 
 And finally we started properly writing information into our latex project.
 You might feel like there is quite a lot of yellow, even on old solutions. THis is because I(Chris) wasnt sure,
-wether we are supposed to only mark formally new content or even old content which was rewritten. Now everything touched and adjusted by us was marked.
+wether we are supposed to only mark formally new content or even old content which was rewritten. Now everything touched and adjusted by us was
+marked.
