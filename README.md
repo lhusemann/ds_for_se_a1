@@ -1,26 +1,22 @@
 # Explanation of folders
 
-## dependency_extraction
-`lucene-codecs-9.0.0.jar` is the compiled jar of the apache/lucene/codecs project found [here](https://mvnrepository.com/artifact/org.apache.lucene/lucene-codecs/versions). Version 9.0.0 is used as the current version uses jdk25 and is therefore incompatible with the JavaParser.
+## Cluster Algorithm Results
+Contains the results of the WCA, LIMBO and ACDC clustering algorithms
 
-`output.rsf` and `output.fv` are the output of the JavaParser used on `lucene-codecs-9.0.0.jar`
-
-`filter_rsf.py` is a script to filter `output.rsf` for dependencies strictly relevant to our group's assigned components.
-
-## WCA
+#### WCA
 Results of WCA clustering algorithm on `filtered.rsf`
 
 The command used to generate clusters with WCA is:
 
 `java -Xmx4096m -jar arcade_core_clusterer.jar language=java deps=filtered.rsf projname=luccodecs projversion=9.0.0 projpath=output-cluster packageprefix="org.apache.lucene.codecs" algo=WCA measure=<UEMNM or UEM> serial=STEPCOUNT serialthreshold=1`
 
-## ACDC
+#### ACDC
 Results of ACDC clustering algorithm on `filtered.rsf`
 
 The command used to generate clusters with ACDC is:
 `java -jar .\arcade_core-ACDC.jar .\filtered.rsf .\acdc.rsf`
 
-## LIMBO
+#### LIMBO
 Results of LIMBO clustering algorithm on `filtered.rsf` 
 
 The command used to generate clusters with LIMBO is:
@@ -29,6 +25,19 @@ deps=filtered.rsf projname=luccodecs projversion=9.0.0 \
 projpath=output-cluster packageprefix="org.apache.lucene.codecs" \
 algo=LIMBO measure=IL \
 serial=STEPCOUNT serialthreshold=1`
+
+## Cluster Algorithm Files
+Contains the files used for a2a and cvg comparisions
+
+## misc
+Contains partial results/utility from various weeks
+
+### dependency_extraction
+`lucene-codecs-9.0.0.jar` is the compiled jar of the apache/lucene/codecs project found [here](https://mvnrepository.com/artifact/org.apache.lucene/lucene-codecs/versions). Version 9.0.0 is used as the current version uses jdk25 and is therefore incompatible with the JavaParser.
+
+`output.rsf` and `output.fv` are the output of the JavaParser used on `lucene-codecs-9.0.0.jar`
+
+`filter_rsf.py` is a script to filter `output.rsf` for dependencies strictly relevant to our group's assigned components.
 
 ## Top-level files
 
