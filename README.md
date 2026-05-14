@@ -26,6 +26,11 @@ projpath=output-cluster packageprefix="org.apache.lucene.codecs" \
 algo=LIMBO measure=IL \
 serial=STEPCOUNT serialthreshold=1`
 
+#### ARC
+Files used in ARC Clustering
+
+Notebook in Google Colab: https://colab.research.google.com/drive/1BcxNk6yMSHhU35rz5Pb9aDfRTsAQuzdG?usp=sharing
+
 ## Cluster Algorithm Files
 Contains the files used for a2a and cvg comparisions
 
