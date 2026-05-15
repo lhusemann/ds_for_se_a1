@@ -1,0 +1,2 @@
+# Readme
+This is an intermediate step for Week 3, containing part of the google colab notebook script used to generate the structural similarity matrix. Follow the comments in the .py file for more info.

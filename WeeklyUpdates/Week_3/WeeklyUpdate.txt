@@ -1,0 +1,30 @@
+# Week 3 Summary: Semantic-Structural Clustering & Baseline Normalization
+
+**Overview:**
+This week focused on implementing the Agglomerative Recovery of Components (ARC) clustering using semantic source code embeddings, and resolving critical methodological discrepancies to ensure a valid quantitative evaluation against previous baselines.
+
+**Key Tasks Completed:**
+
+0. **Implementing Tutors suggestion on Week 2 latex report**
+
+1. **Resolution of Granularity Discrepancies:**
+   * **Issue:** Week 1 baseline heuristics (WCA, LIMBO, ACDC) operated on a class-level dependency graph (including inner classes like `Class$Inner`), while Week 3 semantic embeddings (Qodo) process source code strictly at the file level (`.java`). 
+   * **Fix:** We flattened the dependency graph by merging all inner-class dependencies into their respective parent files, resulting in a normalized `filtered-without-innerclasses.rsf`.
+
+2. **Scope Refinement:**
+   * **Issue:** The original `.rsf` graph referenced 98 global entities, but only 57 files belonged strictly to the assigned `lucene/lucene/codecs` focus area.
+   * **Fix:** We rigidly constrained the semantic embedding extraction to the 57 `codecs` files to prevent semantic noise and naming collisions from out-of-package dependencies.
+
+3. **Baseline Re-Execution:**
+   * To establish mathematical comparability (isomorphic entity sets), we re-ran the Week 1 structural baselines (WCA-UEM, WCA-UEMNM, LIMBO, and ACDC) entirely on the newly flattened file-level `.rsf` graph. 
+
+4. **ARC Implementation & Evaluation:**
+   * Generated semantic embeddings using the `Qodo-Embed-1-7B` model (via 4-bit quantization in Google Colab).
+   * Fused the semantic similarity matrix with the normalized structural similarity matrix and executed agglomerative clustering across varying parameters ($\alpha$, linkage, $k$).
+   * Recalculated the `a2a` and `cvg` metrics comparing the ARC architectures against the normalized baselines. 
+
+5. **Report Updates & Analysis:**
+   * Updated the methodology and "Threats to Validity" sections in the LaTeX report to document the granularity corrections and scope limitations.
+   * Analyzed the metric results: We identified that while semantic (ARC) and structural baselines create highly similar macro-topologies (high `a2a` similarity ~70-80%), they populate those clusters with entirely different elements (near-zero `cvg` overlap). This highlights the orthogonal nature of semantic feature spaces versus structural dependency graphs.
+   
+All in all quite a confusing and demanding week
