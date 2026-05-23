@@ -1,0 +1,1 @@
+Utility methods for reading and writing versioned headers, including writing codec headers and index headers, computing header lengths, checking headers, and verifying index headers. Methods for reading and validating footers, cloning input, reading all bytes from the file, and checking the footer. Also includes methods for reading and writing CRC32 values as 64-bit longs.

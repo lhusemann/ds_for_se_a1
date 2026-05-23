@@ -1,0 +1,1 @@
+This code provides an abstract API for producing field normalization values. It includes a constructor, methods for getting normalization values and checking the integrity of the producer, and a method for getting an instance optimized for merging. The code is part of the Lucene library and is marked as experimental.

@@ -1,0 +1,8 @@
+**Title:** DocValuesFormat Class
+**Summary:** The DocValuesFormat class is a Java class that defines a format for encoding and decoding per-document values. It utilizes the ServiceLoader SPI to resolve format names and provides methods for creating DocValuesConsumer and DocValuesProducer instances. The class also includes methods for looking up a format by name, retrieving a list of available format names, and reloading the DocValues format list from a given ClassLoader.
+
+The class provides a DocValuesFormat class that extends NamedSPILoader.NamedSPI and implements methods for creating DocValuesConsumer and DocValuesProducer instances. It uses the ServiceLoader SPI to resolve format names and provides methods for looking up a format by name, retrieving a list of available format names, and reloading the DocValues format list from a given ClassLoader.
+
+The class defines a constructor for creating a new DocValuesFormat instance and a method for creating a DocValuesConsumer to write docvalues to the index. It defines a method for creating a DocValuesProducer to read docvalues from the index, with a note about file handling. The class includes a method for returning the unique name that's used to retrieve this format when reading the index.
+
+The class imports various classes and interfaces from the Lucene library, including SegmentReadState, SegmentWriteState, NamedSPILoader, and ServiceLoader.

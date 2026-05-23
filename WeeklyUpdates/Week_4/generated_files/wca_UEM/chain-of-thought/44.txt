@@ -1,0 +1,2 @@
+**Title:** StoredFieldsWriter
+**Summary:** The StoredFieldsWriter class is a part of the Lucene library and implements the functionality of writing stored fields. It provides methods for starting and finishing a document, writing a single stored field, finishing the writing process, and merging stored fields from multiple readers. The class also provides a visitor that adds every field it sees during the merging process.

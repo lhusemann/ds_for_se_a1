@@ -1,0 +1,10 @@
+**Title:** TermsIndexReaderBase — Terms Index Reader Base Class
+
+**Summary:**
+The TermsIndexReaderBase class is a base class for implementing terms index readers. It provides the core functionality for managing the terms index and seeking to the largest indexed term that is less than or equal to a given term. The FieldIndexEnum class is also implemented, which provides the functionality for seeking to a specific term and retrieving the file pointer index for that term.
+
+The TermsIndexReaderBase class implements the Closeable interface for closing the terms index reader. It also provides methods for seeking to the largest indexed term that is less than or equal to a given term and retrieving the file pointer index for that term.
+
+The FieldIndexEnum class is a helper class that provides the functionality for seeking to a specific term and retrieving the file pointer index for that term. It implements the SeekableByteChannel interface for seeking and reading from the terms index.
+
+The code snippet provided is an implementation of the TermsIndexReaderBase class. It provides the core functionality for managing the terms index and seeking to the largest indexed term that is less than or equal to a given term. The FieldIndexEnum class is also implemented, which provides the functionality for seeking to a specific term and retrieving the file pointer index for that term.

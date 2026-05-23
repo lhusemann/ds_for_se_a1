@@ -1,0 +1,12 @@
+**Title:** TermVectorsFormat — Controls Term Vectors Formatting
+
+**Summary:**
+TermVectorsFormat is a low-level module that isolates the format of term vectors. It is a pluggable component that isolates the index format from the rest of Lucene. It defines the abstract methods that write and read the formatted data.
+
+The architecture follows a clear separation of concerns. The abstract methods are implemented by concrete subclasses that provide the actual format implementation. The index format can be changed by simply swapping out the concrete subclass.
+
+The module is designed to be used as a leaf cluster, with minimal coupling to the rest of Lucene. It has no shared mutable state, making it thread-safe and reusable across multiple segments.
+
+The inputs and outputs are well-defined and are designed to be consumed by higher-level components. The inputs include the directory, segment info, field infos, and IO context. The outputs are the TermVectorsReader and TermVectorsWriter, which are used to read and write term vectors.
+
+The dependencies are minimal and limited to the necessary Lucene classes. The module does not have any external dependencies, making it a self-contained and pluggable component.

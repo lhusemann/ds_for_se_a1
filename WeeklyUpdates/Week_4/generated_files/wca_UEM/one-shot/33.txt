@@ -1,0 +1,10 @@
+**Title:** Lucene PointWriter — High-performance API for Writing Points
+
+**Summary:**
+Lucene PointWriter is a high-performance API for writing points, which are used for indexing and searching in Lucene. It provides a core logic for iterating over all values in a given reader and writing them to a new writer.
+
+The architecture follows a clear separation of concerns, with the core logic residing in the `writeValues` method. It takes a `PointsReader` as input, which provides access to the point values being written, and a `PointValues` writer, which is responsible for writing the values to the new index. The `writeValues` method iterates over all values in the reader and writes them to the writer.
+
+The code also includes dependencies on `org.apache.lucene.index.FieldInfo` and `org.apache.lucene.index.MergeState`, which provide information about the field being written and the merge state, respectively. It implements the `Closeable` interface to allow for proper resource management, and throws `IOException` to indicate any I/O exceptions that may occur during the writing process.
+
+Overall, Lucene PointWriter is a high-performance and reliable API for writing points in Lucene, providing a robust foundation for indexing and searching in large-scale applications.

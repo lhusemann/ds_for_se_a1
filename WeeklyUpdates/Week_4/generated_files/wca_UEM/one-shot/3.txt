@@ -1,0 +1,10 @@
+**Title:** Lucene Codec Utility — inverted index segment encoding/decoding
+
+**Summary:**
+The Lucene Codec Utility provides a class named `Codec` that is used to encode and decode inverted index segments. It provides methods for encoding/decoding postings, docvalues, stored fields, term vectors, field infos, segment info, document normalization values, live docs, compound files, points index, and numeric vector fields. It also provides methods for looking up a codec by name, returning a list of all available codec names, reloading the codec list from a given classloader, and setting the default codec used for newly created `IndexWriterConfig`s.
+
+The core logic of this code is to provide methods for encoding and decoding various components of an inverted index segment. The methods for each component are responsible for encoding/decoding the corresponding data structure.
+
+The inputs to this code are the data structures to be encoded/decoded, and the outputs are the encoded/decoded data structures.
+
+The dependencies of this code are the `java.util.ServiceLoader` interface for resolving codec names and the `org.apache.lucene.index.IndexWriterConfig` class for setting the default codec used for newly created `IndexWriterConfig`s.

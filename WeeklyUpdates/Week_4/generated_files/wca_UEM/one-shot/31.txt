@@ -1,0 +1,14 @@
+**Title:** PointsFormat — Encoding and Decoding of Indexed Points
+
+**Summary:**
+The PointsFormat class is the entry point for encoding and decoding operations on indexed points. It provides methods for creating a writer and reader for a specific segment of data. The writer is responsible for encoding the points into a format that can be stored in an index, while the reader is responsible for decoding the stored data and providing access to the points.
+
+The architecture follows a clear separation of concerns, with the writer and reader classes owning the encoding and decoding logic, respectively. The writer encodes the points into a format that can be stored in an index, while the reader decodes the stored data and provides access to the points.
+
+The code also includes a static field called EMPTY, which is a PointsFormat that has nothing indexed. This can be used as a default format when no other format is specified.
+
+**Dependencies:**
+The PointsFormat class depends on the PointValues class from the Lucene library, which provides access to the values of a specific point field. It also depends on the SegmentReadState and SegmentWriteState classes, which provide information about the segment to be read or written.
+
+**Code Snippet:**
+The provided code snippet defines a PointsFormat class that serves as the entry point for encoding and decoding operations. It includes a constructor, as well as methods for creating a writer and reader for a specific segment of data. The writer is responsible for encoding the points into a format that can be stored in an index, while the reader is responsible for decoding the stored data and providing access to the points. The code also includes a static field called EMPTY, which is a PointsFormat that has nothing indexed. This can be used as a default format when no other format is specified.

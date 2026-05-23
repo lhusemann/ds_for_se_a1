@@ -1,0 +1,16 @@
+**Title:** KnnVectorsReader — Abstract Class for Reading Vectors from an Index
+
+**Summary:**
+The `KnnVectorsReader` class is an abstract class that provides methods for reading vectors from an index. It is designed to be subclassed by specific implementations that provide the actual vector reading logic. The class includes methods for checking the integrity of the reader, getting vector values for a given field, and searching for the k nearest neighbors of a given vector in a specified field.
+
+The `KnnVectorsReader` class is designed to be used in the context of nearest neighbor search, where it is used to retrieve vectors from an index and perform nearest neighbor queries. It provides a high-level interface for interacting with the index and allows subclasses to provide the specific implementation details for reading vectors.
+
+The class is designed to be generic and can be used with different types of vector data. It provides a set of methods that can be overridden by subclasses to provide the specific implementation details for reading vectors from the index.
+
+The `KnnVectorsReader` class implements the `Accountable` interface, which allows it to provide information about its resource usage. This information can be used for resource management and optimization.
+
+The `KnnVectorsReader` class is designed to be used in the context of nearest neighbor search, where it is used to retrieve vectors from an index and perform nearest neighbor queries. It provides a high-level interface for interacting with the index and allows subclasses to provide the specific implementation details for reading vectors.
+
+The class is designed to be generic and can be used with different types of vector data. It provides a set of methods that can be overridden by subclasses to provide the specific implementation details for reading vectors from the index.
+
+The `KnnVectorsReader` class implements the `Accountable` interface, which allows it to provide information about its resource usage. This information can be used for resource management and optimization.

@@ -1,0 +1,41 @@
+Week 4 Summary: LLM-Based Architectural Recovery & Production Scaling
+Overview:
+This week focused on implementing the hierarchical abstraction pipeline for architectural recovery using a heavyweight LLM,
+resolving systemic environment and resource bottlenecks on the HPC cluster, 
+and expanding the component scope to align completely with the system-wide dependency graph.
+
+Key Tasks Completed:
+
+Expanding Component Scope & Alignment:
+
+Issue: The filtered .rsf graph referenced 96 global entities, but restricting the codebase strictly to lucene/lucene/codecs/ in previous weeks 
+only accounted for 57 files, causing missing representation for entire clusters.
+
+Fix: We located the missing code elements under /lucene/lucene/core/src/java/org/apache/lucene/codecs. 
+Combining both directories yielded exactly 96 files, matching the entity count in the dependency graph 
+and establishing a technically valid scope for hierarchical aggregation.
+
+HPC Environment & Resource Optimization:
+
+Issue: High queue wait times on the SLURM scheduler delayed execution, and the heavyweight Mixtral-8x7B-Instruct-v0.1 model 
+initially triggered out-of-memory (OOM) errors and faulty CPU offloading despite multi-GPU allocations (device_map="auto").
+
+Hierarchical Summarization & Inferenz Pipeline:
+
+Qualitative Evaluation of Prompting Techniques:
+
+We executed a qualitative assessment mapping the generated titles and summaries back to the source code to answer RQ2.
+
+Zero-Shot: Proved unsuitable for architectural recovery as it remained trapped at the syntax level, merely translating fields and method signatures without structural headers.
+
+One-Shot: Introduced severe few-shot overfitting and prompt leakage, causing the model to hallucinate and replicate the EvenNumberFilter example logic over actual Lucene components.
+
+Chain-of-Thought (CoT): Yielded the highest level of architectural abstraction, successfully identifying structural design patterns (e.g., SPI frameworks) and concurrency primitives while eliminating hallucinations.
+
+Report Integration & Quality Adjustments:
+
+Integrated a comparative analysis table and a dedicated discussion section for the prompting results (RQ2) into the LaTeX report.
+
+Cleared legacy placeholder text, resolved compilation errors caused by unescaped characters in the appendix prompt-boxes, and initiated repository refactoring to maximize the grade share for source code contribution.
+
+All in all, another challenging week with heavy engineering and scheduling constraints, but the pipeline is complete and the report is updated!

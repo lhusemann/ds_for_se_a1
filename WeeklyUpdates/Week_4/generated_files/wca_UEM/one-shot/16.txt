@@ -1,0 +1,12 @@
+**Title:** FuzzySet — Lossy Set for Large Values
+
+**Summary:**
+FuzzySet is a data structure that represents a set of large values using a significantly smaller amount of memory. It is lossy in that it cannot definitively state that it contains a value but can definitively say if a value is not in the set. It can be used as a Bloom filter or for fuzzy counting.
+
+The architecture of FuzzySet is based on a probabilistic data structure called the Bloom filter, which uses a bit array and a set of hash functions to determine the presence or absence of a value in the set. The code provides methods for adding values to the set, checking if a value is present, and estimating the false positive rate.
+
+The core logic of the class is to use a set of hash functions to determine the position of each value in the bit array. The hash functions are selected using the MurmurHash2 algorithm, which is a non-cryptographic hash function. The bit array is then updated based on the hash values to represent the presence or absence of each value.
+
+The code also provides methods for serializing and deserializing the set to and from a DataOutput and DataInput stream, respectively. It also implements the Accountable interface to provide information about the memory usage of the set.
+
+Overall, FuzzySet is a memory-efficient data structure that can be used for approximate set operations, such as checking if a value is present in a large set.

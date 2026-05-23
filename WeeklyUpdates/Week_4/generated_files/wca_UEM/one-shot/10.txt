@@ -1,0 +1,8 @@
+**Title:** Lucene DocValues API
+
+**Summary:**
+The Lucene DocValues API provides an abstract API for producing docvalues, which are used to store additional information alongside the indexed data in Lucene. It includes methods for getting instances of NumericDocValues, BinaryDocValues, SortedDocValues, SortedNumericDocValues, and SortedSetDocValues for a given field. Additionally, it provides a method for checking the integrity of the producer and an instance optimized for merging.
+
+The API follows a simple and consistent design, with each type of docvalues having its own class and method for getting an instance. The code is well-organized and easy to understand, making it a valuable tool for anyone working with Lucene.
+
+The API is part of the Lucene library, which is a high-performance search engine library written in Java. It is used for indexing and searching large volumes of data, and is known for its speed and scalability.

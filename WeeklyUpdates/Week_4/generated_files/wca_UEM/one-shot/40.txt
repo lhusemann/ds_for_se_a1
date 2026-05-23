@@ -1,0 +1,14 @@
+**Title:** Lucene Codecs — Custom Codecs for Lucene
+
+**Summary:**
+This directory contains custom implementations of Lucene's codecs, which are used for reading and writing index segments. The `simpletext` package contains a custom implementation of the `TermVectorsFormat` and `StoredFieldsFormat` classes, which write term vectors and stored fields in a simple text format. These implementations are experimental and should not be used for production.
+
+The `Lucene50Codec` class is a custom implementation of the `Codec` class, which provides access to the custom implementations of the `StoredFieldsFormat`, `TermVectorsFormat`, and other codecs. This allows Lucene to use these custom implementations for reading and writing index segments.
+
+The `Lucene50Codec` class also provides methods for creating the custom implementations of the codecs, using the `SimpleTextStoredFieldsFormat` and `SimpleTextTermVectorsFormat` classes. These methods are used to create the `StoredFieldsReader`, `StoredFieldsWriter`, `TermVectorsReader`, and `TermVectorsWriter` objects, which are used for reading and writing stored fields and term vectors.
+
+The `Lucene50Codec` class also provides methods for creating other custom implementations of codecs, such as the `LiveDocsFormat`, `DocValuesFormat`, and `PostingsFormat`. These methods are used to create the `LiveDocsFormat.LiveDocsReader` and `LiveDocsFormat.LiveDocsWriter` objects, which are used for reading and writing live documents, and the `DocValuesConsumer` and `DocValuesProducer` objects, which are used for reading and writing doc values.
+
+The `Lucene50Codec` class also provides methods for creating the custom implementations of the `NormsFormat`, `PointsFormat`, and `FieldInfosFormat` classes. These methods are used to create the `NormsConsumer` and `NormsProducer` objects, which are used for reading and writing norms, and the `PointsReader` and `PointsWriter` objects, which are used for reading and writing points.
+
+The `Lucene50Codec` class also provides methods for creating the custom implementations of the `SegmentInfoFormat` and `CompoundFormat` classes. These methods are used to create the `SegmentInfoReader` and `SegmentInfoWriter` objects, which are used for reading and writing segment information, and the `CompoundFormat. CompoundReader` and `CompoundFormat.CompoundWriter`

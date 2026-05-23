@@ -1,0 +1,2 @@
+**Title:** LucenePointsWriter
+**Summary:** This module provides a framework for writing points in Lucene. It includes methods for writing all values contained in a provided reader, as well as a default implementation for merging one field. The merge implementation merges incoming points readers by visiting all their points and adding to this writer. The finish method is called once at the end before close.

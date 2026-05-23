@@ -1,0 +1,8 @@
+**Title:** EvenNumberFilter — Integer Parity Filter Utility
+
+**Summary:**
+EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
+
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

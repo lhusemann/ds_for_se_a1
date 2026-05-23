@@ -1,0 +1,10 @@
+**Title:** PostingsReaderBase — Base Class for Lucene Term Dictionaries
+
+**Summary:**
+The PostingsReaderBase class is the base class for Lucene term dictionaries. It provides the core logic for managing the creation of PostingsEnum and ImpactsEnum instances, as well as the necessary inputs and outputs.
+
+The class interacts with a PostingsWriterBase to manage the creation of PostingsEnum and ImpactsEnum instances. It provides an IndexInput where it can read any previously stored data that it had written in its corresponding PostingsWriterBase at indexing time.
+
+The architecture follows a clean separation of concerns, with the predicate evaluation delegated entirely to the stateless ParityChecker utilities in the predicates layer, while PostingsReaderBase owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

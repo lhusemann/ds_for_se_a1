@@ -1,0 +1,10 @@
+**Title:** TermVectorsReader — Lucene Codec API for Reading Term Vectors
+
+**Summary:**
+The TermVectorsReader class is an abstract class that provides functionality for reading term vectors in the Lucene Codec API. It defines methods for retrieving term vectors for a specific document, checking the consistency of the reader, and creating a clone that can be used by a single caller to read term vectors. The class also provides access to the ChecksumIndexInput and the SegmentReadState.
+
+The get method retrieves term vectors for a specific document, and the checkIntegrity method checks the consistency of the reader. The clone method creates a clone that can be used by a single caller to read term vectors. The getMergeInstance method returns an optimized instance for merging.
+
+The TermVectorsReader class implements the Cloneable and Closeable interfaces, allowing for efficient memory management and resource cleanup. It is designed to be used in a multi-threaded environment, where multiple threads may be reading term vectors simultaneously.
+
+The TermVectorsReader class is part of the Lucene indexing and search library, which is used for full-text search and indexing of large document collections. It provides efficient and scalable indexing and search capabilities, making it a popular choice for search-intensive applications.

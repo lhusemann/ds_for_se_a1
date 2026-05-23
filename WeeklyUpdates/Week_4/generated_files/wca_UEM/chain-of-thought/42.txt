@@ -1,0 +1,2 @@
+**Title:** StoredFieldsFormat Class
+**Summary:** The `StoredFieldsFormat` class is part of the Lucene library's codecs module and is responsible for controlling the format of stored fields in Lucene. It provides methods to read and write stored fields, and it imports several classes from the Lucene library to provide information about the fields, segment, directory, and I/O context. The `StoredFieldsReader` and `StoredFieldsWriter` classes are used to read and write stored fields, respectively, and are part of the Lucene library's index module.

@@ -1,0 +1,8 @@
+**Title:** TermStats — Per-Term Statistics Holder
+
+**Summary:**
+TermStats is a simple data object that holds two statistics for a given term: the number of documents that have at least one occurrence of the term (docFreq), and the total number of times the term occurs across all documents in the field (totalTermFreq). It is used as a return type for the LuceneTermsEnum.termStats() method, which provides access to these statistics.
+
+The class is designed to be immutable and thread-safe. It has a constructor that takes the two statistics as arguments and stores them as final fields. It also has getter methods for each statistic, allowing access to the values.
+
+TermStats is not intended for direct instantiation by callers, but rather as a return type from LuceneTermsEnum.termStats(). It is used to provide per-term statistics for analysis and search operations in Lucene.

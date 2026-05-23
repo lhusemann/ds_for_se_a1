@@ -1,0 +1,2 @@
+**Title:** KnnVectorsFormat
+**Summary:** The KnnVectorsFormat class is a part of the Apache Lucene library and provides abstract methods for writing and reading vectors to and from an index. It includes a static holder class to prevent classloading deadlock and a method to look up a format by name using the NamedSPILoader. The class defines a method to return a KnnVectorsWriter to write vectors to the index and a method to return a KnnVectorsReader to read vectors from the index. The EMPTY constant is defined as a sentinel indicating a Codec that does not support vectors.

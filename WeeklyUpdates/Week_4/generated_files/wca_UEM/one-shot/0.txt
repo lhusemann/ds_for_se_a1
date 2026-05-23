@@ -1,0 +1,8 @@
+**Title:** TermState — Base Class for Lucene's Term States
+
+**Summary:**
+TermState is the base class for Lucene's term states, which hold all state required for `PostingsReaderBase` to produce a `org.apache.lucene.index.PostingsEnum` without re-seeking the terms dict. It holds information such as the document frequency, total term frequency, term block order, and block file pointer.
+
+TermState is an abstract class with two concrete implementations: `OrdTermState` and `TermState`. The `OrdTermState` class extends `TermState` and adds the `ord` field, which represents the term's order in the terms dictionary.
+
+TermState is an internal class used by Lucene's indexing and searching code, and is not intended for direct use by applications. It is part of Lucene's internal package and is subject to change without notice.

@@ -1,0 +1,5 @@
+**Title:** KnnVectorsWriter: A Closeable Class for Writing Vectors to an Index
+
+**Summary:**
+
+The KnnVectorsWriter class is a closeable class that writes vectors to an index. It has a constructor, writeField, finish, and merge methods. The writeField method writes all values contained in the provided reader, and the finish method is called once at the end before close. The merge method merges the vector values from multiple segments for all fields. The merge method iterates over the mergeState.fieldInfos and merges the vectors for each field that has vector values. The mergeVectors method creates a new VectorValues by iterating over the sub vectors, mapping the resulting docids using docMaps in the mergeState. The VectorValuesMerger class supports iterator-style access via DocIdMerger and maintains a reverse ordinal mapping for documents having values in order to support random access by dense ordinal.

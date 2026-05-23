@@ -1,0 +1,8 @@
+**Title:** StoredFieldsFormat — Controls Format of Stored Fields
+
+**Summary:**
+The StoredFieldsFormat class in Lucene is a pluggable component that controls the format of stored fields. It is responsible for reading and writing stored fields from disk. Subclasses must implement the abstract methods for reading and writing stored fields, providing the specific format for stored fields.
+
+The class takes several parameters, including a Directory, SegmentInfo, FieldInfos, and IOContext, which are required to read or write stored fields. It returns either a StoredFieldsReader or a StoredFieldsWriter object, depending on the method being called.
+
+The StoredFieldsFormat class is designed to be pluggable, allowing different formats to be used for stored fields. It is part of the Lucene index format, and its implementation can have a significant impact on the performance and efficiency of Lucene applications.

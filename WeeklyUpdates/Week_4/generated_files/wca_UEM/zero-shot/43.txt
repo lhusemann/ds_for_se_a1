@@ -1,0 +1,1 @@
+This code defines an abstract class `StoredFieldsReader` that implements the `Cloneable` and `Closeable` interfaces. It provides methods for reading stored fields for a document, cloning the reader, and checking the integrity of the reader. Additionally, it provides a method for getting an instance optimized for merging.

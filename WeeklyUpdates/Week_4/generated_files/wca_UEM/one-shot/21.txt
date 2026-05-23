@@ -1,0 +1,8 @@
+**Title:** LiveDocsFormat — Lucene Live Documents Format
+
+**Summary:**
+The LiveDocsFormat class is a key component of Lucene’s indexing and search capabilities. It provides methods for reading and writing live documents, which are essential for maintaining the integrity of the index.
+
+The core logic of this class is to provide methods for reading and writing live documents. The readLiveDocs method reads the live docs bits from a directory and a segment commit info, and returns them as a Bits object. The writeLiveDocs method writes the live docs bits to a directory, segment commit info, and an IO context. The files method records all files in use by a segment commit info into a collection of strings.
+
+The class has no shared mutable state, making it safe for concurrent use. It depends only on the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
