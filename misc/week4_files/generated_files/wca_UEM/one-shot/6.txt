@@ -1,0 +1,18 @@
+**Title:** CompoundDirectory — Lucene Compound File ReadOnly Directory
+
+**Summary:**
+The CompoundDirectory class is an abstract class that extends the Lucene Directory class and provides a read-only view of a compound file. It is designed to be used in scenarios where a Lucene index is stored in a compound file format.
+
+The class implements methods to check the integrity of the directory, create output streams, and obtain locks. It also provides a constructor and overrides the necessary methods from the Directory class.
+
+The CompoundDirectory class acts as a bridge between the Lucene Directory API and the compound file format. It allows Lucene to read data from a compound file as if it were a regular directory.
+
+The class is designed to be used in scenarios where a Lucene index is stored in a compound file format. It provides a read-only view of the compound file, allowing Lucene to read data from it as if it were a regular directory.
+
+The class isolates the compound file implementation details from the rest of the Lucene codebase, allowing the rest of the codebase to interact with Lucene directories as if they were regular file systems directories.
+
+The class is designed to be extensible, allowing developers to subclass it and provide their own implementation of the abstract methods.
+
+The class isolates the compound file implementation details from the rest of the Lucene codebase, allowing the rest of the codebase to interact with Lucene directories as if they were regular file systems directories.
+
+The class is designed to be extensible, allowing developers to subclass it and provide their own implementation of the abstract methods.

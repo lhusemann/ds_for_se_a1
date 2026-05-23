@@ -1,0 +1,1 @@
+The MutablePointValues class extends the PointValues class and adds functionality for changing the order of points. It provides methods for getting the packed bytes of a value, getting the k-th byte of a value, getting the doc ID of a value, swapping two values, saving a value to temporary storage, and restoring values from temporary storage.

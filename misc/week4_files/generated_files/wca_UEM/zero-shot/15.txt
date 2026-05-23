@@ -1,0 +1,1 @@
+This code defines an abstract class `FieldsProducer` that provides methods for closing the producer, checking its integrity, and getting an instance optimized for merging. It is used for producing terms, doc, freq, prox, offset, and payloads postings. It is marked as experimental, indicating that it may change or be removed in future versions.

@@ -1,0 +1,1 @@
+This code provides a base class for writing postings in a Lucene segment. It includes methods for initializing the output, writing postings for a single term, encoding term metadata, and setting the current field for writing. The code also includes a method for closing the output.

@@ -1,0 +1,10 @@
+**Title:** SimpleText Files I/O Utils — Apache Lucene Format
+
+**Summary:**
+This module provides utility methods for reading and writing text files in the SimpleText format used by Apache Lucene. It is composed of two layers: a low-level layer for reading and writing lines of text, and a higher-level layer for reading and writing SimpleText files.
+
+The low-level layer provides methods for reading and writing lines of text, escaping special characters, and checking file integrity using checksums. It uses a mutable byte sequence for temporary storage and depends on the `org.apache.lucene.util.BytesRef` and `org.apache.lucene.util.BytesRefBuilder` types for string manipulation.
+
+The higher-level layer owns the SimpleText file format and its specifics, including the file header, footer, and record structure. It uses the low-level layer for reading and writing lines of text and depends on the `org.apache.lucene.store.ChecksumIndexInput` and `org.apache.lucene.store.IndexOutput` types for reading and writing index data.
+
+The module does not use any external resources and is self-contained, making it a leaf cluster with minimal coupling to the broader codebase. It is designed to be used in an Apache Lucene context and provides the necessary utilities for reading and writing SimpleText files.

@@ -1,0 +1,1 @@
+This code is part of the Lucene library and provides functionality for writing vectors to an index. It includes a class for tracking the state of one sub-reader that is being merged, as well as a class for merging vector values from multiple segments and providing random access to the merged segments.

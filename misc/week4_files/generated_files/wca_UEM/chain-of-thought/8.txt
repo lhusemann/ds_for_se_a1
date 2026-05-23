@@ -1,0 +1,2 @@
+**Title:** Lucene's Term Acceptance Module
+**Summary:** This module is responsible for accepting or rejecting terms based on whether they are live or not. It overrides the `accept` method to check if the term is live using the `liveTerms` set. If the term is live, it returns `AcceptStatus.YES`, otherwise, it returns `AcceptStatus.NO`. This module is part of the Lucene search engine and is used to filter out non-live terms during the search process.

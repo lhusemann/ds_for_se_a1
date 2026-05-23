@@ -1,0 +1,10 @@
+**Title:** Norms Format — Per-Document Score Normalization Format
+
+**Summary:**
+The NormsFormat module is responsible for encoding and decoding per-document score normalization values in the Lucene index. It provides two key classes: `NormsConsumer` and `NormsProducer`. The `NormsConsumer` is responsible for writing norms to the index, while the `NormsProducer` is used to read norms from the index.
+
+The NormsFormat module is designed to be pluggable and extensible, allowing for different implementations of norms encoding/decoding to be plugged in as needed. It follows a clear separation of concerns, with the `NormsConsumer` and `NormsProducer` classes each owning their respective responsibilities.
+
+The module is also designed to be efficient, with careful attention to memory and CPU usage to ensure optimal performance. It makes use of various optimizations and data structures to minimize the overhead of norms encoding/decoding operations.
+
+The NormsFormat module is part of the larger Lucene library, which provides a full-featured text search engine written entirely in Java. It is designed to be highly scalable and efficient, with a focus on low latency and high throughput search operations.

@@ -1,0 +1,2 @@
+**Title:** Variable Gap Terms Index Writer
+**Summary:** This module is responsible for writing a terms index for a Lucene segment. It selects index terms according to a pluggable IndexTermSelector and stores them in a prefix trie that is loaded entirely in RAM as an FST. The index terms are sorted according to unsigned byte term sort order (unicode codepoint order when the bytes are UTF8). The module writes the terms index to the output stream and handles resource cleanup.

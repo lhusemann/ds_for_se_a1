@@ -1,0 +1,10 @@
+**Title:** Compound File Format — Abstract Base Class for Compound File Encoding and Decoding
+
+**Summary:**
+The CompoundFileFormat module provides an abstract class, CompoundFormat, that defines the methods for encoding and decoding compound files. It is a low-level utility class that isolates the compound file encoding and decoding logic from the rest of the application.
+
+The core logic of the CompoundFormat class is to provide methods for encoding and decoding compound files. It uses the Directory and SegmentInfo classes to read or write compound files. The getCompoundReader method returns a CompoundDirectory object, which provides a read-only view of the compound files in a segment.
+
+The CompoundFormat class has no external dependencies, making it a self-contained module that can be easily integrated into other applications. It is designed to be used in a pluggable manner, allowing applications to choose the compound file encoding and decoding strategy that best suits their needs.
+
+The CompoundFormat class does not handle any specific exceptions that may be thrown during encoding or decoding. It is the responsibility of the caller to handle any exceptions that may occur during the encoding or decoding process.

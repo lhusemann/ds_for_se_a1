@@ -1,0 +1,8 @@
+**Title:** PostingsWriterBase — Base Class for Term Dictionary Postings Writer
+
+**Summary:**
+The `PostingsWriterBase` class is an abstract class that handles writing postings for a term dictionary. It provides methods for initializing the output, writing a term's postings, encoding metadata, and setting the current field for writing. The core logic involves initializing the output, writing postings for a term, encoding metadata, and setting the current field for writing. The `writeTerm` method uses a `TermsEnum` to pull a `PostingsEnum` and sets a bit in a `FixedBitSet` for every docID written. The `encodeTerm` method encodes metadata as long[] and byte[], and the `setField` method sets the current field for writing.
+
+The `PostingsWriterBase` class implements the `Closeable` interface, ensuring that resources are properly closed when the class is no longer needed. It is used by the `Lucene90BlockTreeTermsWriter` class, which is a concrete implementation of the term dictionary postings writer.
+
+The class has no shared mutable state, making it thread-safe and reusable. It has minimal external dependencies, only using classes from the Lucene library. The code follows a clear and well-organized structure, with clear comments and documentation to explain the purpose and functionality of each method.

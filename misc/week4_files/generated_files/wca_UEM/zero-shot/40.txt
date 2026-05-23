@@ -1,0 +1,19 @@
+The provided code is a Java implementation of a TermVectorsReader for Lucene. It reads plain-text term vectors and provides functionality to read term vectors from a Lucene segment. The code is part of the Lucene project and is used for recreational purposes only.
+
+The TermVectorsReader class provides methods to read term vectors for a specific document, clone the reader, and close the reader. It also provides a method to check the integrity of the term vectors.
+
+The SimpleTextTermVectorsReader class extends the TermVectorsReader class and implements the functionality to read term vectors from a plain-text file. It reads the term vectors file in entirety up-front and saves the offsets so it can seek to the data later. It also provides methods to read the index, read the term vectors for a specific document, and read the term vectors for each field in the document.
+
+The SimpleTVFields class represents the fields in the term vectors and provides methods to iterate over the fields and retrieve the terms for each field.
+
+The SimpleTVTerms class represents the terms in the term vectors and provides methods to iterate over the terms, retrieve the term frequency, and retrieve the sum of total term frequencies and sum of document frequencies.
+
+The SimpleTVTermsEnum class extends the BaseTermsEnum class and provides methods to seek to a specific term, retrieve the term, retrieve the ordinal, retrieve the document frequency, retrieve the total term frequency, and retrieve the postings for the term.
+
+The SimpleTVPostings class represents the postings for a term in the term vectors and provides methods to retrieve the frequency, positions, start offsets, end offsets, and payloads for the term.
+
+The SimpleTVDocsEnum class extends the PostingsEnum class and provides methods to retrieve the frequency, document ID, next document, advance to a specific document, and retrieve the cost.
+
+The SimpleTVPostingsEnum class extends the PostingsEnum class and provides methods to retrieve the frequency, document ID, next document, advance to a specific document, retrieve the payload, retrieve the position, retrieve the start offset, retrieve the end offset, and retrieve the cost.
+
+Overall, the code provides a way to read term vectors from a Lucene segment in a plain-text format.

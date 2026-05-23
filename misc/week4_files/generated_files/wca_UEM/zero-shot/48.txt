@@ -1,0 +1,1 @@
+This code provides an implementation of the TermVectorsWriter interface in Java, which includes methods for writing term vectors, merging term vectors from multiple readers, and adding all document vectors. The code also includes an expert API for efficiently writing positions and offsets for a document.

@@ -1,0 +1,2 @@
+**Title:** FuzzySet: A Lossy Set for Memory-efficient Set Membership Testing
+**Summary:** The FuzzySet class is a lossy set that uses a BitSet to record values and provides methods to add values to the set and downsize the set. It also provides methods to estimate the number of unique values and get the saturation level of the set. The class uses a HashFunction to hash values and project them into the BitSet. The version of the class is also stored in the serialized format. The FuzzySet class is not thread-safe.

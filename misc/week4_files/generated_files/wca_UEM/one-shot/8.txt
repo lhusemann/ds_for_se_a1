@@ -1,0 +1,12 @@
+**Title:** Lucene's Fieldinvertstate and TermsHash
+
+**Summary:**
+This code snippet is part of the Lucene search library and deals with the creation of an inverted index for text-based data. The snippet is a method called `createFieldinvertstate` which is used to create a Fieldinvertstate object. This object is then used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+
+The createFieldinvertstate method takes in a number of parameters including a TermsHash object and a FieldInfo object. It then creates a Fieldinvertstate object and sets its values based on the parameters passed in. The Fieldinvertstate object is then returned.
+
+The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+
+The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+
+The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.

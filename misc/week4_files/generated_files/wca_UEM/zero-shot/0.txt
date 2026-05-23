@@ -1,0 +1,3 @@
+This code defines a class called `BlockTermState` that extends `OrdTermState`. It contains fields for `docFreq`, `totalTermFreq`, `termBlockOrd`, and `blockFilePointer`. The `copyFrom` method copies values from another `BlockTermState` object, and the `toString` method returns a string representation of the state.
+
+The code is part of the Lucene library and is used to hold state required for `PostingsReaderBase` to produce a `PostingsEnum` without re-seeking the terms dictionary. It is marked as internal, meaning it is not intended for external use.

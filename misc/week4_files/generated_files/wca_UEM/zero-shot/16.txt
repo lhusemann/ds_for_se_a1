@@ -1,0 +1,9 @@
+The provided code implements a data structure called FuzzySet, which is a lossy set that can be used as a Bloom filter to estimate the number of unique values. The FuzzySet class provides methods for adding values, checking for set membership, serializing the data set, downsizing the set, and estimating the number of unique values. The class also implements the Accountable interface to provide information about the memory usage of the set.
+
+The FuzzySet class uses a FixedBitSet to store the values and a HashFunction to hash the values. The contains method checks if a value is in the set by hashing it and checking if the corresponding bit is set in the FixedBitSet. The addValue method adds a value to the set by hashing it and setting the corresponding bit in the FixedBitSet. The downsize method creates a smaller set that is sized appropriately for the number of values recorded and desired saturation levels.
+
+The getNearestSetSize method calculates the nearest set size based on the desired saturation level and the maximum number of values expected. The createSetBasedOnMaxMemory and createSetBasedOnQuality methods create a FuzzySet based on the maximum number of bytes or the maximum number of unique values and the desired saturation level, respectively.
+
+The serialize and deserialize methods are used to serialize and deserialize the data set to and from a DataOutput and DataInput stream, respectively. The ramBytesUsed method returns the memory usage of the set.
+
+The FuzzySet class is not thread-safe.

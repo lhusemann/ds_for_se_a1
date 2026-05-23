@@ -1,0 +1,6 @@
+**Title:** Lucene PointValues API
+
+**Summary:**
+The Lucene PointValues API provides an abstract interface to visit point values, which are used for merging. The core logic is implemented in the `PointsReader` class, which implements the `Closeable` interface to allow resource cleanup. It provides methods to check the integrity of the reader and to get `PointValues` for a given field.
+
+The API is designed to be used by higher-level components for merging and searching. It is part of the Lucene library, which is a high-performance search engine library.

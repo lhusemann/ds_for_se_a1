@@ -1,0 +1,7 @@
+The `DocValuesFormat` class is an abstract class that defines the interface for encoding and decoding per-document values in a Lucene index. It provides methods for creating a `DocValuesConsumer` to write docvalues to the index and a `DocValuesProducer` to read docvalues from the index. The class also includes functionality for loading docvalues formats using Java's Service Provider Interface (SPI).
+
+The `DocValuesFormat` class is designed to be extended by any custom docvalues format implementation. It provides methods for creating a `DocValuesConsumer` and a `DocValuesProducer`, as well as methods for looking up a format by name and reloading the list of available formats.
+
+The code also includes a `Holder` class that delays the initialization of docvalues formats until they are needed. This prevents classloading deadlock and ensures that the SPI is properly initialized.
+
+Overall, this code provides a flexible and extensible framework for encoding and decoding per-document values in a Lucene index.

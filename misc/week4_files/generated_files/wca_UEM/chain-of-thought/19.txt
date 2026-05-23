@@ -1,0 +1,2 @@
+**Title:** KnnVectorsReader: Reading Vectors from an Index in the Lucene Library
+**Summary:** The KnnVectorsReader class is responsible for reading vectors from an index in the Lucene library. It implements the Closeable and Accountable interfaces and has methods for checking the consistency of the reader, getting VectorValues for a given field, searching for k nearest neighbor documents, and getting an instance optimized for merging. The class is part of the Lucene library and is used for reading vectors from an index.

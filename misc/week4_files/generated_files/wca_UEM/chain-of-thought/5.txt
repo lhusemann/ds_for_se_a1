@@ -1,0 +1,8 @@
+**Title:** CompetitiveImpactAccumulator: A Data Structure for Managing Competitive (Freq, Norm) Pairs
+**Summary:**
+
+The `CompetitiveImpactAccumulator` class is a data structure designed to store and manage competitive (freq, norm) pairs. It uses two data structures: an array `maxFreqs` to map norm values in the range -128 to 127 to the maximum frequency observed for those norm values, and a TreeSet `otherFreqNormPairs` to store competitive (freq, norm) pairs for norm values outside this range.
+
+The class provides methods to add, merge, and retrieve competitive pairs. The `add` method adds a (freq, norm) pair to the data structure, updating it if there is a more competitive entry already. The `addAll` method merges another `CompetitiveImpactAccumulator` object into the current one. The `getCompetitiveFreqNormPairs` method returns a collection of competitive (freq, norm) pairs, ordered by increasing freq and norm.
+
+The code also includes assertions to ensure the data structure is consistent.

@@ -1,0 +1,10 @@
+**Title:** FreqNormPairs — Data Structure for Accumulating Competitive (Freq, Norm) Pairs
+
+**Summary:**
+FreqNormPairs is a data structure that accumulates (freq, norm) pairs and produces competitive scores. It is composed of two layers: a `FreqNormPairs` class that owns the accumulation logic, and a `CompetitiveFreqNormPairs` class that provides a higher-level view of the accumulated data.
+
+The FreqNormPairs class uses a tree set to store competitive (freq, norm) pairs for norm values that fall outside of -128..127. It also uses an array to speed up accumulation for common norm values. The CompetitiveFreqNormPairs class provides a higher-level view of the accumulated data, exposing methods for retrieving the set of competitive freq and norm pairs.
+
+The architecture follows a clear separation of concerns, with the FreqNormPairs class owns the accumulation logic and the CompetitiveFreqNormPairs class providing a higher-level view of the accumulated data. Data flows in one direction: the input (freq, norm) pairs are passed to the FreqNormPairs class, which accumulates them, and the CompetitiveFreqNormPairs class provides a higher-level view of the accumulated data.
+
+The module is designed to be thread-safe, with all methods synchronized to ensure safe concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

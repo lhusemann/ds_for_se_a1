@@ -1,0 +1,12 @@
+**Title:** Lucene Term Vectors Merger
+
+**Summary:**
+This module is part of the Lucene search library and provides functionality for merging term vectors from multiple readers. It defines an abstract class `TermVectorsWriter` that implements the functionality for writing term vectors, and a `TermVectorsMerger` class that merges term vectors from multiple readers and writes them to the output using the `TermVectorsWriter` class. The `TermVectorsMerger` class depends on the `TermVectorsReader` class to read the term vectors from the readers, and the `MergeState` class to provide information about the readers to merge. It also depends on the `DocIDMerger` class to merge the term vectors based on the document IDs.
+
+The module follows a clear separation of concerns, with the `TermVectorsWriter` class implementing the core logic for writing term vectors and the `TermVectorsMerger` class orchestrating the merging and writing of term vectors from multiple readers. It is designed to be used in a Lucene index merge operation, where term vectors from multiple segments are merged into a single segment. The module isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
+
+The module is also designed to be efficient and performant, using the `DocIDMerger` class to merge term vectors based on the document IDs. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
+
+The module is designed to be used in a Lucene index merge operation, where term vectors from multiple segments are merged into a single segment. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
+
+The module is also designed to be efficient and performant, using the `DocIDMerger` class to merge term vectors based on the document IDs. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.

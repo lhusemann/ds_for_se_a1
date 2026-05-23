@@ -1,0 +1,8 @@
+**Title:** NormsProducer — Abstract API for Producing Field Normalization Values
+
+**Summary:**
+The NormsProducer class provides an abstract API for producing field normalization values. It is used to retrieve `NumericDocValues` for a given field, which can be used to access the normalization values for that field. The class also includes a method for checking the integrity of the producer, which may involve computing a checksum value against large data files.
+
+The architecture follows a clear separation of concerns, with the `getNorms` method providing the core logic for retrieving normalization values and the `checkIntegrity` method ensuring the consistency of the producer. The class is designed to be used in a single-threaded manner, as it may only be used by a single thread at a time.
+
+The only external dependencies of the NormsProducer class are the standard Java I/O and Lucene APIs, making it a self-contained module with minimal coupling to the broader codebase.
