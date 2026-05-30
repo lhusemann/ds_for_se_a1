@@ -1,55 +1,16 @@
 # Explanation of folders
 
-## Cluster Algorithm Results
-Contains the results of the WCA, LIMBO and ACDC clustering algorithms
+## Week_1
+Contains all files used for Week 1. Some README.md are placed inside for further explanation.
 
-#### WCA
-Results of WCA clustering algorithm on `filtered.rsf`
+## Week_2
+Contains all files used for Week 2. Some README.md are placed inside for further explanation.
 
-The command used to generate clusters with WCA is:
+## Week_3
+Contains all files used for Week 3. Some README.md are placed inside for further explanation.
 
-`java -Xmx4096m -jar arcade_core_clusterer.jar language=java deps=filtered.rsf projname=luccodecs projversion=9.0.0 projpath=output-cluster packageprefix="org.apache.lucene.codecs" algo=WCA measure=<UEMNM or UEM> serial=STEPCOUNT serialthreshold=1`
-
-#### ACDC
-Results of ACDC clustering algorithm on `filtered.rsf`
-
-The command used to generate clusters with ACDC is:
-`java -jar .\arcade_core-ACDC.jar .\filtered.rsf .\acdc.rsf`
-
-#### LIMBO
-Results of LIMBO clustering algorithm on `filtered.rsf` 
-
-The command used to generate clusters with LIMBO is:
-`java -Xmx4096m -jar arcade_core_clusterer.jar language=java \
-deps=filtered.rsf projname=luccodecs projversion=9.0.0 \
-projpath=output-cluster packageprefix="org.apache.lucene.codecs" \
-algo=LIMBO measure=IL \
-serial=STEPCOUNT serialthreshold=1`
-
-#### ARC
-Files used in ARC Clustering
-
-Notebook in Google Colab: https://colab.research.google.com/drive/1BcxNk6yMSHhU35rz5Pb9aDfRTsAQuzdG?usp=sharing
-
-## Cluster Algorithm Files
-Contains the files used for a2a and cvg comparisions
-
-## misc
-Contains partial results/utility from various weeks
-
-### dependency_extraction
-`lucene-codecs-9.0.0.jar` is the compiled jar of the apache/lucene/codecs project found [here](https://mvnrepository.com/artifact/org.apache.lucene/lucene-codecs/versions). Version 9.0.0 is used as the current version uses jdk25 and is therefore incompatible with the JavaParser.
-
-`output.rsf` and `output.fv` are the output of the JavaParser used on `lucene-codecs-9.0.0.jar`
-
-`filter_rsf.py` is a script to filter `output.rsf` for dependencies strictly relevant to our group's assigned components.
-
-## Top-level files
-
-`filtered.rsf` contains the dependencies strictly relevant to our assigned components (Result from dependency_extraction).
-
-`prettify_output.py` is a script to make results of clustering algorithms more human readable.
+## Week_4
+Contains all files used for Week 4. Some README.md are placed inside for further explanation.
 
 ## WeeklyUpdates
-
 A place to gather all our weekly solutions and updates.

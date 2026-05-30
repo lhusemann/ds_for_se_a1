@@ -1,0 +1,3 @@
+# Explanation of Folder
+
+`merge-innerclasses.py` is a script used to transform the `filtered.rsf` from Week 1 ,that uses innerclasses in a file for dependency relation, to a .rsf files that only presents the file based relations. The result of this script is `filtered-without-innerclasses.rsf`. `get-all-relevant-files.py` is script to extract all unique source and target files from `filtered-without-innerclasses.rsf` and save them as a JSON list. The result of this script is `relevant-files.json`. This was used to extract only the relevant files from the apache/lucene/codecs project.
