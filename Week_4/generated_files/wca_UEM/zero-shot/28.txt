@@ -1,1 +1,5 @@
-This code provides an abstract API for consuming normalization values and a concrete implementation that writes the norms into the index in a specific format. The API is a "pull" rather than "push", and the implementation is free to iterate over the values multiple times. It also includes a method for merging fields from the readers in a MergeState. Implementations can override this method for more sophisticated merging.
+This code defines an abstract class NormsConsumer that is used to consume normalization values. It has a method addNormsField that is called for each field with normalization values. The implementation of this method is free to iterate over the values multiple times. After all fields are added, the consumer is closed.
+
+The class also has a merge method that merges in the fields from the readers in mergeState. The default implementation calls mergeNormsField for each field, filling segments with missing norms for the field with zeros. Implementations can override this method for more sophisticated merging.
+
+The mergeNormsField method merges the norms from toMerge. The default implementation calls addNormsField, passing an Iterable that merges and filters deleted documents on the fly.

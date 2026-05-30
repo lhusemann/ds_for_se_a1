@@ -1,8 +1,10 @@
-**Title:** TermStats — Per-Term Statistics Holder
+**Title:** TermStats — Per-Term Statistics Container
 
 **Summary:**
-TermStats is a simple data object that holds two statistics for a given term: the number of documents that have at least one occurrence of the term (docFreq), and the total number of times the term occurs across all documents in the field (totalTermFreq). It is used as a return type for the LuceneTermsEnum.termStats() method, which provides access to these statistics.
+TermStats is a data structure that holds per-term statistics for a Lucene index. It is used to provide additional information about terms beyond their mere presence in documents. The two fields, `docFreq` and `totalTermFreq`, represent the number of documents that have at least one occurrence of the term and the total number of times the term occurs across all documents in the field, respectively.
 
-The class is designed to be immutable and thread-safe. It has a constructor that takes the two statistics as arguments and stores them as final fields. It also has getter methods for each statistic, allowing access to the values.
+The class is designed to be immutable, with the constructor taking the two fields as arguments and returning a new instance of TermStats with the provided values. The class has no methods, making it a simple container for the statistics.
 
-TermStats is not intended for direct instantiation by callers, but rather as a return type from LuceneTermsEnum.termStats(). It is used to provide per-term statistics for analysis and search operations in Lucene.
+TermStats is an essential component of Lucene’s indexing and search algorithms, as it allows for more sophisticated queries and relevance ranking. It is used by various codecs, such as Lucene’s default postings format, to store and retrieve term statistics efficiently.
+
+TermStats is a small and simple class, with no dependencies on external libraries or other components. It is a self-contained module that can be easily understood and used by other parts of the Lucene codebase.

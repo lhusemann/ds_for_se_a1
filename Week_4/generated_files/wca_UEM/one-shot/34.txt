@@ -1,16 +1,10 @@
-**Title:** PostingsFormat — Encoding and Decoding of Terms, Postings, and Proximity Data
+**Title:** PostingsFormat — Apache Lucene Postings Format Implementation
 
 **Summary:**
-The PostingsFormat class is a key component of the Lucene indexing and search process. It is responsible for encoding and decoding terms, postings, and proximity data, and provides methods to retrieve a format by name and reload the list of available formats.
+The `PostingsFormat` class is a core component of Apache Lucene that implements the `NamedSPILoader.NamedSPI` interface. It is responsible for encoding and decoding terms, postings, and proximity data within a segment.
 
-The class is designed to be pluggable, allowing different implementations to be plugged in as needed. It uses a Service Provider Interface (SPI) to load implementations at runtime.
+The `PostingsFormat` class provides two key methods: `fieldsConsumer` and `fieldsProducer`. The `fieldsConsumer` method is used to write a new segment, while the `fieldsProducer` method is used to read a segment. The `fieldsConsumer` method takes a `SegmentWriteState` object as input, which contains information about the segment being written, and returns a `FieldsConsumer` object, which is responsible for writing the segment data. The `fieldsProducer` method takes a `SegmentReadState` object as input, which contains information about the segment being read, and returns a `FieldsProducer` object, which is responsible for reading the segment data.
 
-The class has a constructor that takes a name parameter and sets it as the name of the format. It also has methods to write fields to the index and read fields from the index.
+The `PostingsFormat` class depends on several classes and interfaces, including `java.io.IOException` for handling I/O exceptions, `java.util.ServiceLoader` for loading postings formats using the Service Provider Interface (SPI), `java.util.Set` for storing the names of available postings formats, `org.apache.lucene.codecs.perfield.PerFieldPostingsFormat` for per-field postings format, `org.apache.lucene.index.SegmentReadState` for reading segment state, `org.apache.lucene.index.SegmentWriteState` for writing segment state, and `org.apache.lucene.util.NamedSPILoader` for loading named SPIs.
 
-The class also has methods to retrieve a format by name and reload the list of available formats. It uses a NamedSPILoader to load SPI implementations.
-
-The class has a toString method that returns a string representation of the format.
-
-The class also has a Holder class that is used to delay the initialization of postings formats until they are needed. This is done to prevent classloading deadlock.
-
-The class is part of the Lucene project, which is a high-performance, full-featured text search engine library written entirely in Java.
+The `PostingsFormat` class has several limitations, including its dependency on the Apache Lucene library and the need for Java's SPI mechanism for registering postings formats in order to be used with the library.

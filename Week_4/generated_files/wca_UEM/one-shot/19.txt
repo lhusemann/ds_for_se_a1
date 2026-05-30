@@ -1,16 +1,8 @@
-**Title:** KnnVectorsReader — Abstract Class for Reading Vectors from an Index
+**Title:** EvenNumberFilter — Integer Parity Filter Utility
 
 **Summary:**
-The `KnnVectorsReader` class is an abstract class that provides methods for reading vectors from an index. It is designed to be subclassed by specific implementations that provide the actual vector reading logic. The class includes methods for checking the integrity of the reader, getting vector values for a given field, and searching for the k nearest neighbors of a given vector in a specified field.
+EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
 
-The `KnnVectorsReader` class is designed to be used in the context of nearest neighbor search, where it is used to retrieve vectors from an index and perform nearest neighbor queries. It provides a high-level interface for interacting with the index and allows subclasses to provide the specific implementation details for reading vectors.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The class is designed to be generic and can be used with different types of vector data. It provides a set of methods that can be overridden by subclasses to provide the specific implementation details for reading vectors from the index.
-
-The `KnnVectorsReader` class implements the `Accountable` interface, which allows it to provide information about its resource usage. This information can be used for resource management and optimization.
-
-The `KnnVectorsReader` class is designed to be used in the context of nearest neighbor search, where it is used to retrieve vectors from an index and perform nearest neighbor queries. It provides a high-level interface for interacting with the index and allows subclasses to provide the specific implementation details for reading vectors.
-
-The class is designed to be generic and can be used with different types of vector data. It provides a set of methods that can be overridden by subclasses to provide the specific implementation details for reading vectors from the index.
-
-The `KnnVectorsReader` class implements the `Accountable` interface, which allows it to provide information about its resource usage. This information can be used for resource management and optimization.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

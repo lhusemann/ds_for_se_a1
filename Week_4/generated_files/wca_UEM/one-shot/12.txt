@@ -1,8 +1,12 @@
-**Title:** FSTTermOutputs — FST Outputs Implementation for Lucene's FSTTermsWriter
+**Title:** FSTTermOutputs — Term Metadata Encoding Implementation
 
 **Summary:**
-The FSTTermOutputs class implements an FST Outputs implementation for Lucene's FSTTermsWriter. It provides functionality for writing and reading TermData objects, which represent metadata for each term in the FST. The class includes methods for writing and reading TermData objects to and from a DataOutput and DataInput stream, respectively. It also provides methods for performing common, subtract, and add operations on TermData objects.
+The FSTTermOutputs class is a low-level implementation of the Lucene term metadata encoding logic. It provides methods for reading and writing term metadata to a DataOutput or DataInput stream, as well as methods for performing arithmetic operations on term metadata.
 
-The architecture follows a clear separation of concerns, with the FSTTermOutputs class owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The class is composed of two layers: the TermData class, which represents the metadata for one term, and the FSTTermOutputs class, which owns the logic for reading and writing metadata to a stream. The TermData class includes fields for the term's bytes, document frequency, and total term frequency.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The FSTTermOutputs class depends on the Lucene FieldInfo and Outputs classes, as well as the DataInput and DataOutput classes for reading and writing data to a stream. It is a self-contained module with no external dependencies, making it easy to integrate into other Lucene components.
+
+The code is designed to be efficient and performant, using the Lucene fst package for finite state transducers to encode and decode term metadata. The arithmetic operations on term metadata are implemented using bitwise operations and bit shifting, making them fast and memory-efficient.
+
+Overall, the FSTTermOutputs class is a low-level but essential component of the Lucene indexing and search infrastructure, providing the necessary encoding and decoding logic for term metadata.

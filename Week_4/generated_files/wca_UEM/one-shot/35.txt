@@ -1,10 +1,12 @@
-**Title:** PostingsReaderBase — Base Class for Lucene Term Dictionaries
+**Title:** PostingsReaderBase — Lucene Index Term Metadata Decoder
 
 **Summary:**
-The PostingsReaderBase class is the base class for Lucene term dictionaries. It provides the core logic for managing the creation of PostingsEnum and ImpactsEnum instances, as well as the necessary inputs and outputs.
+The `PostingsReaderBase` class is a core component of the Lucene indexing and search engine. It is responsible for reading and decoding metadata for each term in the index, and provides the foundation for efficient term iteration and impact computation.
 
-The class interacts with a PostingsWriterBase to manage the creation of PostingsEnum and ImpactsEnum instances. It provides an IndexInput where it can read any previously stored data that it had written in its corresponding PostingsWriterBase at indexing time.
+The class is designed as an abstract base class, with concrete implementations provided by subclasses. It is responsible for initializing the input stream, creating new term states, decoding term metadata, and returning `PostingsReaderBase` and `ImpactsEnum` instances for iterating over terms and computing impacts.
 
-The architecture follows a clean separation of concerns, with the predicate evaluation delegated entirely to the stateless ParityChecker utilities in the predicates layer, while PostingsReaderBase owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The `PostingsReaderBase` class is a stateful component, maintaining internal state to track the current term and its metadata. It is also responsible for checking the integrity of the reader and closing the input stream when it is no longer needed.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The class has minimal external dependencies, relying on the Lucene `FieldInfo`, `ImpactsEnum`, `PostingsWriterBase`, `SegmentReadState`, `DataInput`, and `IndexInput` classes. It is designed to be highly modular and extensible, allowing for easy integration with other components in the Lucene ecosystem.
+
+The `PostingsReaderBase` class is a critical component of the Lucene indexing and search engine, providing the foundation for efficient term iteration and impact computation. It is designed to be highly modular and extensible, allowing for easy integration with other components in the Lucene ecosystem.

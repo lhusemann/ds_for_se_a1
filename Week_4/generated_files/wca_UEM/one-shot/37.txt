@@ -1,12 +1,10 @@
-**Title:** SegmentInfoFormat — Controls the Format of SegmentInfo in Lucene
+**Title:** SegmentInfoFormat — Controls the Format of SegmentInfo in Apache Lucene
 
 **Summary:**
-The SegmentInfoFormat class is responsible for controlling the format of the SegmentInfo (segment metadata file) in the Lucene library. It provides two methods: `read` and `write`. The `read` method reads segment information from a directory, given a segment name and an expected segment identifier. The `write` method writes segment information to a directory, given a SegmentInfo object and an IOContext.
+The SegmentInfoFormat class is responsible for reading and writing the SegmentInfo (segment metadata file) in Apache Lucene. It is a low-level utility class that provides the core logic for reading and writing SegmentInfo data.
 
-The `read` method populates a SegmentInfo object by reading data from a directory and returns the object. The `write` method serializes the SegmentInfo object and writes it to a directory.
+The `read` method is used to read SegmentInfo data from a directory. It takes a `Directory` object, the name of the segment to read, an expected identifier for the segment, and an `IOContext` object. It returns a `SegmentInfo` object populated with the read data.
 
-The class has no shared mutable state and is thread-safe. It depends on the Directory interface for reading and writing to a file system, as well as the IOContext class for I/O operation context.
+The `write` method is used to write SegmentInfo data. It takes a `Directory` object, a `SegmentInfo` object, and an `IOContext` object. It writes the data to the directory and adds the SegmentInfo filename(s) to the `info` object.
 
-The SegmentInfoFormat class is a low-level utility that isolates the format of the SegmentInfo file from the rest of the Lucene library. It is designed to be used by higher-level components that need to read or write segment metadata.
-
-The code snippet provided is a concise and precise summary of the SegmentInfoFormat class, highlighting its key functionality, core logic, inputs/outputs, and dependencies.
+The class has no shared mutable state and is safe for concurrent use. It depends only on the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

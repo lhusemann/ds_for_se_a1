@@ -1,8 +1,10 @@
-**Title:** EvenNumberFilter — Integer Parity Filter Utility
+**Title:** FieldsConsumer — Abstract API for Consuming Terms, Doc, Freq, Prox, Offset, and Payloads Postings
 
 **Summary:**
-EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
+The FieldsConsumer class provides an abstract API for consuming terms, doc, freq, prox, offset, and payloads postings. It includes concrete implementations that do "something" with the postings, such as writing them into the index in a specific format. The core logic of this code involves iterating over each element in the input list and checking divisibility by 2 using the modulo operator. Matching elements are collected into a new list.
 
-The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The code includes an abstract class `FieldsConsumer` that implements the `Closeable` interface. It provides methods for writing fields, terms, and postings, as well as merging fields from multiple readers. The `write` method is responsible for writing all fields, terms, and postings, while the `merge` method is responsible for merging fields from the readers in `mergeState`. The default implementation skips and maps around deleted documents, and calls the `write` method. Implementations can override this method for more sophisticated merging.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The code also includes concrete implementations of `FieldsConsumer`, such as `Lucene50PostingsConsumer` and `Lucene53PostingsConsumer`, which write the postings in specific formats. These implementations are responsible for writing the postings into the index in a specific format.
+
+The code has no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

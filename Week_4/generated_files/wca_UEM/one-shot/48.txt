@@ -1,12 +1,8 @@
-**Title:** Lucene Term Vectors Merger
+**Title:** EvenNumberFilter — Integer Parity Filter Utility
 
 **Summary:**
-This module is part of the Lucene search library and provides functionality for merging term vectors from multiple readers. It defines an abstract class `TermVectorsWriter` that implements the functionality for writing term vectors, and a `TermVectorsMerger` class that merges term vectors from multiple readers and writes them to the output using the `TermVectorsWriter` class. The `TermVectorsMerger` class depends on the `TermVectorsReader` class to read the term vectors from the readers, and the `MergeState` class to provide information about the readers to merge. It also depends on the `DocIDMerger` class to merge the term vectors based on the document IDs.
+EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
 
-The module follows a clear separation of concerns, with the `TermVectorsWriter` class implementing the core logic for writing term vectors and the `TermVectorsMerger` class orchestrating the merging and writing of term vectors from multiple readers. It is designed to be used in a Lucene index merge operation, where term vectors from multiple segments are merged into a single segment. The module isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The module is also designed to be efficient and performant, using the `DocIDMerger` class to merge term vectors based on the document IDs. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
-
-The module is designed to be used in a Lucene index merge operation, where term vectors from multiple segments are merged into a single segment. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
-
-The module is also designed to be efficient and performant, using the `DocIDMerger` class to merge term vectors based on the document IDs. It isolates the merging logic from the rest of the Lucene index merge process, making it reusable and easy to test.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

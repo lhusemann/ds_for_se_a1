@@ -1,10 +1,12 @@
-**Title:** SimpleText Files I/O Utils — Apache Lucene Format
+**Title:** SimpleText — Text File Reading and Writing Utilities
 
 **Summary:**
-This module provides utility methods for reading and writing text files in the SimpleText format used by Apache Lucene. It is composed of two layers: a low-level layer for reading and writing lines of text, and a higher-level layer for reading and writing SimpleText files.
+The SimpleText package provides utilities for reading and writing text files in a simple, efficient, and reliable format. It is designed to be used for high-performance data processing tasks.
 
-The low-level layer provides methods for reading and writing lines of text, escaping special characters, and checking file integrity using checksums. It uses a mutable byte sequence for temporary storage and depends on the `org.apache.lucene.util.BytesRef` and `org.apache.lucene.util.BytesRefBuilder` types for string manipulation.
+The package includes a set of utility methods for writing text data to an output stream. These methods convert the input data into bytes and write them to the output stream, escaping special characters as necessary. The SimpleText format supports writing strings, bytes, and newline characters. It also includes methods for writing and checking checksums for the written data.
 
-The higher-level layer owns the SimpleText file format and its specifics, including the file header, footer, and record structure. It uses the low-level layer for reading and writing lines of text and depends on the `org.apache.lucene.store.ChecksumIndexInput` and `org.apache.lucene.store.IndexOutput` types for reading and writing index data.
+The package also includes a set of utility methods for reading text data from an input stream. These methods read bytes from the input stream, unescaping special characters as they are encountered. The SimpleText format supports reading lines from the input data.
 
-The module does not use any external resources and is self-contained, making it a leaf cluster with minimal coupling to the broader codebase. It is designed to be used in an Apache Lucene context and provides the necessary utilities for reading and writing SimpleText files.
+The SimpleText package is designed to be used in a high-performance context and is optimized for speed and efficiency. It is thread-safe and does not use any shared mutable state, making it safe for concurrent use.
+
+The SimpleText package is a self-contained module with minimal external dependencies. It only uses the standard Java I/O and Lucene APIs, making it easy to integrate into existing projects.

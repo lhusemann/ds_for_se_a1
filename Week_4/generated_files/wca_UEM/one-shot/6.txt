@@ -1,18 +1,16 @@
-**Title:** CompoundDirectory — Lucene Compound File ReadOnly Directory
+**Title:** CompoundFileReader — Read-Only Directory Implementation for Lucene Compound Files
 
 **Summary:**
-The CompoundDirectory class is an abstract class that extends the Lucene Directory class and provides a read-only view of a compound file. It is designed to be used in scenarios where a Lucene index is stored in a compound file format.
+The CompoundFileReader module provides a read-only Directory implementation that is optimized for reading data from Lucene compound files. It is a low-level data access primitive that isolates the compound file format from the higher-level Lucene index and document models.
 
-The class implements methods to check the integrity of the directory, create output streams, and obtain locks. It also provides a constructor and overrides the necessary methods from the Directory class.
+The CompoundFileReader class implements the abstract methods of the Directory class, providing the necessary functionality to open, read, and close files within the compound file. It uses a compound file reader implementation to handle the low-level details of reading from the compound file, while exposing a read-only view of the directory structure to the caller.
 
-The CompoundDirectory class acts as a bridge between the Lucene Directory API and the compound file format. It allows Lucene to read data from a compound file as if it were a regular directory.
+The module follows a clear separation of concerns, with the compound file reader implementation handling the low-level details of reading from the compound file and the CompoundFileReader class exposing a read-only view of the directory structure to the caller. It is designed to be used in conjunction with the Lucene index and document models, providing a seamless integration with the rest of the Lucene ecosystem.
 
-The class is designed to be used in scenarios where a Lucene index is stored in a compound file format. It provides a read-only view of the compound file, allowing Lucene to read data from it as if it were a regular directory.
+The CompoundFileReader module is a low-level data access primitive that isolates the compound file format from the higher-level Lucene index and document models. It is designed to be used in conjunction with the Lucene index and document models, providing a seamless integration with the rest of the Lucene ecosystem.
 
-The class isolates the compound file implementation details from the rest of the Lucene codebase, allowing the rest of the codebase to interact with Lucene directories as if they were regular file systems directories.
+The module follows a clear separation of concerns, with the compound file reader implementation handling the low-level details of reading from the compound file and the CompoundFileReader class exposing a read-only view of the directory structure to the caller. It is designed to be used in conjunction with the Lucene index and document models, providing a seamless integration with the rest of the Lucene ecosystem.
 
-The class is designed to be extensible, allowing developers to subclass it and provide their own implementation of the abstract methods.
+The CompoundFileReader module is a low-level data access primitive that isolates the compound file format from the higher-level Lucene index and document models. It is designed to be used in conjunction with the Lucene index and document models, providing a seamless integration with the rest of the Lucene ecosystem.
 
-The class isolates the compound file implementation details from the rest of the Lucene codebase, allowing the rest of the codebase to interact with Lucene directories as if they were regular file systems directories.
-
-The class is designed to be extensible, allowing developers to subclass it and provide their own implementation of the abstract methods.
+The module follows a clear separation of concerns, with the compound file reader implementation handling the low-level details of reading from the compound file and the CompoundFileReader class exposing a read-only view of the directory structure to the caller. It is designed to be used in conjunction with the Lucene index and document models, providing a seamless integration with the rest of the Lucene

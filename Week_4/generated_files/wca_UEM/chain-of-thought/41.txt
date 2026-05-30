@@ -1,4 +1,22 @@
-**Title:** SimpleTextUtil: A Utility Class for Reading and Writing Text Data in a Specific Format
+**Title:** SimpleTextUtil: A Utility Class for Reading and Writing Text Files in SimpleText Format
 
 **Summary:**
-The SimpleTextUtil class provides utility methods for reading and writing text data in a specific format. It includes methods for writing strings, bytes, and newlines, as well as reading lines from a DataInput. It also provides methods for writing and checking checksums for data integrity. The core logic of the SimpleTextUtil class involves reading and writing text data in a specific format. It uses the provided DataInput and DataOutput interfaces to read and write bytes, and includes logic to handle escaped characters and newlines. The class also includes methods for writing and checking checksums for data integrity. The SimpleTextUtil class takes DataInput and DataOutput as inputs for reading and writing text data. It also uses a BytesRefBuilder for temporary storage of data. The class provides methods for writing strings, bytes, and newlines, as well as reading lines from a DataInput. The SimpleTextUtil class depends on the org.apache.lucene.store.ChecksumIndexInput, org.apache.lucene.store.DataInput, org.apache.lucene.store.DataOutput, org.apache.lucene.store.IndexOutput, org.apache.lucene.util.BytesRef, org.apache.lucene.util.BytesRefBuilder, and org.apache.lucene.util.StringHelper classes.
+
+The SimpleTextUtil class is a utility class that provides methods for reading and writing text files in the SimpleText format. It includes methods for writing strings, bytes, and newline characters, as well as reading lines from a DataInput. The class also provides methods for writing and checking checksums for the written data.
+
+The core logic of the SimpleTextUtil class is centered around reading and writing text data in the SimpleText format. The write methods convert the input data into bytes and write them to a DataOutput, while the read methods read bytes from a DataInput and convert them back to strings or bytes. The checksum methods calculate and verify checksums for the written data.
+
+The SimpleTextUtil class takes DataInput and DataOutput as inputs, which are used for reading and writing data. It also takes BytesRefBuilder as an input for temporary storage of bytes. The write methods write bytes to the DataOutput, while the read methods read bytes from the DataInput. The checksum methods write and verify checksums to the DataOutput and DataInput, respectively.
+
+The SimpleTextUtil class depends on the following external classes and methods:
+
+- org.apache.lucene.index.CorruptIndexException: This class is used to throw an exception when a corrupt index is detected.
+- org.apache.lucene.store.ChecksumIndexInput: This class is used for reading data with checksum verification.
+- org.apache.lucene.store.DataInput: This interface is used for reading data.
+- org.apache.lucene.store.DataOutput: This interface is used for writing data.
+- org.apache.lucene.store.IndexOutput: This class is used for writing data with checksum support.
+- org.apache.lucene.util.BytesRef: This class is used for representing byte sequences.
+- org.apache.lucene.util.BytesRefBuilder: This class is used for building BytesRef objects.
+- org.apache.lucene.util.StringHelper: This class provides helper methods for working with strings.
+
+In summary, the SimpleTextUtil class provides utility methods for reading and writing text files in the SimpleText format. It includes methods for writing strings, bytes, and newline characters, as well as reading lines from a DataInput. It also provides methods for writing and checking checksums for the written data

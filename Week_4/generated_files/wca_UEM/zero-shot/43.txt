@@ -1,1 +1,7 @@
-This code defines an abstract class `StoredFieldsReader` that implements the `Cloneable` and `Closeable` interfaces. It provides methods for reading stored fields for a document, cloning the reader, and checking the integrity of the reader. Additionally, it provides a method for getting an instance optimized for merging.
+This code defines an abstract class `StoredFieldsReader` that implements the `Cloneable` and `Closeable` interfaces. It provides methods for reading stored fields, such as `visitDocument`, `clone`, and `close`. The `visitDocument` method is used to visit the stored fields for a specific document, while the `clone` method is used to create clones of the `IndexInputs` used by the class. The `close` method is used to close the resources used by the class.
+
+The class also provides a method `checkIntegrity` that can be used to check the consistency of the reader. This method may involve computing a checksum value against large data files, which may be costly in terms of I/O.
+
+Additionally, the class provides a method `getMergeInstance` that returns an instance optimized for merging. The default implementation returns `this`, but subclasses can override this method to return a different instance if necessary.
+
+Overall, this code provides a framework for reading and cloning stored fields in a Lucene codec. It allows subclasses to implement the specific logic for reading and cloning stored fields, while also providing methods for checking the integrity of the reader and getting an instance optimized for merging.

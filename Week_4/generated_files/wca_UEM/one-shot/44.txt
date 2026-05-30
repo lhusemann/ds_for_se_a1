@@ -1,14 +1,10 @@
-**Title:** LuceneCodecWriter — Lucene Codec Implementation for Writing Stored Fields
+**Title:** Lucene Stored Fields Writer
 
 **Summary:**
-LuceneCodecWriter is a module that implements the Lucene Codec API for writing stored fields. It is designed to be used in a write-only context, where documents are iteratively added and the finish() method is called after all documents have been written. The finish() method performs verification and sanity-checks. The writer is then closed.
+The Lucene Stored Fields Writer is a module that provides functionality for writing stored fields in the Lucene search engine library. It is responsible for storing additional information about documents in the index.
 
-The module follows a clear separation of concerns, with the core logic residing in the `write()` method. It iterates over each document and its fields, writing them to the output in the appropriate format. The finish() method verifies the written data and ensures that the expected number of documents and fields are present.
+The module is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
 
-The module is designed to be used in a write-only context and does not provide any means of reading or seeking within the written data. It isolates the writing logic from the rest of the application, allowing for a clear and focused API.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The module isolates the writing logic from the rest of the application, allowing for a clear and focused API. It is designed to be used in a write-only context and does not provide any means of reading or seeking within the written data.
-
-The module isolates the writing logic from the rest of the application, allowing for a clear and focused API. It is designed to be used in a write-only context and does not provide any means of reading or seeking within the written data.
-
-The module isolates the writing logic from the rest of the application, allowing for a clear and focused API. It is designed to be used in a write-only context and does not provide any means of reading or seeking within the written data.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

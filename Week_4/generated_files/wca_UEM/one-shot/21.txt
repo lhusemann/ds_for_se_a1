@@ -1,8 +1,8 @@
-**Title:** LiveDocsFormat — Lucene Live Documents Format
+**Title:** Lucene Live Documents Format
 
 **Summary:**
-The LiveDocsFormat class is a key component of Lucene’s indexing and search capabilities. It provides methods for reading and writing live documents, which are essential for maintaining the integrity of the index.
+The `LiveDocsFormat` class provides functionality for reading and writing live documents in Lucene. It defines methods for reading live document bits from a directory and a segment commit info, and returning them as a `Bits` object. It also provides a method for persisting live document bits to a directory, using the next generation of the deletes file determined by the segment commit info. Additionally, it has a method for recording all files in use by a segment commit info into a collection of strings.
 
-The core logic of this class is to provide methods for reading and writing live documents. The readLiveDocs method reads the live docs bits from a directory and a segment commit info, and returns them as a Bits object. The writeLiveDocs method writes the live docs bits to a directory, segment commit info, and an IO context. The files method records all files in use by a segment commit info into a collection of strings.
+The class follows a clear separation of concerns, with the `readLiveDocs` and `writeLiveDocs` methods handling the actual reading and writing of live document bits, while the `files` method isolates the logic for recording files. It is designed to be used as a low-level utility for Lucene, with clear inputs and outputs, and minimal external dependencies.
 
-The class has no shared mutable state, making it safe for concurrent use. It depends only on the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The class isolates the file format for live documents from the rest of Lucene, making it easier to evolve the format in the future. It is also designed to be pluggable, allowing for different implementations of live documents formats in the future.

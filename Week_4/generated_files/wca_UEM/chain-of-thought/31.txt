@@ -1,2 +1,18 @@
-**Title:** PointsFormat: A Lucene Points Format for Encoding and Decoding Indexed Points
-**Summary:** The PointsFormat class in the org.apache.lucene.codecs package provides functionality for encoding and decoding indexed points. It includes methods for writing a new segment and reading a segment. The class has no superclass and implements no specific interfaces. The fieldsWriter method takes a SegmentWriteState object as input and returns a PointsWriter object. The fieldsReader method takes a SegmentReadState object as input and returns a PointsReader object. The code depends on the org.apache.lucene.index.PointValues, org.apache.lucene.index.SegmentReadState, and org.apache.lucene.index.SegmentWriteState classes. The EMPTY static instance of PointsFormat throws an UnsupportedOperationException when attempting to write a new segment. The fieldsReader method returns a PointsReader instance that throws an IllegalArgumentException if a field is not indexed with points.
+**Title:** PointsFormat: Encoding and decoding indexed points
+**Summary:**
+The `PointsFormat` class is used to encode and decode indexed points. It provides methods to create a new point format and write a new segment. The core logic of the code is implemented in the `PointsFormat` class. The `PointsFormat` class has the following inputs and outputs:
+
+- Inputs:
+  - `SegmentWriteState`: A class that represents the write state of a segment. It contains information about the segment being written, such as the directory, segment name, and other metadata.
+  - `SegmentReadState`: A class that represents the read state of a segment. It contains information about the segment being read, such as the directory, segment name, and other metadata.
+
+- Outputs:
+  - `PointsWriter`: An interface that defines methods to write points to a segment.
+  - `PointsReader`: An interface that defines methods to read points from a segment.
+
+The `PointsFormat` class depends on the following classes and interfaces:
+
+- `org.apache.lucene.index.PointValues`: An interface that defines methods to access point values.
+- `org.apache.lucene.index.SegmentReadState`: A class that represents the read state of a segment.
+- `org.apache.lucene.index.SegmentWriteState`: A class that represents the write state of a segment.
+- `java.io.IOException`: An exception that is thrown when an I/O error occurs.

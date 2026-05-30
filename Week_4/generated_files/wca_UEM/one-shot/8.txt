@@ -1,12 +1,14 @@
-**Title:** Lucene's Fieldinvertstate and TermsHash
+**Title:** FSTTermsWriter —Terms Index Writer
 
 **Summary:**
-This code snippet is part of the Lucene search library and deals with the creation of an inverted index for text-based data. The snippet is a method called `createFieldinvertstate` which is used to create a Fieldinvertstate object. This object is then used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+The FSTTermsWriter class is a key component of the Lucene inverted index. It is responsible for writing the terms index file, which contains a mapping from terms to documents and frequencies. The class uses a finite-state transducer (FST) to efficiently store the terms and their associated metadata.
 
-The createFieldinvertstate method takes in a number of parameters including a TermsHash object and a FieldInfo object. It then creates a Fieldinvertstate object and sets its values based on the parameters passed in. The Fieldinvertstate object is then returned.
+The FSTTermsWriter class is part of the Lucene indexing process and is used to build the inverted index. It is initialized with a terms dictionary and a postings writer. The terms dictionary contains the terms to be indexed, and the postings writer is responsible for writing the postings list for each term.
 
-The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+The FSTTermsWriter class uses a terms index dictionary to map terms to their corresponding FST states. The terms index dictionary is built using a memory-resident hash table, which allows for efficient lookups and updates. The FSTTermsWriter class also uses a FSTBuilder to construct the FST from the terms index dictionary.
 
-The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+Once the FST is built, the FSTTermsWriter class writes the FST to a file using a FSTCompiler. The FSTCompiler is responsible for converting the FST into a byte representation that can be stored in a file. The FSTTermsWriter class also writes the terms index dictionary to a separate file, which contains the mapping from terms to their corresponding FST states.
 
-The Fieldinvertstate object is used to create a TermsHash object. The TermsHash object is used to create a TermsEnum object. The TermsEnum object is then used to create a MergedTermsEnum object. The createFieldinvertstate method returns a Fieldinvertstate object.
+The FSTTermsWriter class is designed to be efficient and scalable, and it uses a number of optimizations to reduce memory usage and improve performance. For example, it uses a memory-resident hash table to store the terms index dictionary, which reduces the amount of memory required to build the index. It also uses a cache to store recently accessed FST states, which further improves performance.
+
+Overall, the FSTTermsWriter class is a crucial component of the Lucene inverted index, and it is responsible for efficiently storing the terms and their associated metadata in a way that allows for fast and flexible retrieval.

@@ -1,8 +1,8 @@
-**Title:** Lucene SkipList Implementation
+**Title:** EvenNumberFilter — Integer Parity Filter Utility
 
 **Summary:**
-This module provides an efficient implementation of a skip list data structure. It is used to navigate through a large list of data, allowing for fast skipping to specific entries. The skip list is implemented with multiple levels, with each level containing every skipInterval-th entry from the previous level. This allows for efficient skipping to specific entries in the list.
+EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
 
-The code takes an IndexOutput as input and writes the skip lists to it. It also takes the current document frequency as input, which determines the maximum level of skip data to be written. The code uses the ByteBuffersDataOutput class from the Lucene library to handle the skip data and the IndexOutput class from the same library to write the skip lists to the output.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The skip list is designed to be used in a Lucene-specific context, but its core logic can be applied to other data structures and scenarios where efficient skipping is required.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

@@ -1,2 +1,9 @@
-**Title:** KnnVectorsReader: Reading Vectors from an Index in the Lucene Library
-**Summary:** The KnnVectorsReader class is responsible for reading vectors from an index in the Lucene library. It implements the Closeable and Accountable interfaces and has methods for checking the consistency of the reader, getting VectorValues for a given field, searching for k nearest neighbor documents, and getting an instance optimized for merging. The class is part of the Lucene library and is used for reading vectors from an index.
+**Title:** KnnVectorsReader: Reading Vectors from an Apache Lucene Index
+
+**Summary:** The KnnVectorsReader class is part of the Apache Lucene library and implements the functionality to read vectors from an index. It is an abstract class that provides methods for checking the integrity of the reader, getting vector values for a given field, and searching for the k nearest neighbors of a given vector. The class also implements the Closeable and Accountable interfaces.
+
+The KnnVectorsReader class is designed to be used in the context of Apache Lucene, a high-performance, full-featured text search engine library. It is used to read vectors from an index and perform nearest neighbor searches based on these vectors. The class provides methods for checking the integrity of the reader, getting vector values for a given field, and searching for the k nearest neighbors of a given vector.
+
+The class is an abstract class that provides methods for checking the integrity of the reader, getting vector values for a given field, and searching for the k nearest neighbors of a given vector. It also implements the Closeable and Accountable interfaces.
+
+The KnnVectorsReader class is part of the Apache Lucene library, which is a widely used open-source search engine library written in Java. It provides powerful indexing and search capabilities, making it a popular choice for search-related applications.

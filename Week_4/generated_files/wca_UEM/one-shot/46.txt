@@ -1,12 +1,10 @@
-**Title:** TermVectorsFormat — Controls Term Vectors Formatting
+**Title:** TermVectorsFormat — Controls the Format of Term Vectors
 
 **Summary:**
-TermVectorsFormat is a low-level module that isolates the format of term vectors. It is a pluggable component that isolates the index format from the rest of Lucene. It defines the abstract methods that write and read the formatted data.
+TermVectorsFormat is a low-level format for encoding and decoding term vectors. It is designed to be pluggable, allowing for custom implementations to be dropped in as necessary. It provides two key methods for each term vector: `TermVectorsReader` for reading and `TermVectorsWriter` for writing.
 
-The architecture follows a clear separation of concerns. The abstract methods are implemented by concrete subclasses that provide the actual format implementation. The index format can be changed by simply swapping out the concrete subclass.
+The TermVectorsFormat API is intended to be used by higher-level formats like theLucene segment format, which use the specific encodings provided by the defaultLucene TermVectorsFormat implementation. TermVectorsFormat is typically only used by custom formats, such as for custom scoring or for specialized retrieval needs.
 
-The module is designed to be used as a leaf cluster, with minimal coupling to the rest of Lucene. It has no shared mutable state, making it thread-safe and reusable across multiple segments.
+The API is pluggable and extensible, allowing for custom implementations to be dropped in as necessary. It is designed to be used by higher-level formats like the Lucene segment format, which use the specific encodings provided by the default Lucene TermVectorsFormat implementation.
 
-The inputs and outputs are well-defined and are designed to be consumed by higher-level components. The inputs include the directory, segment info, field infos, and IO context. The outputs are the TermVectorsReader and TermVectorsWriter, which are used to read and write term vectors.
-
-The dependencies are minimal and limited to the necessary Lucene classes. The module does not have any external dependencies, making it a self-contained and pluggable component.
+TermVectorsFormat is typically only used by custom formats, such as for custom scoring or for specialized retrieval needs.

@@ -1,8 +1,8 @@
-**Title:** EvenNumberFilter — Integer Parity Filter Utility
+**Title:** CustomFSTOutputs — Custom FST Outputs Implementation for Lucene
 
 **Summary:**
-EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
+CustomFSTOutputs is a custom implementation of the FST outputs interface for Lucene. It is used to store block data (BytesRef), long ordStart, and long numTerms. It provides custom implementations of common, subtract, add, write, read, skipOutput, skipFinalOutput, getNoOutput, outputToString, and ramBytesUsed methods. These methods handle the manipulation and storage of block data, ordStart, and numTerms.
 
-The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The code follows a clear separation of concerns, with the core logic implemented in the custom methods. It uses the DataInput and DataOutput streams for reading and writing data, and it depends on the Lucene utility classes BytesRef, RamUsageEstimator, and StringHelper.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+CustomFSTOutputs is designed to be used in applications that require custom FST outputs for Lucene, such as text search and indexing. It can be easily integrated into existing Lucene applications by replacing the default FST outputs with this custom implementation.

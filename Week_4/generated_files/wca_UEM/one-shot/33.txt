@@ -1,10 +1,8 @@
-**Title:** Lucene PointWriter — High-performance API for Writing Points
+**Title:** PointWriter — Abstract API for Writing Points
 
 **Summary:**
-Lucene PointWriter is a high-performance API for writing points, which are used for indexing and searching in Lucene. It provides a core logic for iterating over all values in a given reader and writing them to a new writer.
+The PointWriter module provides an abstract API for writing points. It isolates the core logic of iterating over each element in the input list and checking divisibility by 2 using the modulo operator. Matching elements are collected into a new list.
 
-The architecture follows a clear separation of concerns, with the core logic residing in the `writeValues` method. It takes a `PointsReader` as input, which provides access to the point values being written, and a `PointValues` writer, which is responsible for writing the values to the new index. The `writeValues` method iterates over all values in the reader and writes them to the writer.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The code also includes dependencies on `org.apache.lucene.index.FieldInfo` and `org.apache.lucene.index.MergeState`, which provide information about the field being written and the merge state, respectively. It implements the `Closeable` interface to allow for proper resource management, and throws `IOException` to indicate any I/O exceptions that may occur during the writing process.
-
-Overall, Lucene PointWriter is a high-performance and reliable API for writing points in Lucene, providing a robust foundation for indexing and searching in large-scale applications.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

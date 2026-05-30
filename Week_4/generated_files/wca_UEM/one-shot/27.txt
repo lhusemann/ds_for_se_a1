@@ -1,18 +1,11 @@
-**Title:** PointValues Flush Sorter — Value Order Manipulation for codecs
+**Title:** FlushablePointsReader — Point Values Reader with Flushing Capabilities
 
 **Summary:**
-The PointValuesFlushSorter class is a utility for codecs that need to optimize the flushing process of PointValues. It provides methods to retrieve the packed bytes of a value, retrieve the k-th byte of a value, retrieve the doc ID of a value, swap two values, save a value to temporary storage, and restore values from temporary storage.
+FlushablePointsReader is a utility class that extends the Lucene PointValues interface to include a flush method. This allows codecs to optimize flushing by changing the order of points. The class provides methods to retrieve packed bytes, individual bytes, and doc IDs of the i-th value, as well as methods to swap values, save values to temporary storage, and restore values from temporary storage.
 
-The class extends the PointValues class and provides additional functionality to manipulate the order of values. This allows codecs to optimize the flushing process by rearranging the values in a way that suits their specific needs.
+The class is designed to be used by codecs that require the ability to change the order of points during flushing. It is a low-level utility that is not typically used directly by application code.
 
-The PointValuesFlushSorter class is designed to be used by codecs that need to optimize the flushing process of PointValues. It provides methods to retrieve the packed bytes of a value, retrieve the k-th byte of a value, retrieve the doc ID of a value, swap two values, save a value to temporary storage, and restore values from temporary storage.
+FlushablePointsReader is part of the Lucene codecs module, which provides classes for encoding and decoding index data. It is intended for use by Lucene internals and is not expected to be used by applications directly.
 
-The class isolates the manipulation of value order from the core PointValues class, allowing codecs to use the flush sorter without modifying the core logic of PointValues. It provides a clean separation of concerns, making it easier for codecs to optimize the flushing process without affecting the core functionality of PointValues.
-
-The PointValuesFlushSorter class is a low-level utility that is specific to the needs of codecs. It is not expected to be used directly by most users of Lucene. Instead, it is intended to be used by codecs that need to optimize the flushing process of PointValues.
-
-The PointValuesFlushSorter class is a stateless utility, meaning that it does not maintain any state between method calls. It is designed to be used by codecs that need to optimize the flushing process of PointValues, and its methods are expected to be called in a specific order.
-
-The PointValuesFlushSorter class is thread-safe, meaning that it can be used concurrently by multiple threads without any race conditions or data corruption. It is designed to be used by codecs that need to optimize the flushing process of PointValues, and its methods are expected to be called in a specific order.
-
-The PointValuesFlushSorter class is designed to be used by codecs that need to optimize the flushing process of PointValues. It provides methods to retrieve the packed bytes of a value, retrieve the k-th byte of a value,
+**Useful Links:**
+- [Lucene Codecs](https://lucene.apache.org/core/8_5_0/core/org/apache/lucene/codecs/package-summary.html)

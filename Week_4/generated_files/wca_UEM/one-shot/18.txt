@@ -1,13 +1,14 @@
-**Title:** KnnVectorsFormat — Abstract Base Class for Formats Encoding Per-Document Vectors
+**Title:** KnnVectorsFormat — Per-Document Vectors Format
 
 **Summary:**
-The KnnVectorsFormat class is an abstract base class for formats that encode and decode per-document vectors and any associated indexing structures required to support nearest-neighbor search. It provides methods for writing vectors to an index and reading vectors from an index. The fieldsWriter method returns a KnnVectorsWriter object, which is used to write the vectors to the index, while the fieldsReader method returns a KnnVectorsReader object, which is used to read the vectors from the index.
+The KnnVectorsFormat module provides functionality for encoding and decoding per-document vectors, as well as associated indexing structures, required for nearest-neighbor search. It consists of three main components:
 
-The class is designed to be extended by concrete implementations that provide the actual encoding and decoding logic. It is intended to be used in conjunction with the KnnVectorsWriter and KnnVectorsReader classes, which provide the concrete implementation for writing and reading vectors to and from the index.
+- `KnnVectorsWriter`: An abstract class that defines the interface for writing vectors to the index. It is responsible for writing vectors to the index in a format that can be later retrieved and used for nearest-neighbor search.
 
-The class depends on the Lucene index SegmentReadState and SegmentWriteState classes, as well as the VectorValues interface for accessing vector values. It also depends on the TopDocs and TopDocsCollector classes for representing and collecting the results of nearest-neighbor searches.
+- `KnnVectorsReader`: An abstract class that defines the interface for reading vectors from the index. It is responsible for reading vectors from the index and providing access to the encoded vector data for use in nearest-neighbor search.
 
-The class includes a sentinel EMPTY format that throws an exception when written, indicating a codec that does not support vectors.
+- `KnnVectorsFormat`: A class that provides methods for creating instances of `KnnVectorsWriter` and `KnnVectorsReader` based on the specified format. It is responsible for managing the lifecycle of the writer and reader instances and ensuring that they are properly closed when they are no longer needed.
 
-**Note:**
-The code also includes a `EMPTY` format that throws an exception when written. It acts as a sentinel indicating a codec that does not support vectors.
+The module is designed to be pluggable, allowing different formats to be supported by implementing the `KnnVectorsWriter` and `KnnVectorsReader` interfaces and registering them with the `KnnVectorsFormat` class. This allows users to choose the format that best suits their needs for encoding and decoding vectors.
+
+The code is part of the Lucene library, which is a widely-used open-source search engine library. It provides efficient and scalable indexing and searching capabilities for large-scale data sets, and the KnnVectorsFormat module is a key component of the library's support for nearest-neighbor search.

@@ -1,12 +1,8 @@
-**Title:** FuzzySet — Lossy Set for Large Values
+**Title:** EvenNumberFilter — Integer Parity Filter Utility
 
 **Summary:**
-FuzzySet is a data structure that represents a set of large values using a significantly smaller amount of memory. It is lossy in that it cannot definitively state that it contains a value but can definitively say if a value is not in the set. It can be used as a Bloom filter or for fuzzy counting.
+EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
 
-The architecture of FuzzySet is based on a probabilistic data structure called the Bloom filter, which uses a bit array and a set of hash functions to determine the presence or absence of a value in the set. The code provides methods for adding values to the set, checking if a value is present, and estimating the false positive rate.
+The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The core logic of the class is to use a set of hash functions to determine the position of each value in the bit array. The hash functions are selected using the MurmurHash2 algorithm, which is a non-cryptographic hash function. The bit array is then updated based on the hash values to represent the presence or absence of each value.
-
-The code also provides methods for serializing and deserializing the set to and from a DataOutput and DataInput stream, respectively. It also implements the Accountable interface to provide information about the memory usage of the set.
-
-Overall, FuzzySet is a memory-efficient data structure that can be used for approximate set operations, such as checking if a value is present in a large set.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

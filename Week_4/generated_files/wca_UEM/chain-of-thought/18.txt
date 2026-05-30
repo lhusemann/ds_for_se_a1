@@ -1,2 +1,12 @@
-**Title:** KnnVectorsFormat
-**Summary:** The KnnVectorsFormat class is a part of the Apache Lucene library and provides abstract methods for writing and reading vectors to and from an index. It includes a static holder class to prevent classloading deadlock and a method to look up a format by name using the NamedSPILoader. The class defines a method to return a KnnVectorsWriter to write vectors to the index and a method to return a KnnVectorsReader to read vectors from the index. The EMPTY constant is defined as a sentinel indicating a Codec that does not support vectors.
+**Title:** KnnVectorsFormat: Encoding and decoding per-document vectors and associated indexing structures for nearest-neighbor search in Lucene
+
+**Summary:**
+The KnnVectorsFormat class is an abstract class in the Apache Lucene library that provides the core functionality for encoding and decoding per-document vectors and any associated indexing structures required to support nearest-neighbor search. It is used for indexing and searching vectors in a Lucene index.
+
+The class implements the NamedSPI interface, which allows it to be loaded dynamically at runtime. This allows different implementations of the KnnVectorsFormat class to be registered and used by the Lucene library.
+
+The class includes a static inner class called Holder, which is used to load the KnnVectorsFormat implementations at runtime. The Holder class ensures that the KnnVectorsFormat implementations are loaded only when they are actually needed, preventing classloading deadlock.
+
+The class also includes a static KnnVectorsFormat called EMPTY, which is used as a sentinel value to indicate that a codec does not support vectors. When this sentinel value is used, an UnsupportedOperationException is thrown to indicate that the codec does not support vectors.
+
+In summary, the KnnVectorsFormat class provides the core functionality for encoding and decoding vectors, as well as methods for writing and reading vectors to and from an index. It also includes support for dynamic loading of different implementations and a sentinel value to indicate that a codec does not support vectors.

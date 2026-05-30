@@ -1,2 +1,2 @@
-**Title:** Utility class for reading and writing versioned headers
-**Summary:** The provided code is a utility class for reading and writing versioned headers. It provides methods for writing and reading headers, as well as computing the length of headers. The code also includes constants for identifying the start of a codec header and footer. The code is part of the Lucene project and is marked as experimental.
+**Title:** Utility methods for reading and writing versioned headers
+**Summary:** The code provides utility methods for reading and writing versioned headers, which are used to identify the format of a file and ensure it is in the expected format. It includes methods for writing a codec header, an index header, and a codec footer, as well as methods for reading and validating headers and footers. It also includes constants for the magic numbers used in headers and footers, as well as helper methods for reading and writing big-endian integers and longs.

@@ -1,19 +1,27 @@
-The provided code implements a multi-level skip list reader in Java. It is used to efficiently navigate through large sorted lists of data. The skip list is a data structure that allows for fast access to specific elements in the list by skipping over large sections of the list.
+This code implements a reader for multi-level skip lists in the Lucene library. It provides functionality to read skip lists with multiple levels and decode the skip data. The skip lists are used to optimize the retrieval of data in the index.
 
-The `MultiLevelSkipListReader` class has a constructor that takes an `IndexInput` stream, the maximum number of skip levels, the skip interval, and the skip multiplier. It initializes the skip stream, skip pointer, child pointer, and other necessary fields.
+The `MultiLevelSkipListReader` class implements the `Closeable` interface and has member variables such as `maxNumberOfSkipLevels`, `numberOfSkipLevels`, `numberOfLevelsToBuffer`, `docCount`, `skipStream`, `skipPointer`, `skipInterval`, `numSkipped`, `skipDoc`, and `childPointer`.
 
-The `skipTo` method is used to skip entries in the skip list until the first entry with a document number greater than or equal to the target is found. It uses a binary search algorithm to efficiently navigate through the skip levels.
+The constructor of the class initializes the skip stream, maximum skip levels, skip interval, and skip multiplier. It also initializes the skip stream for each level and sets the skip interval for each level.
 
-The `init` method is used to initialize the reader for reuse on a new term. It sets the skip pointer, doc count, and other necessary fields.
+The `skipTo` method skips entries to the first beyond the current whose document number is greater than or equal to the target. It returns the current doc count.
 
-The `loadSkipLevels` method is used to load the skip levels from the skip stream. It calculates the number of skip levels based on the doc count and skip interval, and then loads the skip levels into memory.
+The `loadNextSkip` method reads the next skip entry on the given level and updates the skip data.
 
-The `readSkipData` method is an abstract method that must be implemented by subclasses to define the actual format of the skip data.
+The `seekChild` method seeks the skip entry on the given level.
 
-The `readLevelLength` and `readChildPointer` methods are used to read the length of the current level and the child pointer, respectively, from the skip stream.
+The `close` method closes the skip stream.
 
-The `setLastSkipData` method is used to copy the values of the last read skip entry on a specific level.
+The `init` method initializes the reader for reuse on a new term.
 
-The `SkipBuffer` class is used to buffer the top skip levels in memory. It extends the `IndexInput` class and provides methods for reading bytes and seeking to a specific position in the buffer.
+The `loadSkipLevels` method loads the skip levels.
 
-Overall, the `MultiLevelSkipListReader` class provides a efficient and flexible way to navigate through large sorted lists of data using a multi-level skip list data structure.
+The `readSkipData` method is an abstract method that subclasses must implement to define the actual skip data encoding.
+
+The `readLevelLength` method reads the length of the current level written via `MultiLevelSkipListWriter.writeLevelLength`.
+
+The `readChildPointer` method reads the child pointer written via `MultiLevelSkipListWriter.writeChildPointer`.
+
+The `setLastSkipData` method copies the values of the last read skip entry on this level.
+
+The `SkipBuffer` class is used to buffer the top skip levels.

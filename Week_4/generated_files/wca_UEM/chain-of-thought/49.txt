@@ -1,2 +1,9 @@
-**Title:** TermsIndexReaderBase Class
-**Summary:** The TermsIndexReaderBase class is a part of the Lucene library and provides the core functionality for managing the terms index. It implements methods for seeking to the largest indexed term that is less than or equal to a given term, retrieving the next indexed term, and accessing the term and its file offset. It also supports ordinal access if the index supports it. The class is abstract and requires implementation of the abstract methods. It also implements the Closeable and Accountable interfaces. The Closeable interface is used to close the index reader, and the Accountable interface provides information about the memory usage of the index. The code also contains a nested class called FieldIndexEnum that provides an interface for enumerating the indexed terms and accessing their file offsets. It also provides support for seeking to a specific ordinal if the index supports it. Overall, the code provides a base implementation for managing the terms index in the Lucene library.
+**Title:** TermsIndexReaderBase: Managing the Terms Index in a Lucene-based Application
+
+**Summary:**
+
+The TermsIndexReaderBase class is an abstract class that implements the Closeable and Accountable interfaces. It provides methods to retrieve a FieldIndexEnum for a given FieldInfo object, close the index, and check if the index supports ordinals.
+
+The FieldIndexEnum class is an abstract inner class that is used to manage the terms index. It provides methods to seek to the largest indexed term that is less than or equal to a given term, retrieve the next indexed term, retrieve the current term, and seek to a specific ordinal.
+
+Overall, this code provides a framework for managing the terms index in a Lucene-based application. It allows for efficient retrieval and management of terms within the index, and supports the use of ordinals for faster access to specific terms.

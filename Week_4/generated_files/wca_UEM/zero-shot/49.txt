@@ -1,1 +1,7 @@
-The `TermsIndexReaderBase` class is an abstract class that implements the `Closeable` and `Accountable` interfaces. It also includes a nested abstract class `FieldIndexEnum` that provides methods for seeking and iterating over indexed terms and retrieving their file offsets. The `TermsIndexReaderBase` class provides methods for getting a `FieldIndexEnum` for a given `FieldInfo`, closing the index reader, and checking if it supports ordinals.
+This is a Java class that implements the functionality of a TermsIndexReaderBase. It is used to manage the terms index for Lucene's block terms codec. The class provides methods for seeking to the largest indexed term that is less than or equal to a given term, and for retrieving the next indexed term. It also provides methods for seeking to a specific ordinal and retrieving the ordinal of the current term. The class also implements the Closeable and Accountable interfaces.
+
+The class has two abstract methods: getFieldEnum and supportsOrd. The getFieldEnum method returns a FieldIndexEnum object, which is used to manage the terms index for a specific field. The supportsOrd method returns a boolean indicating whether the class supports ordinals.
+
+The FieldIndexEnum class is also abstract and provides methods for seeking to a specific term, retrieving the next indexed term, retrieving the current term, seeking to a specific ordinal, and retrieving the ordinal of the current term.
+
+Overall, the code provides a framework for managing the terms index for Lucene's block terms codec, and allows for efficient retrieval of indexed terms and their corresponding file offsets.

@@ -1,8 +1,12 @@
-**Title:** TermState — Base Class for Lucene's Term States
+**Title:** BlockTermState — Term State for Lucene's PostingsReaderBase
 
 **Summary:**
-TermState is the base class for Lucene's term states, which hold all state required for `PostingsReaderBase` to produce a `org.apache.lucene.index.PostingsEnum` without re-seeking the terms dict. It holds information such as the document frequency, total term frequency, term block order, and block file pointer.
+BlockTermState is a term state implementation specific to Lucene's PostingsReaderBase. It holds all state required for PostingsReaderBase to produce a PostingsIterator without re-seeking the terms dict.
 
-TermState is an abstract class with two concrete implementations: `OrdTermState` and `TermState`. The `OrdTermState` class extends `TermState` and adds the `ord` field, which represents the term's order in the terms dictionary.
+The class holds state information about terms in the current block, including the number of documents with the term, the total number of occurrences of the term, the term's ord in the current block, and the file pointer into the terms dictionary primary file that holds this term.
 
-TermState is an internal class used by Lucene's indexing and searching code, and is not intended for direct use by applications. It is part of Lucene's internal package and is subject to change without notice.
+BlockTermState is a subclass of OrdTermState, which provides additional functionality for managing term ord values.
+
+The code is part of the Lucene library, which is a high-performance, full-featured text search engine library written entirely in Java. It is designed to provide a high-level API that developers can use to build full-text search applications.
+
+The BlockTermState class is designed to be used in a specific context and may not be applicable to other contexts. It is not a general-purpose data science tool and is specific to the Lucene library.

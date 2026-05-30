@@ -2,7 +2,7 @@
 # 0. IMPORT THE REQUIRED DEPENDENCIES
 # ==========================================
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from pathlib import Path
 from collections import defaultdict
 import re
@@ -13,7 +13,7 @@ import os
 # ==========================================
 # 1. ENVIRONMENT & MODEL SETUP
 # ==========================================
-model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1" 
+model_name = "ibm-granite/granite-34b-code-instruct-8k" 
 
 hf_token = os.environ.get('HF_TOKEN')
 if not hf_token:
@@ -22,7 +22,14 @@ if not hf_token:
 
 # ==========================================
 # X Hardware optimization (Quantization) X ====> NO need for this step here [WHY?!]
+# used for a short amount of time as we ran out of memory at the beginning
 # ==========================================
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4"
+)
 
 # ==========================================
 # 2. LOAD THE TOKENIZER
@@ -45,8 +52,9 @@ model = AutoModelForCausalLM.from_pretrained(
     model_name,
     token=hf_token,
     trust_remote_code=False,
-    torch_dtype=torch.bfloat16,             
-    device_map="auto"                   
+    # quantization_config=bnb_config, # used for a short amount of time for bug fixing         
+    device_map="auto",
+    dtype=torch.bfloat16 #  
 )
 
 # ==========================================
@@ -283,7 +291,9 @@ def do_llm_call(prompt) -> str:
         prompt,
         add_generation_prompt=True,
         return_dict=True,
-        return_tensors="pt"
+        return_tensors="pt",
+        truncation=True,
+        max_length=7680
     ).to(model.device)
 
     # Generate response
@@ -372,9 +382,9 @@ def get_clusters(rsf_file_path):
 
 ## filtered.rsf uses some files that are out of /lucene/lucene/codecs scope as the source or target location
 ## was within /lucene/lucene/codecs. All these files were found in this folder:
-SECOND_SOURCE_CODE_DIR = Path("/pc2/groups/hpc-prf-dssecs/group-9/lucene/lucene/core/src/java/org/apache/lucene/codecs")
-SOURCE_CODE_DIR = Path("/pc2/groups/hpc-prf-dssecs/group-9/lucene/lucene/codecs")
-BASE_RSF_FILES = Path("/pc2/groups/hpc-prf-dssecs/group-9/file-based-rsf")
+SECOND_SOURCE_CODE_DIR = Path("/scratch/hpc-prf-dssecs/group-9/lucene/lucene/core/src/java/org/apache/lucene/codecs")
+SOURCE_CODE_DIR = Path("/scratch/hpc-prf-dssecs/group-9/lucene/lucene/codecs")
+BASE_RSF_FILES = Path("/scratch/hpc-prf-dssecs/group-9/file-based-rsf")
 BASE_OUTPUT_DIR = Path("/scratch/hpc-prf-dssecs/group-9/hierarchical_summarization")
 VALID_RSF_FILE_NAME = {"arc", "wca_UEMNM", "wca_UEM", "limbo", "acdc"}
 VALID_PROMPT_TECHNIQUES = {"zero-shot", "one-shot", "chain-of-thought"}
@@ -399,7 +409,7 @@ for cluster_name, entities in clusters.items():
 
     if first_descriptive_summary and second_descriptive_summary:
         # combine summaries if cluster had files in in both directories
-        final_descriptive_summary = get_descriptive_summary([], [first_descriptive_summary, second_descriptive_summary])
+        final_descriptive_summary = get_descriptive_summary([], [first_descriptive_summary, second_descriptive_summary], prompt_technique)
     else:
         final_descriptive_summary = first_descriptive_summary or second_descriptive_summary
 

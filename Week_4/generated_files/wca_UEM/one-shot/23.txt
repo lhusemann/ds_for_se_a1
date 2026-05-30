@@ -1,10 +1,12 @@
-**Title:** Lucene90PostingsSkipper — Skip List Reader for Lucene 9.0 Postings Formats
+**Title:** Lucene90PostingsSkipListReader — Lucene 9.0 Postings Skip List Reader
 
 **Summary:**
-This class provides a skip list reader for Lucene 9.0 postings formats. It is responsible for reading skip data, managing skip intervals, and advancing to the appropriate block based on a target document ID. It also handles payloads and offsets if they are present in the index.
+The Lucene90PostingsSkipListReader is a low-level data structure that implements a skip list for Lucene 9.0 postings. It is designed to efficiently navigate through large posting lists by skipping over blocks of documents. The skip list is composed of multiple levels, with each level skipping over a larger number of documents. The skip list is initialized lazily, and its data is loaded from a file stream as needed.
 
-The skip list is implemented as a hierarchical structure, with multiple levels to optimize skipping to larger blocks of documents. Each level represents a range of documents, and the skip data for each level is stored in a separate file. The skipper reads this data and uses it to efficiently navigate to the appropriate block in the postings list.
+The skip list is used to accelerate document lookup by allowing the user to jump directly to a specific document within the posting list. The skip list is updated incrementally as new documents are added to the posting list. The skip list is also used to optimize index traversal by skipping over blocks of documents that do not contain the desired term.
 
-The skipper is initialized with the necessary input streams and file pointers, and it provides methods to skip to a target document ID and retrieve the corresponding position, payload, and offset information. It also handles the logic for reading the skip data and managing the skip intervals.
+The skip list is implemented as a series of fixed-size blocks, with each block containing a set of documents and associated skip data. When the user requests to skip to a specific document, the skip list is traversed to find the block that contains the document, and the user is positioned at the beginning of that block. The skip list also includes additional data structures to efficiently navigate through the posting list, such as a list of start pointers for each block.
 
-The skipper is designed to be used in conjunction with the Lucene90PostingsReader, which provides the main functionality for reading postings data. Together, these classes form a complete solution for efficiently accessing and navigating through the postings data in a Lucene 9.0 index.
+The skip list is designed to be memory-efficient and cache-friendly, and it uses a combination of techniques such as lazy initialization and buffering to minimize disk I/O and maximize performance. The skip list is also thread-safe, allowing multiple threads to access and update the skip list simultaneously.
+
+Overall, the Lucene90PostingsSkipListReader is a high-performance data structure that is critical for efficient document lookup and index traversal in Lucene 9.0.

@@ -1,8 +1,12 @@
-**Title:** StoredFieldsFormat — Controls Format of Stored Fields
+**Title:** CustomStoredFieldsFormat — Custom Format for Storing Fields
 
 **Summary:**
-The StoredFieldsFormat class in Lucene is a pluggable component that controls the format of stored fields. It is responsible for reading and writing stored fields from disk. Subclasses must implement the abstract methods for reading and writing stored fields, providing the specific format for stored fields.
+CustomStoredFieldsFormat is a custom implementation of the Lucene StoredFieldsFormat class that provides custom control over the format of stored fields in Lucene segments. It is designed to be used in scenarios where the default format is not suitable for the specific requirements of the application.
 
-The class takes several parameters, including a Directory, SegmentInfo, FieldInfos, and IOContext, which are required to read or write stored fields. It returns either a StoredFieldsReader or a StoredFieldsWriter object, depending on the method being called.
+The CustomStoredFieldsFormat class overrides the fieldsReader and fieldsWriter methods to provide custom implementations of the StoredFieldsReader and StoredFieldsWriter interfaces, respectively. These custom implementations can be tailored to specific use cases, such as optimizing for performance, storage efficiency, or data security.
 
-The StoredFieldsFormat class is designed to be pluggable, allowing different formats to be used for stored fields. It is part of the Lucene index format, and its implementation can have a significant impact on the performance and efficiency of Lucene applications.
+The fieldsReader method is responsible for creating a StoredFieldsReader instance that can read stored fields from a Lucene segment. It takes a Directory object, a SegmentInfo object, a FieldInfos object, and an IOContext object as parameters and returns a custom implementation of StoredFieldsReader.
+
+The fieldsWriter method is responsible for creating a StoredFieldsWriter instance that can write stored fields to a Lucene segment. It takes a Directory object, a SegmentInfo object, and an IOContext object as parameters and returns a custom implementation of StoredFieldsWriter.
+
+The CustomStoredFieldsFormat class is designed to be pluggable and can be used in conjunction with the Lucene indexing and search library to customize the format of stored fields in Lucene segments.

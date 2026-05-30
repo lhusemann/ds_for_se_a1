@@ -1,12 +1,10 @@
-**Title:** StoredFieldsReader — Abstract Class for Reading Stored Fields
+**Title:** Lucene StoredFieldsReader — Abstract Base Class for Reading Stored Fields
 
 **Summary:**
-The StoredFieldsReader class is an abstract class that provides a way to read stored fields for a document. It is part of the Lucene library and is used to access the stored fields of documents in an index.
+The `StoredFieldsReader` class is an abstract base class that provides the foundation for reading stored fields from Lucene documents. It defines the core logic for iterating over the stored fields of a document and visiting them using the `visitDocument` method. It also provides methods for cloning the reader and checking the integrity of the reader.
 
-The abstract class defines two methods: `visitDocument`, which is used to visit the stored fields for a given document ID, and `close`, which is used to close any resources associated with the class. The `clone` method is also defined, but it is not implemented in the abstract class.
+The class is designed to be extended by concrete implementations that provide the actual logic for reading stored fields from Lucene documents. It acts as a template for the concrete implementations, defining the core logic that is common to all implementations.
 
-The class is designed to be extended by concrete implementations that provide the actual logic for reading stored fields. It is intended to be used in conjunction with the StoredFieldVisitor class, which is used to visit the stored fields for a document.
+The `StoredFieldsReader` class is part of the Lucene indexing and search framework, which is used for full-text search and indexing of large document collections. It is used to store and retrieve arbitrary metadata associated with each document, such as titles, authors, and content.
 
-The class depends on the Closeable interface, which defines the `close` method, and the StoredFieldVisitor class, which is used to visit the stored fields for a document. It also depends on the IOException class, which may be thrown when an I/O error occurs.
-
-The class is part of the Lucene experimental package, which contains experimental classes and methods that may change or be removed in future releases.
+The `StoredFieldsReader` class is a key component of the Lucene indexing and search framework, and is used extensively throughout the Lucene codebase. It is a core part of the framework, and is expected to be used by developers who are building applications that use Lucene for indexing and search.

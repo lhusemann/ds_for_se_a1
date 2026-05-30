@@ -1,10 +1,10 @@
-**Title:** HashFunction — Abstract Base Class for Hashing Implementations
+**Title:** Abstract Base Class for Hashing Implementations
 
 **Summary:**
-The `HashFunction` class is an abstract base class that defines a thread-safe interface for implementing a hash function. It provides a single method `hash` that takes a `BytesRef` object as input and returns an integer hash value. The implementation of the `hash` method is expected to be thread-safe and provide a consistent hash value for the range of bytes referenced by `bytes.offset` and `bytes.length`.
+This code defines an abstract class `HashFunction` that provides a method `hash` for hashing the contents of a `BytesRef` object. The `hash` method is expected to be implemented by subclasses and should return a hash of the bytes referenced by the `BytesRef` object.
 
-The `HashFunction` class is part of the `org.apache.lucene.codecs.bloom` package, which provides utilities for working with Bloom filters, a space-efficient data structure for approximate set membership tests. The `HashFunction` class is designed to be subclassed by concrete implementations of hash functions, such as `MurmurHash2` or ` papHash`, which can then be used to generate hash values for byte sequences.
+The `hash` method is a core part of the `HashFunction` class and is expected to be implemented by subclasses. It takes a `BytesRef` object as input, which represents the data to be hashed, and returns an `int` representing the hash of the bytes referenced by `bytes.offset` and `bytes.length`.
 
-The `HashFunction` class itself has no state and does not maintain any instance variables. All state is held in the input `BytesRef` object, which is passed to the `hash` method. This makes the class thread-safe and ensures that each invocation of the `hash` method produces a consistent result based on the contents of the input `BytesRef`.
+The `HashFunction` class itself does not provide any concrete implementations of the `hash` method, leaving that to subclasses to provide. This allows for flexibility in choosing different hashing algorithms and implementations.
 
-The `HashFunction` class has no external dependencies beyond the `BytesRef` type and the Lucene utility classes it is part of. It is designed to be a standalone module that can be easily extended and subclassed to provide different hash function implementations.
+The `HashFunction` class has no external dependencies beyond the `BytesRef` type, making it a self-contained module that can be used in a variety of contexts without depending on external libraries or modules.

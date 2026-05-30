@@ -1,8 +1,10 @@
-**Title:** Lucene NormsConsumer API
+**Title:** Lucene NormsConsumer for Merging Normalization Values
 
 **Summary:**
-The Lucene NormsConsumer API is a low-level API for writing normalization values into the index. It is part of the Lucene search library and is used to write normalization values into the index in a specific format. The API defines an abstract class `NormsConsumer` that implements the logic for consuming normalization values. It has methods for adding normalization values for a field and merging fields from multiple readers. The default implementation of the merge method calls `mergeNormsField` for each field, filling segments with missing norms for the field with zeros. Implementations can override this method for more sophisticated merging.
+The Lucene NormsConsumer is a module that provides functionality for merging normalization values. It defines a class `NormsConsumer` that implements the `Closeable` interface. The `NormsConsumer` class is responsible for merging normalization values for a field from multiple readers.
 
-The API is designed to be consumed by higher-level components, such as the IndexWriter, which handle the details of segment merging and indexing. The NormsConsumer API isolates the logic for consuming normalization values from the rest of the indexing process, allowing for flexibility and extensibility in how normalization values are written to the index.
+The `NormsConsumer` class has two key methods: `mergeNormsField` and `merge`. The `mergeNormsField` method merges and filters deleted documents on the fly. The `merge` method iterates over each field with normalization values and calls the `mergeNormsField` method.
 
-The API isolates the logic for consuming normalization values from the rest of the indexing process, allowing for flexibility and extensibility in how normalization values are written to the index.
+The `NormsConsumer` class has no specific inputs or outputs. It depends on the Lucene library and its dependencies.
+
+The `NormsConsumer` class follows a standard design pattern for Lucene modules, providing a clear separation of concerns and reusability across different parts of the library.

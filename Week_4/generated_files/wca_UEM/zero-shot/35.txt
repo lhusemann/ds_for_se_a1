@@ -1,1 +1,19 @@
-The `PostingsReaderBase` class is an abstract class that implements the functionality for creating `PostingsEnum` and `ImpactsEnum` instances. It is used by the core terms dictionaries to manage the creation of these enums. The class provides methods for initializing the terms dictionary, creating a new empty term state, decoding term metadata, creating a `PostingsEnum` instance, creating an `ImpactsEnum` instance, and checking the integrity of the reader. It also provides an `IndexInput` where the class may read any previously stored data that was written in the corresponding `PostingsWriterBase` at indexing time. The code is marked as experimental, indicating that it may be subject to change or removal in future releases.
+The `PostingsReaderBase` class is an abstract class that provides the core functionality for managing the creation of `PostingsEnum` and `ImpactsEnum` instances. It implements the `Closeable` interface to allow for resource cleanup. The class is used for reading and writing terms dictionaries in the Lucene library.
+
+The `PostingsReaderBase` class has the following key components:
+
+- `init()`: This method initializes the reader by reading and verifying the header from the provided terms dictionary `IndexInput`.
+
+- `newTermState()`: This method returns a newly created empty `TermState` object.
+
+- `decodeTerm()`: This method decodes metadata for the next term, using the provided `DataInput`, `FieldInfo`, `BlockTermState`, and `absolute` flag.
+
+- `postings()`: This method returns a `PostingsEnum` instance that can be used to iterate over the postings for a given term. It takes `FieldInfo`, `BlockTermState`, `PostingsEnum` reuse, and `flags` as parameters.
+
+- `impacts()`: This method returns an `ImpactsEnum` instance that can be used to compute impacts with a given scorer. It takes `FieldInfo`, `BlockTermState`, and `flags` as parameters.
+
+- `checkIntegrity()`: This method checks the consistency of the reader by performing any necessary checks, such as computing checksums against large data files.
+
+- `close()`: This method closes the reader and releases any associated resources.
+
+Overall, the `PostingsReaderBase` class provides a framework for managing the creation of `PostingsEnum` and `ImpactsEnum` instances, as well as for initializing, decoding, and checking the integrity of the terms dictionary data.

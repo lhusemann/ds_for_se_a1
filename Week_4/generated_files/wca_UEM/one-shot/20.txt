@@ -1,8 +1,8 @@
-**Title:** KnnVectorsWriter — Lucene Vector Values Writer
+**Title:** IndexVectorWriter — Index Vector Writing Utility
 
 **Summary:**
-The KnnVectorsWriter class is a part of the Lucene search engine library and provides functionality for writing vector values to an index. It implements the Closeable interface and provides methods for writing vector values to an index and merging them from multiple segments. The merge method iterates over each field with vector values and merges them using the VectorValuesMerger class. The VectorValuesMerger class provides iterator-style access to the merged vector values and supports random access by dense ordinal.
+IndexVectorWriter is a module that provides functionality for writing vectors to an index. It is composed of two layers: a `write` subdirectory that houses the core logic for writing vectors, and the top-level IndexVectorWriter class which orchestrates the writing process.
 
-The KnnVectorsWriter class depends on several utility classes and interfaces from the Lucene library, including DocIDMerger, VectorSimilarityFunction, BytesRef, VectorValues, RandomAccessVectorValues, RandomAccessVectorValuesProducer, MergeState, FieldInfo, KnnVectorsReader, and KnnVectorsWriter. It also uses the Lucene’s numeric types and utilities for working with binary data.
+The architecture follows a clear separation of concerns — the core logic for writing vectors is delegated entirely to the `write` layer, while IndexVectorWriter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the writer, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
 
-The KnnVectorsWriter class is designed to be used within the Lucene search engine library and may require additional context and understanding of the larger system in which it is used.
+There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.

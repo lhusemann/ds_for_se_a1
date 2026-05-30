@@ -1,2 +1,2 @@
-**Title:** Index Term Dictionary
-**Summary:** This module is responsible for packing term suffixes into a byte array and writing term stats. It also handles singleton terms and term blocks. The module is structured into subdirectories, with each subdirectory owning specific responsibilities. The data flow between the top-level module and its subdirectories is not shared, and the coupling characteristics are loose. The title and summary accurately capture the module's overall behaviour and design.
+**Title:** `org.apache.lucene.codecs.blocktreeords.ords`
+**Summary:** This module provides functionality for packing term suffixes into a byte array, compressing the term suffix bytes, and writing term stats. It also handles interactions between the top-level module and its subdirectories.

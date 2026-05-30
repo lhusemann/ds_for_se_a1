@@ -1,10 +1,10 @@
-**Title:** Compound File Format — Abstract Base Class for Compound File Encoding and Decoding
+**Title:** CompoundFormat — Compound File Format Abstraction
 
 **Summary:**
-The CompoundFileFormat module provides an abstract class, CompoundFormat, that defines the methods for encoding and decoding compound files. It is a low-level utility class that isolates the compound file encoding and decoding logic from the rest of the application.
+The CompoundFormat class provides an abstraction for reading and writing compound files. It is an abstract class that defines the core logic for packing segment files into a compound format and exposing read-only views of compound files in a segment.
 
-The core logic of the CompoundFormat class is to provide methods for encoding and decoding compound files. It uses the Directory and SegmentInfo classes to read or write compound files. The getCompoundReader method returns a CompoundDirectory object, which provides a read-only view of the compound files in a segment.
+The `getCompoundReader` method returns a CompoundDirectory, which is a read-only view of the compound files in a segment. This allows for efficient random access to the files within the compound format.
 
-The CompoundFormat class has no external dependencies, making it a self-contained module that can be easily integrated into other applications. It is designed to be used in a pluggable manner, allowing applications to choose the compound file encoding and decoding strategy that best suits their needs.
+The `write` method takes a Directory, SegmentInfo, and IOContext as inputs and packs the segment's files into a compound format. This method is responsible for writing the compound file and handling any exceptions that may occur during the process.
 
-The CompoundFormat class does not handle any specific exceptions that may be thrown during encoding or decoding. It is the responsibility of the caller to handle any exceptions that may occur during the encoding or decoding process.
+The CompoundFormat class is located in the `org.apache.lucene.codecs` package and is part of the Lucene indexing and search library. It is designed to be modular and extensible, allowing for different implementations of compound file formats to be plugged in as needed.

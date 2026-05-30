@@ -1,8 +1,10 @@
-**Title:** EvenNumberFilter — Integer Parity Filter Utility
+**Title:** Direct Automaton IntersectTermsEnum — Automaton-based Term Enumerator
 
 **Summary:**
-EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
+The Direct Automaton IntersectTermsEnum is a custom implementation of the TermsEnum interface that efficiently intersects automata-based acceptors with a list of terms. It is designed to provide fast and memory-efficient term enumeration by directly traversing the automaton states without the need for backtracking.
 
-The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The implementation uses a DirectIntersectTermsEnum.State class to represent the current state of the automaton traversal, including the current state and the term position. It initializes the state with the initial state of the automaton and the start term. The next() method advances the state by incrementing the term position and checking if the current state is accepting. If not, it steps the automaton with the current term and updates the state accordingly. The termState() method returns the current state as a OrdTermState object.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The seekCeil() method is not implemented in this version of the code, but it can be added by using the skip pointers to efficiently navigate through the terms.
+
+Overall, the Direct Automaton IntersectTermsEnum provides a memory-efficient and fast way to intersect automata-based acceptors with a list of terms, making it suitable for large-scale indexing and search applications.

@@ -1,11 +1,1 @@
-The provided code is an abstract class named "SegmentInfoFormat" that is part of the Lucene library. It is used to control the format of the SegmentInfo file, which contains metadata about a segment in a Lucene index.
-
-The class has two abstract methods: "read" and "write". The "read" method is responsible for reading the SegmentInfo data from a directory, while the "write" method is used to write the SegmentInfo data to a directory.
-
-The "read" method takes a Directory object, the name of the segment to read, an expected identifier for the segment (as a byte array), and an IOContext object as parameters. It returns a SegmentInfo object that is populated with the data read from the directory.
-
-The "write" method takes a Directory object, a SegmentInfo object, and an IOContext object as parameters. It writes the SegmentInfo data to the directory and adds the codec's SegmentInfo filename(s) to the SegmentInfo object before performing any I/O operations.
-
-The class also has a protected constructor, which means that it can only be instantiated by subclasses.
-
-Overall, this class provides a way for codecs to customize the format of the SegmentInfo file, allowing for flexibility in how segment metadata is stored and accessed in a Lucene index.
+The `SegmentInfoFormat` class is an abstract class in the Lucene library that is used to read and write `SegmentInfo` data to and from a directory. It is marked as experimental, meaning it is still under development and may change in future releases. The `read` method takes a `Directory`, `segmentName`, `segmentID`, and `IOContext` as input and returns a `SegmentInfo` object. The `write` method takes a `Directory`, `SegmentInfo`, and `IOContext` as input and writes the `SegmentInfo` data to the directory.

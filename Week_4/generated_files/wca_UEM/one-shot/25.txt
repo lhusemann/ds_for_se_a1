@@ -1,8 +1,33 @@
-**Title:** EvenNumberFilter — Integer Parity Filter Utility
+**Title:** Lucene Skip List Reader
 
 **Summary:**
-EvenNumberFilter is a single-responsibility filtering module that isolates even integers from an arbitrary input list. It is composed of two layers: a `predicates` subdirectory that houses the reusable parity logic, and the top-level filter class itself which orchestrates the linear scan and result collection.
+The Lucene Skip List Reader is a component of the Lucene indexing and search engine. It is responsible for reading and interpreting skip data, which is used to efficiently navigate through a large number of documents in an index.
 
-The architecture follows a clean separation of concerns — predicate evaluation is delegated entirely to the stateless `ParityChecker` utilities in the `predicates` layer, while EvenNumberFilter owns the iteration and accumulation logic using a standard ArrayList. Data flows in one direction: the input list is passed down to the filter, elements are tested via the predicate layer, and matching values are collected into a new list that is returned to the caller.
+The Skip List Reader is initialized with an input stream from which to read the skip data. It provides a `skipTo` method that allows skipping to specific documents in the index. The `skipTo` method reads the skip data and uses it to quickly navigate to the desired document.
 
-There is no shared mutable state anywhere in the module, making it deterministic and safe for concurrent use. Its only external dependencies are the standard Java Collections API, making it a self-contained leaf cluster with minimal coupling to the broader codebase.
+The Skip List Reader is designed to be used in a multi-threaded environment, as it is not thread-safe. It implements the `Closeable` interface to allow for resource cleanup.
+
+The Skip List Reader is part of the Lucene project, which is a high-performance, full-featured text search engine library written entirely in Java. It is widely used in search applications and has been ported to other programming languages.
+
+**Key Classes:**
+- `org.apache.lucene.index.MultiLevelSkipListReader`: The Skip List Reader class.
+- `org.apache.lucene.store.IndexInput`: The input stream class used to read the skip data.
+- `org.apache.lucene.store.DataOutput`: The output stream class used to write data.
+- `org.apache.lucene.util.MathUtil`: A utility class for mathematical operations.
+
+**Usage:**
+To use the Skip List Reader, you need to create an instance of the `MultiLevelSkipListReader` class, passing in the input stream from which to read the skip data. You can then call the `skipTo` method to skip to specific documents in the index.
+
+**Example:**
+```java
+IndexInput skipStream = ... // create an input stream
+MultiLevelSkipListReader skipListReader = new MultiLevelSkipListReader(skipStream);
+int targetDoc = 100;
+int skippedDoc = skipListReader.skipTo(targetDoc);
+```
+
+**Benefits:**
+The Skip List Reader provides a way to efficiently navigate through a large number of documents in an index, which can improve the performance of search queries.
+
+**Drawbacks:**
+The Skip List Reader is not thread-safe, so it should be used in a single-threaded environment.
