@@ -1,9 +1,11 @@
 import csv
 import os
 
-INPUT_CLUSTER_SET_RSF = "file-based-rsf/arc.rsf"
-INPUT_FOLDER_CLUSTER_DESCRIPTION = "folder/arc"
-OUTPUT_CSV = "arc.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+INPUT_CLUSTER_SET_RSF = os.path.join(BASE_DIR, "..", "file-based-rsf", "acdc.rsf")
+INPUT_FOLDER_CLUSTER_DESCRIPTION = os.path.join(BASE_DIR, "..", "cluster_output_results", "acdc", "zero-shot")
+OUTPUT_CSV = os.path.join(BASE_DIR, "acdc.csv")
 
 cluster_files = {}
 with open(INPUT_CLUSTER_SET_RSF, "r") as f:
@@ -12,11 +14,13 @@ with open(INPUT_CLUSTER_SET_RSF, "r") as f:
         if len(parts) >= 3 and parts[0] == "contain":
             cluster_id = parts[1]
             file_name = parts[2]
+            if cluster_id.endswith(".ss"):
+                # this is the case for the acdc.rsf
+                cluster_id = cluster_id[:-3]
             cluster_files.setdefault(cluster_id, []).append(file_name)
 
-
 rows = []
-for txt_file in sorted(os.listdir(INPUT_FOLDER_CLUSTER_DESCRIPTION)):
+for txt_file in os.listdir(INPUT_FOLDER_CLUSTER_DESCRIPTION):
     if not txt_file.endswith(".txt"):
         continue
 
@@ -24,20 +28,18 @@ for txt_file in sorted(os.listdir(INPUT_FOLDER_CLUSTER_DESCRIPTION)):
     txt_path = os.path.join(INPUT_FOLDER_CLUSTER_DESCRIPTION, txt_file)
 
     with open(txt_path, "r") as f:
-        lines = f.readlines()
+        lines = [line.strip() for line in f.readlines()]
+        description = " ".join(line for line in lines if line)
 
-    title = lines[0].strip() if lines else ""
-    description = "".join(lines[1:]).strip() if len(lines) > 1 else ""
     files = "; ".join(cluster_files.get(cluster_id, []))
 
     rows.append({
         "cluster_ID": cluster_id,
         "files": files,
-        "title": title,
+        "title": "unknown",
         "description": description,
     })
 
-# Write everything to a CSV
 with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
     writer = csv.DictWriter(f, fieldnames=["cluster_ID", "files", "title", "description"])
     writer.writeheader()
