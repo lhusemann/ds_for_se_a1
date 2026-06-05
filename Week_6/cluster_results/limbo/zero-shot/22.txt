@@ -1,0 +1,3 @@
+The SimpleTextCodec class is a subclass of the Codec class that provides implementations of various member variables for different formats such as PostingsFormat, StoredFieldsFormat, SegmentInfoFormat, etc. It also has a constructor that calls the super constructor with the name "SimpleText". The class overrides various methods from the parent class to return the corresponding format objects.
+
+The SimpleTextCodec class is marked as experimental, indicating that it is for recreational use only.

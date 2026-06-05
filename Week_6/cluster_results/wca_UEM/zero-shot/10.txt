@@ -1,0 +1,1 @@
+The `DocValuesProducer` class is an abstract class that implements the `Closeable` interface. It provides methods for retrieving different types of docvalues, such as numeric, binary, sorted, sortedset, and sortednumeric. The class also includes a method for checking the integrity of the producer and an optional method for getting an instance optimized for merging.

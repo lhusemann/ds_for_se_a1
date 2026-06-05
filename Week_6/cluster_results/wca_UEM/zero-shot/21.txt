@@ -1,0 +1,1 @@
+The `LiveDocsFormat` class in the Lucene library is used to handle live/deleted documents in a Lucene index. It provides methods for reading and writing live documents, as well as recording the files in use by a segment commit info. The class is marked as `experimental`, which means it is still under development and may change in future releases.

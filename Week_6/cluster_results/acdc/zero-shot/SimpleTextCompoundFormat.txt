@@ -1,0 +1,13 @@
+Title: CompoundDirectory Class
+
+Description:
+The CompoundDirectory class is a subclass of the Directory class that provides functionality for reading from a compound file. It includes methods for checking the integrity of the directory, creating an output stream, and obtaining a lock. However, it does not support writing to the directory, as indicated by the UnsupportedOperationException being thrown in the createOutput, createTempOutput, and sync methods.
+
+Components and Interactions:
+The CompoundDirectory class consists of a constructor, a close method, a fileExists method, a fileLength method, an listAll method, a deleteFile method, an openInput method, a createOutput method, a createTempOutput method, a sync method, and a obtainLock method. The constructor initializes the directory and a Map for file entries. The close method closes the directory. The fileExists method checks if a file exists in the directory. The fileLength method returns the length of a file in the directory. The listAll method returns a list of all files in the directory. The deleteFile method deletes a file from the directory. The openInput method opens an input stream for a file in the directory. The createOutput method throws UnsupportedOperationException, as writing is not supported. The createTempOutput method throws UnsupportedOperationException, as writing is not supported. The sync method throws UnsupportedOperationException, as writing is not supported. The obtainLock method obtains a lock for the directory.
+
+Quality Attributes:
+The CompoundDirectory class does not have any specific quality attributes.
+
+Technology Used:
+The CompoundDirectory class uses the Lucene framework and the Java programming language.

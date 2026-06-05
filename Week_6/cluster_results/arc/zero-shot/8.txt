@@ -1,0 +1,15 @@
+This code defines a class called "Codec" that is used to encode and decode inverted index segments. It also provides methods for encoding and decoding postings, docvalues, stored fields, term vectors, field infos, segment info, document normalization values, live docs, compound files, points index, and numeric vector fields. The class also provides methods for looking up a codec by name, getting a list of all available codec names, reloading the codec list from a given classloader, and getting the default codec used for newly created IndexWriterConfig objects.
+
+The provided code is a Java class that defines a DocValuesFormat. It is used to encode and decode per-document values. The class implements the NamedSPILoader.NamedSPI interface and uses the ServiceLoader Service Provider Interface (SPI) to resolve format names.
+
+The DocValuesFormat class has a constructor that takes a name parameter, which is used to retrieve the format when reading the index. The class also has methods to create a DocValuesConsumer to write docvalues to the index and a DocValuesProducer to read docvalues from the index.
+
+The class also provides methods to look up a format by name, get a list of all available format names, and reload the DocValues format list from a given ClassLoader.
+
+Overall, the code provides a way to define and use custom docvalues formats for encoding and decoding per-document values in a Lucene index.
+
+This code defines a class called PostingsFormat that is used to encode and decode terms, postings, and proximity data. The class is part of the Lucene library and is used for indexing and searching text data. The class is abstract and provides methods for writing and reading segments. It also includes methods for looking up a format by name, getting a list of all available format names, and reloading the postings format list from a given classloader.
+
+The class uses the ServiceLoader SPI to resolve format names and provides a no-arg constructor so SPI can load it. The class also includes a holder class to prevent classloading deadlock by delaying init of postings formats until needed.
+
+The class is marked as experimental, which means it is still under development and may change in future releases.

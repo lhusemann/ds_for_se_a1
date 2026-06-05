@@ -1,0 +1,16 @@
+Title: BloomFilterFactory - A Factory for Creating Bloom Filters for Lucene Indexing
+
+Components and Interactions:
+- BloomFilterFactory: An abstract class that is used to create index-time "FuzzySet" objects appropriately configured for each field.
+- FuzzySet: A class that represents a set of unique terms per document and allocates a bitset with 10% saturation for each unique term.
+- MurmurHash2: A hashing function used to set the bits in the bitset.
+
+Quality Attributes:
+- Scalability: The code is designed to handle large amounts of data and can scale accordingly.
+- Security: The use of the MurmurHash2 hashing function ensures secure hashing of the data.
+- Maintainability: The code is part of the Lucene project, which follows best practices for maintainability.
+
+Technology Used:
+- Java: The code is written in Java, which is a popular language for software development.
+- Lucene: The code is part of the Lucene project, which is a high-performance, full-featured text search engine library.
+- MurmurHash2: The code uses the MurmurHash2 hashing function, which is a fast, non-cryptographic hashing algorithm.

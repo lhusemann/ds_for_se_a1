@@ -1,0 +1,48 @@
+Here is a python program that can read the output of the SimpleTextPointsReader:
+
+```python
+import os
+import struct
+
+class SimpleTextPointsReader:
+    def __init__(self, filename):
+        self.filename = filename
+        self.fd = open(filename, "rb")
+        self.index = self._read_index()
+
+    def _read_index(self):
+        index = {}
+        while True:
+            line = self.fd.readline().decode("utf-8").strip()
+            if line == "END":
+                break
+            field, filename = line.split(":")
+            index[field] = filename
+        return index
+
+    def get_points(self, field):
+        filename = self.index[field]
+        with open(os.path.join(os.path.dirname(self.filename), filename), "rb") as fd:
+            while True:
+                line = fd.readline().decode("utf-8").strip()
+                if line == "END":
+                    break
+                doc_id, packed_value = line.split(":")
+                yield int(doc_id), packed_value
+
+    def close(self):
+        self.fd.close()
+
+if __name__ == "__main__":
+    filename = "points.txt"
+    reader = SimpleTextPointsReader(filename)
+    for field in reader.index:
+        print(f"Field: {field}")
+        for doc_id, packed_value in reader.get_points(field):
+            print(f"Doc ID: {doc_id}, Packed Value: {packed_value}")
+    reader.close()
+```
+
+This program defines a class `SimpleTextPointsReader` that can read the output of the SimpleTextPointsReader. The constructor takes a filename as an argument and opens the file for reading. It then reads the index from the file and stores it in a dictionary. The `get_points` method takes a field name as an argument and returns an iterator that yields the doc ID and packed value for each point in the field. The `close` method closes the file.
+
+In the main block, we create a `SimpleTextPointsReader` object with the filename "points.txt" and iterate through each field in the index. For each field, we print the field name and then iterate through the points in the field, printing the doc ID and packed value for each point. Finally, we close the reader.

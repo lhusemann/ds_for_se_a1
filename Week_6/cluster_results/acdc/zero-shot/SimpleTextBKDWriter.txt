@@ -1,0 +1,9 @@
+Title: "mutable_point_values"
+
+This module is responsible for ensuring that data is stored in an organized and efficient manner. It includes methods for checking if values are within specified bounds, as well as methods for ensuring that values are in order and that they are within specified bounds. The module also includes a method for checking if values are within specified bounds. The module is written in Java and uses the Lucene framework.
+
+The `MutablePointValues` class is a Java class that extends the `PointValues` class and provides functionality to modify the order of points and access their packed bytes, individual bytes, and doc IDs. It has several abstract methods that need to be implemented by subclasses.
+
+The class provides methods to access and modify the values of `PointValues`, which are used for indexing and searching in Lucene. It has methods to retrieve the packed bytes of the i-th value and store them in a `BytesRef` object, retrieve the k-th byte of the i-th value, retrieve the doc ID of the i-th value, swap the i-th and j-th values, save the i-th value into the j-th position in temporary storage, and restore values between the i-th and j-th (excluding) positions in temporary storage to their original positions.
+
+To use the `MutablePointValues` class, subclasses need to implement the abstract methods and provide the necessary functionality for accessing and modifying the values of `PointValues`.

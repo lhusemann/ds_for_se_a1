@@ -1,0 +1,7 @@
+The `KnnVectorsFormat` class is an abstract class that implements a format for encoding and decoding per-document vectors and associated indexing structures required for nearest-neighbor search. It provides methods for writing and reading vectors, as well as searching for nearest neighbors. It also includes a `NamedSPI` interface for loading formats by name.
+
+The `KnnVectorsFormat` class has two abstract methods: `fieldsWriter` and `fieldsReader`. The `fieldsWriter` method returns a `KnnVectorsWriter` object that can be used to write vectors to an index, while the `fieldsReader` method returns a `KnnVectorsReader` object that can be used to read vectors from an index.
+
+The class also includes a static `EMPTY` format that throws an exception when attempting to write vectors. This is used as a sentinel value to indicate that a codec does not support vectors.
+
+Overall, this code provides a framework for implementing nearest-neighbor search functionality in a Lucene index using custom vector formats.

@@ -1,0 +1,3 @@
+The provided code is a method that checks if a given integer value is equal to 1. The method takes an integer parameter called "docToValueCount" and returns a boolean value indicating whether the parameter is equal to 1. The method does not use any external dependencies or libraries and is written in Java.
+
+Title: Method to Check if Integer Value is Equal to 1

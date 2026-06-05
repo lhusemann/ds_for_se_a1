@@ -1,0 +1,15 @@
+This code implements a skip list reader for Lucene in Java. It extends the `MultiLevelSkipListReader` class and overrides its methods to read skip lists with multiple levels. The skip lists are encoded using the SimpleText codec.
+
+The `SimpleTextSkipReader` constructor initializes the skip list reader with the specified parameters, including the maximum number of skip levels, the block size, and the skip multiplier.
+
+The `skipTo` method is overridden to skip to the specified target document. It calls the super class's `skipTo` method and updates the number of skip levels based on the result. If there are no skip levels, it sets a dummy impact for the first level.
+
+The `readSkipData` method is overridden to read the skip data for a specific level. It reads the skip data from the skip stream and populates the `perLevelImpacts` list with the impacts for that level.
+
+The `readLevelLength` and `readChildPointer` methods are overridden to read the level length and child pointer from the skip stream, respectively.
+
+The `reset` method is used to reset the skip reader with a new skip pointer and document frequency. It initializes the skip reader and sets the `hasSkipList` flag based on whether the skip pointer is greater than 0.
+
+The `getImpacts` method returns the impacts for the skip reader. The `getNextSkipDocFP` method returns the file pointer for the next skip document. The `getNextSkipDoc` method returns the next skip document. The `hasSkipList` method returns whether the skip list is present.
+
+Overall, this code provides a way to read and decode skip lists with multiple levels using the SimpleText codec in Lucene.

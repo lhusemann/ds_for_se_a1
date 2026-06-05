@@ -1,0 +1,7 @@
+<summaries>
+Variable Gap Terms Index Reader is a Java implementation of a terms index reader for the Lucene library. It reads a terms index file and builds an in-memory structure for efficient term lookups. The index data for each field is loaded into memory using the FieldIndexData class, which uses the FST data structure to store the terms index. The code also defines the IndexEnum class, which implements the FieldIndexEnum interface, providing methods for enumerating the terms in the index and seeking to a specific term.
+
+TermStats is a class that holds per-term statistics. It has two fields, docFreq and totalTermFreq, which represent the number of documents that have at least one occurrence of the term and the total number of times the term occurs across all documents in the field, respectively. The class also has a constructor that takes in the docFreq and totalTermFreq as parameters and initializes the fields.
+
+The code provides utility methods for reading and writing versioned headers in Lucene. It includes methods for writing codec headers, index headers, and computing the length of these headers. It also includes methods for reading and validating headers, as well as writing and validating footers. The code also includes methods for reading and writing index headers with object IDs and suffixes. The code is part of the Lucene project and is used for indexing and searching text data.
+</summaries>

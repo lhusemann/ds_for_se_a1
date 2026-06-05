@@ -1,0 +1,11 @@
+The provided source code defines the abstract class `StoredFieldsReader` which is used for reading stored fields in Lucene. It provides methods for visiting stored fields for a document, cloning the reader, checking the integrity of the reader, and getting an instance optimized for merging.
+
+The `visitDocument` method is used to visit the stored fields for a specific document. The `docID` parameter specifies the ID of the document, and the `visitor` parameter is a `StoredFieldVisitor` object that is used to visit the stored fields of the document.
+
+The `clone` method is used to create a clone of the `StoredFieldsReader` object. This is necessary because the `StoredFieldsReader` class implements the `Cloneable` interface.
+
+The `checkIntegrity` method is used to check the consistency of the reader. This may involve computing a checksum value against large data files, so it may be costly in terms of I/O.
+
+The `getMergeInstance` method is used to get an instance of `StoredFieldsReader` that is optimized for merging. The default implementation returns `this`, but subclasses can override this method to return a different instance if necessary.
+
+Overall, the `StoredFieldsReader` class provides the necessary functionality for reading stored fields in Lucene, and subclasses can implement the required methods to provide specific behavior.

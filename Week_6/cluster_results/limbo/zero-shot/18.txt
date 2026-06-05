@@ -1,0 +1,5 @@
+<descriptive_summary>
+This code implements a terms enum for intersecting terms in a Lucene index. It is used to retrieve terms that match a given automaton. The code uses a stack to store frames for traversing the terms index, and a set of arcs for storing temporary arc objects. The enum supports seeking to a specific term and retrieving term metadata such as doc frequency and total term frequency. The code also handles seeking to the start term and iterating through the terms in the index.
+</descriptive_summary>
+
+<title>Lucene Intersect Terms Enum</title>

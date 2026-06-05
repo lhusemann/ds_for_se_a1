@@ -1,0 +1,22 @@
+This code implements a reader for vector values in a simple text format. It reads all vectors up front and caches them in RAM to support random access. The code is intended for recreational use only.
+
+The SimpleTextKnnVectorsReader class has the following key functionality:
+
+- It reads vector values from a simple text format.
+- It caches the vector values in RAM for random access.
+- It provides a method to search for the k nearest neighbors of a given target vector.
+- It supports random access to vector values.
+
+The SimpleTextKnnVectorsReader class has the following inputs/outputs:
+
+- The constructor takes a SegmentReadState object as input and initializes the reader.
+- The getVectorValues method returns a VectorValues object for a given field.
+- The search method searches for the k nearest neighbors of a given target vector.
+
+The SimpleTextKnnVectorsReader class has the following dependencies:
+
+- The SimpleTextKnnVectorsReader class depends on the org.apache.lucene.codecs.simpletext package.
+- The SimpleTextKnnVectorsReader class depends on the org.apache.lucene.index package.
+- The SimpleTextKnnVectorsReader class depends on the org.apache.lucene.search package.
+- The SimpleTextKnnVectorsReader class depends on the org.apache.lucene.store package.
+- The SimpleTextKnnVectorsReader class depends on the org.apache.lucene.util package.

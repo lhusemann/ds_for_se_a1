@@ -1,0 +1,1 @@
+This code defines an abstract class called PointsReader that implements the Closeable interface. It provides methods for checking the integrity of the reader, getting PointValues for a given field, and getting an instance optimized for merging. The class is part of the Lucene project and is marked as experimental.

@@ -1,0 +1,7 @@
+This code provides a simple text format for Lucene norms. It defines a class `SimpleTextNormsFormat` that extends `NormsFormat` and overrides its `normsConsumer` and `normsProducer` methods. The `normsConsumer` method returns a `SimpleTextNormsConsumer` instance, which is responsible for writing norms to a segment. The `normsProducer` method returns a `SimpleTextNormsProducer` instance, which is responsible for reading norms from a segment.
+
+The `SimpleTextNormsProducer` class extends `NormsProducer` and overrides the `getNorms`, `close`, `checkIntegrity`, and `toString` methods. The `getNorms` method returns a `NumericDocValues` instance for a given field, which represents the norms for that field in the segment. The `close` method closes the underlying resources, the `checkIntegrity` method checks the integrity of the underlying resources, and the `toString` method returns a string representation of the producer.
+
+The `SimpleTextNormsConsumer` class extends `NormsConsumer` and overrides the `addNormsField` and `close` methods. The `addNormsField` method adds a norms field to the segment, and the `close` method closes the underlying resources.
+
+Overall, this code provides a simple text format for Lucene norms, allowing users to read and write norms to and from segments.

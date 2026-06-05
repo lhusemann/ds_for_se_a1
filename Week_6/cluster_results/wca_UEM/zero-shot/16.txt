@@ -1,0 +1,5 @@
+The provided code implements a class called "FuzzySet" that represents a set of values using a BitSet. It provides methods to add values to the set, check if a value is contained in the set, serialize the set to a data output stream, deserialize the set from a data input stream, downsize the set to a smaller size, and estimate the number of unique values in the set. The class also implements the Accountable interface to provide information about the memory usage of the set.
+
+The code uses a HashFunction to hash the values and store them in the BitSet. It provides methods to create a set based on the maximum number of bytes or the desired saturation level. The downsize method creates a smaller set based on the desired saturation level. The getEstimatedUniqueValues method estimates the number of unique values in the set based on the set size and the number of set bits. The getSaturation method returns the saturation level of the set, which is the ratio of the number of set bits to the set size.
+
+The code is not thread-safe.

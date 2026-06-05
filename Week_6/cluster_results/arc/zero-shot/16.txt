@@ -1,0 +1,3 @@
+This code defines a class named SimpleTextCodec that extends the Codec class. It includes various member variables for different formats such as postings, stored fields, segment info, field infos, term vectors, norms, live docs, doc values, compound, points, and knn vectors. The SimpleTextCodec constructor initializes the name of the codec as "SimpleText". The class also overrides various methods from the parent class to return the corresponding format objects.
+
+This code is part of the Lucene library and is used for creating a simple text index format. It is marked as experimental, meaning it is not recommended for production use.

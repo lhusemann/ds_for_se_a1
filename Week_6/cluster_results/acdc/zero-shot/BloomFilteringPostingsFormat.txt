@@ -1,0 +1,27 @@
+```
+class BloomFilterFactory {
+  // Abstract class used to create index-time FuzzySet objects appropriately configured for each field
+}
+
+class DefaultBloomFilterFactory extends BloomFilterFactory {
+  FuzzySet getSetForField(SegmentWriteState state, FieldInfo field) {
+    // Create a FuzzySet object based on the quality of the segment and the field information
+    // The quality is determined by the maximum number of documents in the segment and a saturation factor of 0.10
+  }
+
+  boolean isSaturated(FuzzySet set, FieldInfo field) {
+    // Check if the saturation of the FuzzySet object is greater than 0.90
+    // If the saturation is greater than 0.90, the method returns true, indicating that the bitset is saturated and should not be saved
+  }
+}
+
+class BloomFilteredFieldsProducer extends FieldsProducer {
+  // Class used to read the Bloom filter data from the blm file and create a BloomFilteredTermsEnum for each field
+  // The BloomFilteredTermsEnum uses the Bloom filter to speed up reads in segments that do not contain a specific key
+}
+
+class BloomFilteredTermsEnum extends TermsEnum {
+  // Class used to iterate over terms in a Bloom-filtered segment
+  // It uses the Bloom filter to quickly identify segments that do not contain a specific key
+}
+```

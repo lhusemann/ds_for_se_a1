@@ -1,0 +1,3 @@
+Title: Postingsproducer Abstract Class
+
+Abstract class PostingsProducer extends Fields and implements the Closeable interface. It is used to produce terms, doc, freq, prox, offset, and payloads postings. The sole constructor is protected and an abstract close() method that throws an IOException. The checkIntegrity() method is used to check the consistency of the reader and the getMergeInstance() method returns an instance optimized for merging.

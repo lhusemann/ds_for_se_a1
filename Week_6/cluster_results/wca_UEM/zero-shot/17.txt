@@ -1,0 +1,1 @@
+This code defines an abstract class `HashFunction` that provides a method `hash` for hashing the contents of a `BytesRef` object. Subclasses are expected to implement the `hash` method and return the hash of the bytes referenced by the `BytesRef` object. The class is part of the `org.apache.lucene.codecs.bloom` package and is marked as experimental.

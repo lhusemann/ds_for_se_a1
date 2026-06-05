@@ -1,0 +1,7 @@
+The code defines a class called NormsFormat that provides methods for encoding and decoding per-document score normalization values. The class has two abstract methods: normsConsumer and normsProducer. The normsConsumer method returns a NormsConsumer object that can be used to write norms to the index, while the normsProducer method returns a NormsProducer object that can be used to read norms from the index.
+
+The NormsFormat class also has a constructor that is marked as protected, which means that it can only be called from within the same package or from subclasses. This helps to ensure that the class is used in a consistent and controlled manner.
+
+The code also imports several classes from the Lucene library, including SegmentReadState, SegmentWriteState, IOException, NormsConsumer, and NormsProducer. These classes are used to handle the reading and writing of norms data, as well as to manage the state of the segments being processed.
+
+Overall, this code provides a framework for encoding and decoding per-document score normalization values in the Lucene library. It allows developers to customize the behavior of norms encoding and decoding by subclassing the NormsFormat class and implementing their own versions of the normsConsumer and normsProducer methods.
