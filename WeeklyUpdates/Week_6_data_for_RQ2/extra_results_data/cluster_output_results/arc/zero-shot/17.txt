@@ -1,0 +1,1 @@
+This module is responsible for creating a summary of a software module's behavior, architecture, and interactions. The summary includes components and their interactions, as well as quality attributes and the technology used. The summary is limited to 150 words.

@@ -1,0 +1,10 @@
+Title: Fast, Non-Cryptographic Hash Function and Lossy Data Structure for Estimating Unique Values
+
+Summary:
+The code provides a fast, non-cryptographic hash function called MurmurHash2, which is suitable for general hash-based lookup. It also includes a BytesRef-based hash function that can be used to hash byte arrays with offsets and lengths. The code is part of the Lucene project and is marked as experimental.
+
+Additionally, the code includes a data structure called FuzzySet, which is used to represent a set of potentially large values using a significantly smaller amount of memory. It is "lossy" in that it cannot definitively state that it contains a value, but it can definitively say if a value is not in the set. The FuzzySet class provides methods for adding values to the set, checking if a value is in the set, downsizing the set to a smaller size based on desired saturation levels, estimating the number of unique values in the set, and serializing and deserializing the set to and from a data output stream.
+
+The code also includes a HashFunction interface and an implementation of the MurmurHash2 hash function. The hash function is used to hash values before adding them to the set.
+
+Overall, the code provides a fast, non-cryptographic hash function and a lossy data structure for estimating unique values, which can be useful for various applications such as data compression, duplicate detection, and approximate counting.

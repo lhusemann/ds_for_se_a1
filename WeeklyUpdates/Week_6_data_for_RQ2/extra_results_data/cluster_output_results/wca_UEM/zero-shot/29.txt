@@ -1,0 +1,3 @@
+used in search applications and provides powerful indexing and search capabilities.
+
+Overall, the code provides a framework for encoding and decoding norms in the Lucene index, allowing for efficient storage and retrieval of normalization values for documents.

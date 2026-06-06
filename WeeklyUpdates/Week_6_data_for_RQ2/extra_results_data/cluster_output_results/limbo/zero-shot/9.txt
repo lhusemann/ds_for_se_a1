@@ -1,0 +1,9 @@
+The provided code is a Java implementation of a terms dictionary reader using an FST (Finite State Transducer). The FST directly maps each term and its metadata, making it memory resident. The code includes functionality for reading terms, decoding metadata, and intersecting with an automaton.
+
+The FSTTermsReader class is the main class for reading terms from the dictionary. It initializes the FST and postings reader, and then iterates through the fields to read the terms and their metadata. The TermsReader class is used to read the terms and their metadata for a specific field. It includes functionality for seeking to a specific term, iterating through the terms, and decoding metadata.
+
+The IntersectTermsEnum class is used to intersect the terms with an automaton. It includes functionality for seeking to a specific term, iterating through the intersected terms, and decoding metadata.
+
+The code also includes functionality for checking the integrity of the terms dictionary and walking through the FST.
+
+Overall, the code provides a memory-resident implementation of a terms dictionary reader using an FST, with functionality for reading terms, decoding metadata, and intersecting with an automaton.

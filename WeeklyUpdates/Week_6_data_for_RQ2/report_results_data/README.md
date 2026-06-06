@@ -1,0 +1,2 @@
+# Information of folder
+This folder contains the formated LLM results used in the report which originate from `Week_4/generated_files`. They comply the new format announced on 2026-06-02. It also contains the script used to format them.

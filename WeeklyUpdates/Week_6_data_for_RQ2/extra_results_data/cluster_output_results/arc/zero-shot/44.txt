@@ -1,0 +1,1 @@
+TermVectorsWriter is a class used to write term vectors in Lucene. It provides methods to start and finish documents, fields, and terms, as well as to add positions, offsets, and payloads. It also includes a merge method that merges term vectors from multiple readers. The class is part of the Lucene project and is used for indexing and searching text data.

@@ -1,0 +1,1 @@
+This code provides a FieldInfosFormat implementation for Lucene that writes field information to a text file. It includes logic to handle different field attributes such as name, number, index options, term vectors, norms, doc values, attributes, and vector search strategy. The code also includes methods to read and write the field information to a text file.

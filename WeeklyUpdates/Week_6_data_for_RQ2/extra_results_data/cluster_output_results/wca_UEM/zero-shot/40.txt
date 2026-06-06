@@ -1,0 +1,48 @@
+Here's the Python translation of the provided Java code:
+
+```python
+import os
+import re
+
+class SimpleTextStoredFieldsReader:
+    def __init__(self, directory, segment_info, field_infos, io_context):
+        self.field_infos = field_infos
+        self.offsets = []
+        self.input_stream = directory.open_input(
+            IndexFileNames.segment_file_name(
+                segment_info.name, "", SimpleTextStoredFieldsWriter.FIELDS_EXTENSION),
+            io_context)
+        self.read_index(segment_info.max_doc)
+
+    def read_index(self, size):
+        input_stream = self.input_stream
+        offsets = self.offsets
+        offsets.append(input_stream.file_pointer)
+        while True:
+            line = input_stream.read_line()
+            if line == SimpleTextStoredFieldsWriter.END:
+                break
+            doc_id = int(line)
+            if doc_id < 0 or doc_id >= size:
+                raise RuntimeError("invalid docID: {} (resource={})".format(doc_id, input_stream))
+            offsets.append(input_stream.file_pointer)
+
+    def visit_document(self, doc_id, visitor):
+        input_stream = self.input_stream
+        offsets = self.offsets
+        input_stream.seek(offsets[doc_id])
+        num_fields = int(input_stream.read_line())
+        for i in range(num_fields):
+            line = input_stream.read_line()
+            field_info = self.field_infos.field_info(int(line))
+            field_name = field_info.name
+            field_type = field_info.get_type()
+            if field_type.stored:
+                if field_type.omit_norms():
+                    input_stream.seek(input_stream.file_pointer + 1)
+                num_terms = int(input_stream.read_line())
+                if num_terms > 0:
+                    if field_type.store_term_vector_positions():
+                        input_stream.seek(input_stream.file_pointer + num_terms * 10)
+                    if field_type.store_term_vector_offsets():
+                        input_stream.seek(input_stream.file_pointer + num_terms * 1

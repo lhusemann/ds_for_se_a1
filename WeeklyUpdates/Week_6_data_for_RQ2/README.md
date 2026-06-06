@@ -1,0 +1,2 @@
+## Explanaion of submission
+This submission contains all the data used for RQ2 in the required format + the data to comply the announcement from 2026-06-02. The data used for RQ1 was already submitted in earlier weeks.

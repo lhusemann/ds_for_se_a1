@@ -1,0 +1,3 @@
+This code provides a custom implementation of the Lucene PostingsFormat class, which is used to write and read postings data in Lucene. The SimpleTextFieldsWriter class is used to write postings data to a human-readable text file, while the SimpleTextFieldsReader class is used to read postings data from the text file. The SimpleTextPostingsFormat class also provides a method to get the name of the postings file based on the segment name and suffix.
+
+This code is intended for debugging, curiosity, and transparency only. It should not be used in production.

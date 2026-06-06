@@ -1,0 +1,7 @@
+This code provides a class that reads skip lists with multiple levels. The skip lists are encoded using a specific format, as described in the SimpleTextFieldsWriter class. The SimpleTextSkipReader class extends the MultiLevelSkipListReader class and overrides some of its methods to handle the specific encoding.
+
+The SimpleTextSkipReader class has a constructor that takes an IndexInput object as a parameter, which is used to read the skip lists from the input stream. It also has a reset method that initializes the skip reader with a given skip pointer and document frequency.
+
+The skipTo method is overridden to skip to a specific target document and update the number of skip levels. The readSkipData method is overridden to read the skip data for a specific level from the input stream, and the readLevelLength and readChildPointer methods are overridden to read the level length and child pointer from the input stream.
+
+The SimpleTextSkipReader class also provides methods to retrieve the next skip document frequency pointer, the next skip document, and to check if there is a skip list available.

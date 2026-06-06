@@ -1,0 +1,11 @@
+The provided code is a Java implementation of a terms index writer for Lucene. It selects index terms based on a pluggable policy and stores them in a prefix trie using an FST (Finite State Transducer). The index only supports unsigned byte term sort order, which is equivalent to unicode codepoint order when the bytes are UTF8.
+
+The code provides a base class `VariableGapTermsIndexWriter` that implements the functionality of the terms index writer. It takes a `SegmentWriteState` object and an `IndexTermSelector` object as input and initializes the index output and field information. It also provides methods to add fields, check index terms, add terms, and finish the index.
+
+The `IndexTermSelector` class is an abstract class that defines the policy for selecting index terms. It provides methods to check if a term should be indexed and to handle the start of a new field. The code provides two implementations of the `IndexTermSelector` class: `EveryNTermSelector` and `EveryNOrDocFreqTermSelector`.
+
+The `FSTFieldWriter` class is a private inner class of `VariableGapTermsIndexWriter` that handles the writing of terms for a specific field. It uses an FSTCompiler to build the FST and provides methods to check index terms, add terms, and finish the field.
+
+The code also includes methods to write the trailer and close the index output.
+
+Overall, the code provides a flexible and customizable implementation of a terms index writer for Lucene, allowing users to define their own index term selection policy.

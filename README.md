@@ -12,5 +12,8 @@ Contains all files used for Week 3. Some README.md are placed inside for further
 ## Week_4
 Contains all files used for Week 4. Some README.md are placed inside for further explanation.
 
+## Week_6
+Contains all files used for Week 6. Some README.md are placed inside for further explanation.
+
 ## WeeklyUpdates
 A place to gather all our weekly solutions and updates.

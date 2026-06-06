@@ -1,0 +1,13 @@
+This code defines an abstract class `PostingsWriterBase` that handles writing postings to a term dictionary. It provides methods for initializing the output, writing a term and its postings, encoding metadata, and setting the current field for writing. The class also implements the `Closeable` interface to close the output stream.
+
+The class is part of the Lucene library and is used for indexing and searching text data. It is used by the `Lucene90BlockTreeTermsWriter` class to write postings for each term in the dictionary.
+
+The `writeTerm` method is responsible for writing all postings for a single term. It takes a `BytesRef` representing the term, a `TermsEnum` to iterate over the postings, a `FixedBitSet` to mark which documents contain the term, and a `NormsProducer` to access norms for the term. The method should set the bit in the `FixedBitSet` for every document ID written. If no documents were written, the method should return null, and the terms dictionary will skip the term.
+
+The `encodeTerm` method encodes metadata as a long array and a byte array. It takes a `DataOutput` to write the encoded metadata, a `FieldInfo` object representing the field being written, a `BlockTermState` object representing the state of the term being written, and a boolean flag indicating whether the current term is delta encoded relative to the previous term.
+
+The `setField` method sets the current field for writing. It takes a `FieldInfo` object representing the field being written.
+
+The `close` method closes the output stream.
+
+Overall, this class provides a framework for writing postings to a term dictionary, and is used by the Lucene library for indexing and searching text data.

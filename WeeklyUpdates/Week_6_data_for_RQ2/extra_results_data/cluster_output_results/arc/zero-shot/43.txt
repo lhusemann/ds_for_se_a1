@@ -1,0 +1,21 @@
+Title: A read-only directory view over a compound file.
+
+Components and Interactions:
+- CompoundDirectory class: An abstract class that extends the Directory class. It is used to create a read-only directory view over a compound file.
+- CompoundFileDirectory class: A concrete implementation of the CompoundDirectory class that provides methods for checking the integrity of the directory and creating output and temporary output.
+- Directory class: The parent class of CompoundDirectory, which provides methods for interacting with a directory.
+- IOException: A checked exception that is thrown when an I/O error occurs.
+- Collection: A collection of objects, such as a list or set.
+- IOContext: A class that provides context information for input and output operations.
+- IndexOutput: An output stream for writing to an index.
+- Lock: A class that provides methods for acquiring and releasing locks.
+- UnsupportedOperationException: An exception that is thrown when a requested operation is not supported.
+
+Quality Attributes:
+- Experimental: The CompoundDirectory class is marked as experimental, meaning that it may undergo changes or be removed in future releases.
+- Not Supported: Some methods in the CompoundDirectory class override methods from the Directory class to throw UnsupportedOperationException, indicating that they are not supported by the CompoundDirectory implementation.
+
+Technology Used:
+- Apache Lucene: The CompoundDirectory class is part of the Apache Lucene library, which is a high-performance, full-featured text search engine library.
+- Java: The code is written in Java, a popular programming language for developing enterprise-level applications.
+- Import Statements: The code includes import statements for various classes and interfaces, such as IOException, Collection, Directory, IOContext, IndexOutput, Lock, and UnsupportedOperationException.
