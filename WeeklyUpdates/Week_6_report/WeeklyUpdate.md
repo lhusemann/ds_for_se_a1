@@ -1,0 +1,4 @@
+## Overview
+For the final week we generated the extra results as discussed via email, applied the feedback to our report and held the presentation. As discussed via e-mail, the report still uses the results generated before the announcement from 2026-06-02. The generated extra results can be found in our last submission `Week_6_Group_9_data.zip` since the deadline was on the 6th of June.
+
+We submitted two addional files. First is `work_contribution_group9.pdf` which represents who did what for the assignment. The second is `Assignment1_Group9_10_06_26_no_highlights.pdf` which is the report but without the markings representing changes to the report, as this is the final report.
